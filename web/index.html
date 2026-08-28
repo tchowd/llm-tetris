@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>llm-tetris</title>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>llm-tetris <span class="subtitle">stage 1 — engine + step() API</span></h1>
+    </header>
+
+    <div class="layout">
+      <section class="board-panel">
+        <div id="board" class="board"></div>
+        <div id="game-over" class="game-over hidden">
+          <div>GAME OVER</div>
+          <div class="hint">start a new game below</div>
+        </div>
+      </section>
+
+      <section class="side-panel">
+        <div class="stats">
+          <div><span class="label">Score</span><span id="stat-score">0</span></div>
+          <div><span class="label">Lines</span><span id="stat-lines">0</span></div>
+          <div><span class="label">Turn</span><span id="stat-turn">0</span></div>
+          <div><span class="label">Seed</span><span id="stat-seed">-</span></div>
+        </div>
+
+        <div class="next-piece">
+          <div class="label">Next</div>
+          <div id="next-grid" class="next-grid"></div>
+        </div>
+
+        <div class="controls">
+          <div class="label">Controls</div>
+          <ul>
+            <li>&larr; / &rarr; &mdash; move</li>
+            <li>&uarr; &mdash; rotate CW</li>
+            <li>Z &mdash; rotate CCW</li>
+            <li>Space / Enter &mdash; drop</li>
+          </ul>
+        </div>
+
+        <form id="new-game-form" class="new-game">
+          <div class="label">New game</div>
+          <input id="seed-input" type="number" placeholder="seed (optional)" />
+          <button type="submit">New Game</button>
+        </form>
+
+        <div class="prompt-panel">
+          <div class="label">Prompt (what the model sees)</div>
+          <pre id="prompt-text"></pre>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
