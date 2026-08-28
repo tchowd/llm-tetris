@@ -68,13 +68,23 @@ def is_noisy_game(seed: int) -> bool:
     return seed % 10 == 0
 
 
-def generate_game(seed: int, max_pieces: int = DEFAULT_MAX_PIECES, noisy: bool | None = None) -> tuple[list[dict], dict]:
+def generate_game(
+    seed: int,
+    max_pieces: int = DEFAULT_MAX_PIECES,
+    noisy: bool | None = None,
+    weights: dict | None = None,
+) -> tuple[list[dict], dict]:
     """Play one game with the teacher, optionally injecting exploration
     noise. Returns (rows, game_record) — game_record is one `games.jsonl`
     line, rows are that game's `rows.jsonl` lines.
+
+    `weights` defaults to the live `teacher.WEIGHTS` when not given. Pass
+    the exact weights explicitly (e.g. from a manifest) when reproducing a
+    past dump after the teacher's weights may have changed since.
     """
     if noisy is None:
         noisy = is_noisy_game(seed)
+    resolved_weights = weights if weights is not None else teacher_mod.WEIGHTS
 
     g = Game(seed=seed)
     noise_rng = random.Random(seed ^ NOISE_SALT)
@@ -86,7 +96,7 @@ def generate_game(seed: int, max_pieces: int = DEFAULT_MAX_PIECES, noisy: bool |
     while not g.game_over and g.turn < max_pieces:
         snap = g.snapshot()
         legal = snap["legal"]
-        rot, x = teacher_mod.pick(snap, legal)
+        rot, x = teacher_mod.pick(snap, legal, weights=resolved_weights)
         # Stage 2 already guarantees this; assert so a future weight change
         # can never quietly poison the file (stage-3-dataset.md).
         assert (rot, x) in {(p["rot"], p["x"]) for p in legal}, (
@@ -120,13 +130,21 @@ def generate_game(seed: int, max_pieces: int = DEFAULT_MAX_PIECES, noisy: bool |
     return rows, game_record
 
 
-def rebuild_rows_from_game(game_record: dict, max_pieces: int = DEFAULT_MAX_PIECES) -> list[dict]:
+def rebuild_rows_from_game(
+    game_record: dict, max_pieces: int = DEFAULT_MAX_PIECES, weights: dict | None = None
+) -> list[dict]:
     """Replay a game purely from its `games.jsonl` record (seed + executed
     actions) and recompute every row from scratch, including re-asking the
     teacher for the label at each turn. Used by the validator to prove
     `rows.jsonl` matches what `games.jsonl` actually describes — no read of
     `rows.jsonl` happens here.
+
+    `weights` should be whatever weights the dump being validated was
+    actually generated with (e.g. from its manifest.json), not necessarily
+    the live `teacher.WEIGHTS` — those can be retuned later, and a past
+    dump must still validate against the weights it was made with.
     """
+    resolved_weights = weights if weights is not None else teacher_mod.WEIGHTS
     g = Game(seed=game_record["seed"])
     explored_turns = set(game_record["explored_turns"])
     rows: list[dict] = []
@@ -134,7 +152,7 @@ def rebuild_rows_from_game(game_record: dict, max_pieces: int = DEFAULT_MAX_PIEC
         if g.game_over or g.turn >= max_pieces:
             break
         snap = g.snapshot()
-        rot, x = teacher_mod.pick(snap, snap["legal"])
+        rot, x = teacher_mod.pick(snap, snap["legal"], weights=resolved_weights)
         rows.append(row_from_snapshot(snap, label=(rot, x), explored=turn in explored_turns))
         g.step(act_rot, act_x)
     return rows

@@ -7,7 +7,7 @@ live engine). See plan/stage-2-teacher.md.
 """
 from __future__ import annotations
 
-from .board import HEIGHT, WIDTH
+from .board import HEIGHT, WIDTH, board_to_lists
 from .features import column_heights, column_holes, wells
 from .placement import legal_placements_on
 
@@ -159,7 +159,7 @@ def pick(snapshot: dict, legal: list[dict], weights: dict = WEIGHTS) -> tuple[in
     if not legal:
         raise ValueError("teacher.pick() called with no legal placements (game is already over)")
 
-    board = [list(row) for row in snapshot["board"]]
+    board = board_to_lists(snapshot["board"])
     next_piece = snapshot["next"]
 
     best = max(

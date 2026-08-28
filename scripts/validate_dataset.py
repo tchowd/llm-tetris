@@ -5,9 +5,16 @@ plan/stage-3-dataset.md's "Validation" section (the stage gate).
     python scripts/validate_dataset.py --data-dir data/smoke
     python scripts/validate_dataset.py --data-dir data/smoke --sample 20 --sample-out sample.txt
 
-Exits non-zero if any automated check (#1,2,3,4,5,7) fails. Check #6
-("read a few thousand") is not automatable by design -- use --sample to
-produce text for a human to actually read.
+`--max-pieces` and the teacher weights default to whatever manifest.json
+(written by generate_dataset.py) recorded for this dump, not this code's
+current defaults -- a dump made with a non-default --max-pieces, or made
+before the teacher's weights were last retuned, must still validate
+against what it was actually generated with. Pass --max-pieces or
+--ignore-manifest-weights to override.
+
+Exits non-zero if any automated check fails. Check #6 ("read a few
+thousand") is not automatable by design -- use --sample to produce text
+for a human to actually read.
 """
 from __future__ import annotations
 
@@ -27,8 +34,12 @@ def _load_jsonl(path: Path) -> list[dict]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--data-dir", type=Path, required=True)
-    parser.add_argument("--max-pieces", type=int, default=DEFAULT_MAX_PIECES)
+    parser.add_argument("--max-pieces", type=int, default=None, help="default: manifest.json's max_pieces, else the code default")
     parser.add_argument("--workers", type=int, default=None, help="processes for full_rebuild (default: cpu_count - 2)")
+    parser.add_argument(
+        "--ignore-manifest-weights", action="store_true",
+        help="use the live teacher.WEIGHTS instead of manifest.json's recorded teacher_weights",
+    )
     parser.add_argument("--sample", type=int, default=0, help="also dump N random rows as text for a human to read")
     parser.add_argument("--sample-out", type=Path, default=None, help="file to write the sample to (default: stdout)")
     args = parser.parse_args()
@@ -37,7 +48,16 @@ def main() -> None:
     rows = _load_jsonl(args.data_dir / "rows.jsonl")
     print(f"loaded {len(games)} games, {len(rows)} rows from {args.data_dir}")
 
-    report = run_all_checks(games, rows, max_pieces=args.max_pieces, workers=args.workers)
+    manifest_path = args.data_dir / "manifest.json"
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    if not manifest:
+        print(f"warning: no manifest.json in {args.data_dir}; using code defaults for max_pieces and live teacher weights")
+
+    max_pieces = args.max_pieces if args.max_pieces is not None else manifest.get("max_pieces", DEFAULT_MAX_PIECES)
+    weights = None if args.ignore_manifest_weights else manifest.get("teacher_weights")
+    print(f"max_pieces={max_pieces}, weights={'manifest' if weights else 'live teacher.WEIGHTS'}")
+
+    report = run_all_checks(games, rows, max_pieces=max_pieces, workers=args.workers, weights=weights)
 
     all_ok = True
     for name, result in report.items():
