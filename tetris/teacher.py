@@ -34,8 +34,14 @@ def _cells(raw_cells) -> Cells:
     return tuple((r, c) for r, c in raw_cells)
 
 
-def overlay_and_clear(board: list[list[str]], cells: Cells) -> tuple[list[list[str]], int, int]:
+def overlay_and_clear(board: list[list[str]], cells: Cells, fill: str = "#") -> tuple[list[list[str]], int, int]:
     """Lock `cells` onto `board` and clear full rows.
+
+    `fill` is the character written into `cells` — scoring never looks at
+    *which* piece is where, only filled-vs-empty, so it defaults to a
+    generic marker; pass the real piece letter (e.g. "T") when the caller
+    needs the resulting board to match what `Game.step()` would produce
+    (e.g. Stage 3's validator, replaying against stored boards).
 
     Returns (new_board, lines_cleared, piece_cells_in_cleared_rows) — the
     third value is how many of `cells` themselves sat in a row that cleared,
@@ -53,7 +59,7 @@ def overlay_and_clear(board: list[list[str]], cells: Cells) -> tuple[list[list[s
     for r in touched_rows:
         overlaid[r] = board[r][:]
     for r, c in cells:
-        overlaid[r][c] = "#"
+        overlaid[r][c] = fill
 
     cleared_rows = {r for r in touched_rows if all(ch != "." for ch in overlaid[r])}
     lines_cleared = len(cleared_rows)

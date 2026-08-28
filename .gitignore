@@ -9,4 +9,5 @@ dist/
 node_modules/
 web/dist/
 plan/
+data/
 
