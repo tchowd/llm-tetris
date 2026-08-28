@@ -6,11 +6,11 @@ from __future__ import annotations
 import copy
 import random
 
-from .pieces import CANONICAL_ROTS, NORMALIZED_SHAPES, PIECE_LETTERS, shape_width
+from .board import HEIGHT, WIDTH
+from .features import bumpiness, column_heights, column_holes, wells
+from .pieces import PIECE_LETTERS
+from .placement import legal_placements_on
 from .serialize import serialize_action, serialize_prompt
-
-WIDTH = 10
-HEIGHT = 20
 
 # Guideline line-clear points, indexed by number of lines cleared (0..4).
 LINE_POINTS = (0, 100, 300, 500, 800)
@@ -47,46 +47,20 @@ class Game:
 
     # -- placement ------------------------------------------------------
 
-    def _drop_offset(self, shape: tuple[tuple[int, int], ...], x: int) -> int | None:
-        """Largest row offset (from the shape sitting at the very top of the
-        board) that does not collide, or None if even offset 0 collides."""
-        last_valid = None
-        offset = 0
-        while True:
-            collides = False
-            for r, c in shape:
-                row = r + offset
-                if row >= HEIGHT or self.board[row][c + x] != ".":
-                    collides = True
-                    break
-            if collides:
-                break
-            last_valid = offset
-            offset += 1
-        return last_valid
-
     def legal_placements(self) -> list[dict]:
-        piece = self.current
         placements = []
-        for rot in CANONICAL_ROTS[piece]:
-            shape = NORMALIZED_SHAPES[piece][rot]
-            width = shape_width(shape)
-            for x in range(WIDTH - width + 1):
-                offset = self._drop_offset(shape, x)
-                if offset is None:
-                    continue
-                cells = [(r + offset, c + x) for r, c in shape]
-                r_top = min(r for r, _ in cells)
-                r_bottom = max(r for r, _ in cells)
-                landing_height = HEIGHT - (r_top + r_bottom) / 2
-                placements.append(
-                    {
-                        "rot": rot,
-                        "x": x,
-                        "cells": [[r, c] for r, c in cells],
-                        "landing_height": landing_height,
-                    }
-                )
+        for p in legal_placements_on(self.board, self.current):
+            r_top = min(r for r, _ in p["cells"])
+            r_bottom = max(r for r, _ in p["cells"])
+            landing_height = HEIGHT - (r_top + r_bottom) / 2
+            placements.append(
+                {
+                    "rot": p["rot"],
+                    "x": p["x"],
+                    "cells": [[r, c] for r, c in p["cells"]],
+                    "landing_height": landing_height,
+                }
+            )
         return placements
 
     def step(self, rot: int, x: int) -> dict:
@@ -128,51 +102,18 @@ class Game:
 
     # -- features ---------------------------------------------------------
 
-    def _column_heights(self) -> list[int]:
-        heights = [0] * WIDTH
-        for col in range(WIDTH):
-            for row in range(HEIGHT):
-                if self.board[row][col] != ".":
-                    heights[col] = HEIGHT - row
-                    break
-        return heights
-
-    def _column_holes(self) -> list[int]:
-        holes = [0] * WIDTH
-        for col in range(WIDTH):
-            seen_filled = False
-            for row in range(HEIGHT):
-                if self.board[row][col] != ".":
-                    seen_filled = True
-                elif seen_filled:
-                    holes[col] += 1
-        return holes
-
-    def _wells(self, heights: list[int]) -> list[int]:
-        wells = [0] * WIDTH
-        for col in range(WIDTH):
-            left = heights[col - 1] if col > 0 else HEIGHT
-            right = heights[col + 1] if col < WIDTH - 1 else HEIGHT
-            if heights[col] < left and heights[col] < right:
-                wells[col] = min(left, right) - heights[col]
-        return wells
-
-    @staticmethod
-    def _bumpiness(heights: list[int]) -> int:
-        return sum(abs(heights[i] - heights[i + 1]) for i in range(WIDTH - 1))
-
     def features(self) -> dict:
-        heights = self._column_heights()
-        holes = self._column_holes()
-        wells = self._wells(heights)
-        bumpiness = self._bumpiness(heights)
+        heights = column_heights(self.board)
+        holes = column_holes(self.board)
+        well_depths = wells(heights)
+        bump = bumpiness(heights)
         return {
             "piece": self.current,
             "next": self.next,
             "heights": heights,
             "holes": holes,
-            "wells": wells,
-            "bumpiness": bumpiness,
+            "wells": well_depths,
+            "bumpiness": bump,
             "aggregate_height": sum(heights),
             "holes_total": sum(holes),
             "max_height": max(heights),
