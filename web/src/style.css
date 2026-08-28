@@ -216,3 +216,24 @@ h1 {
   white-space: pre-wrap;
   color: var(--accent);
 }
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  background: #3a1f22;
+  border: 1px solid #6b3238;
+  color: #ffb4b4;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+.toast.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

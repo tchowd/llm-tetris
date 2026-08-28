@@ -34,6 +34,17 @@ let gameId = null;
 let snapshot = null;
 let selectedRot = 0;
 let selectedX = 0;
+let stepInFlight = false;
+
+const toastEl = document.getElementById("toast");
+let toastTimer = null;
+
+function showToast(message) {
+  toastEl.textContent = message;
+  toastEl.classList.remove("hidden");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.add("hidden"), 2000);
+}
 
 function buildCellGrid(container, width, height, cellClass) {
   container.innerHTML = "";
@@ -128,31 +139,52 @@ function render() {
 }
 
 async function newGame(seed) {
-  const body = seed === null || seed === undefined || seed === "" ? {} : { seed: Number(seed) };
-  const res = await fetch("/api/games", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  snapshot = await res.json();
-  gameId = snapshot.game_id;
-  selectedRot = 0;
-  selectedX = 0;
-  clampSelection();
-  render();
+  if (stepInFlight) return;
+  stepInFlight = true;
+  try {
+    const body = seed === null || seed === undefined || seed === "" ? {} : { seed: Number(seed) };
+    const res = await fetch("/api/games", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      showToast("could not start a new game");
+      return;
+    }
+    snapshot = await res.json();
+    gameId = snapshot.game_id;
+    selectedRot = 0;
+    selectedX = 0;
+    clampSelection();
+    render();
+  } finally {
+    stepInFlight = false;
+  }
 }
 
 async function step(rot, x) {
-  if (!gameId || !snapshot || snapshot.game_over) return;
-  const res = await fetch(`/api/games/${gameId}/step`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ rot, x }),
-  });
-  if (!res.ok) return; // illegal placement raced with a stale selection; ignore
-  snapshot = await res.json();
-  clampSelection();
-  render();
+  if (!gameId || !snapshot || snapshot.game_over || stepInFlight) return;
+  stepInFlight = true;
+  try {
+    const res = await fetch(`/api/games/${gameId}/step`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ rot, x }),
+    });
+    if (!res.ok) {
+      // Should only happen if the selection went stale mid-request; the
+      // board itself is unaffected since the server rejected the move.
+      const body = await res.json().catch(() => null);
+      showToast(body?.detail || "move rejected");
+      return;
+    }
+    snapshot = await res.json();
+    clampSelection();
+    render();
+  } finally {
+    stepInFlight = false;
+  }
 }
 
 function moveSelection(dx) {

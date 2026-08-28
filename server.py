@@ -35,12 +35,32 @@ def _get_game(game_id: str) -> Game:
     return game
 
 
+@app.get("/api/healthz")
+def healthz():
+    return {"status": "ok", "games": len(GAMES)}
+
+
 @app.post("/api/games")
 def new_game(req: NewGameRequest):
     seed = req.seed if req.seed is not None else random.randint(0, 2**31 - 1)
     game = Game(seed=seed)
     GAMES[game.game_id] = game
     return game.snapshot()
+
+
+@app.get("/api/games")
+def list_games():
+    return [
+        {
+            "game_id": game.game_id,
+            "seed": game.seed,
+            "turn": game.turn,
+            "score": game.score,
+            "lines": game.lines,
+            "game_over": game.game_over,
+        }
+        for game in GAMES.values()
+    ]
 
 
 @app.get("/api/games/{game_id}")
