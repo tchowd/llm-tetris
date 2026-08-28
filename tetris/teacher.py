@@ -40,12 +40,22 @@ def overlay_and_clear(board: list[list[str]], cells: Cells) -> tuple[list[list[s
     Returns (new_board, lines_cleared, piece_cells_in_cleared_rows) — the
     third value is how many of `cells` themselves sat in a row that cleared,
     the raw count the eroded-cells feature is built from.
+
+    Only the rows the piece actually touches are copied or checked for
+    completeness — safe because `board` is assumed to already have no
+    pre-existing complete rows (true of every board `Game` produces, since
+    it clears full rows immediately; the hand-built boards in this
+    project's tests hold to the same invariant). Called ~hundreds of times
+    per turn during 2-ply search, so this is worth the assumption.
     """
-    overlaid = [row[:] for row in board]
+    touched_rows = {r for r, _ in cells}
+    overlaid = list(board)
+    for r in touched_rows:
+        overlaid[r] = board[r][:]
     for r, c in cells:
         overlaid[r][c] = "#"
 
-    cleared_rows = {r for r in range(HEIGHT) if all(ch != "." for ch in overlaid[r])}
+    cleared_rows = {r for r in touched_rows if all(ch != "." for ch in overlaid[r])}
     lines_cleared = len(cleared_rows)
     piece_cells_in_cleared_rows = sum(1 for r, _ in cells if r in cleared_rows)
 
@@ -140,6 +150,9 @@ def pick(snapshot: dict, legal: list[dict], weights: dict = WEIGHTS) -> tuple[in
     Reads only `snapshot["board"]` / `snapshot["next"]` and the caller-
     supplied `legal` list — Stage 1's public API, nothing more.
     """
+    if not legal:
+        raise ValueError("teacher.pick() called with no legal placements (game is already over)")
+
     board = [list(row) for row in snapshot["board"]]
     next_piece = snapshot["next"]
 

@@ -7,7 +7,7 @@
 <body>
   <div class="app">
     <header>
-      <h1>llm-tetris <span class="subtitle">stage 1 — engine + step() API</span></h1>
+      <h1>llm-tetris <span class="subtitle">stage 2 — Dellacherie/El-Tetris teacher</span></h1>
     </header>
 
     <div class="layout">
@@ -40,6 +40,15 @@
             <li>Z &mdash; rotate CCW</li>
             <li>Space / Enter &mdash; drop</li>
           </ul>
+        </div>
+
+        <div class="teacher-panel">
+          <div class="label">Teacher (Stage 2)</div>
+          <div class="teacher-buttons">
+            <button id="teacher-step-btn" type="button">Teacher Move</button>
+            <button id="teacher-autoplay-btn" type="button">Auto-play</button>
+          </div>
+          <div id="teacher-action" class="teacher-action">&nbsp;</div>
         </div>
 
         <form id="new-game-form" class="new-game">

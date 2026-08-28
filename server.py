@@ -13,6 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from tetris.engine import Game
+from tetris import teacher
 
 app = FastAPI(title="llm-tetris")
 
@@ -75,6 +76,19 @@ def step(game_id: str, req: StepRequest):
         return game.step(req.rot, req.x)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
+
+
+@app.post("/api/games/{game_id}/teacher-step")
+def teacher_step(game_id: str):
+    """Let Stage 2's Dellacherie/El-Tetris teacher play one move, for
+    spot-checking teacher games from the browser UI."""
+    game = _get_game(game_id)
+    if game.game_over:
+        raise HTTPException(status_code=400, detail="game is over")
+    snap = game.snapshot()
+    rot, x = teacher.pick(snap, snap["legal"])
+    result = game.step(rot, x)
+    return {**result, "teacher_action": {"rot": rot, "x": x}}
 
 
 app.mount("/", StaticFiles(directory="web/dist", html=True), name="web")

@@ -29,12 +29,16 @@ const statTurn = document.getElementById("stat-turn");
 const statSeed = document.getElementById("stat-seed");
 const newGameForm = document.getElementById("new-game-form");
 const seedInput = document.getElementById("seed-input");
+const teacherStepBtn = document.getElementById("teacher-step-btn");
+const teacherAutoplayBtn = document.getElementById("teacher-autoplay-btn");
+const teacherActionEl = document.getElementById("teacher-action");
 
 let gameId = null;
 let snapshot = null;
 let selectedRot = 0;
 let selectedX = 0;
 let stepInFlight = false;
+let autoplayTimer = null;
 
 const toastEl = document.getElementById("toast");
 let toastTimer = null;
@@ -136,10 +140,22 @@ function render() {
   statSeed.textContent = snapshot.seed;
 
   gameOverEl.classList.toggle("hidden", !snapshot.game_over);
+
+  teacherStepBtn.disabled = snapshot.game_over;
+  teacherAutoplayBtn.disabled = snapshot.game_over;
+  if (snapshot.game_over) stopAutoplay();
+}
+
+function stopAutoplay() {
+  clearInterval(autoplayTimer);
+  autoplayTimer = null;
+  teacherAutoplayBtn.textContent = "Auto-play";
+  teacherAutoplayBtn.classList.remove("active");
 }
 
 async function newGame(seed) {
   if (stepInFlight) return;
+  stopAutoplay();
   stepInFlight = true;
   try {
     const body = seed === null || seed === undefined || seed === "" ? {} : { seed: Number(seed) };
@@ -156,11 +172,49 @@ async function newGame(seed) {
     gameId = snapshot.game_id;
     selectedRot = 0;
     selectedX = 0;
+    teacherActionEl.textContent = " ";
     clampSelection();
     render();
   } finally {
     stepInFlight = false;
   }
+}
+
+async function teacherStep() {
+  if (!gameId || !snapshot || snapshot.game_over || stepInFlight) return;
+  stepInFlight = true;
+  try {
+    const res = await fetch(`/api/games/${gameId}/teacher-step`, { method: "POST" });
+    if (!res.ok) {
+      const body = await res.json().catch(() => null);
+      showToast(body?.detail || "teacher move failed");
+      stopAutoplay();
+      return;
+    }
+    snapshot = await res.json();
+    const { rot, x } = snapshot.teacher_action;
+    teacherActionEl.textContent = `teacher played rot=${rot} x=${x}`;
+    clampSelection();
+    render();
+  } finally {
+    stepInFlight = false;
+  }
+}
+
+function toggleAutoplay() {
+  if (autoplayTimer) {
+    stopAutoplay();
+    return;
+  }
+  teacherAutoplayBtn.textContent = "Stop";
+  teacherAutoplayBtn.classList.add("active");
+  autoplayTimer = setInterval(() => {
+    if (!snapshot || snapshot.game_over) {
+      stopAutoplay();
+      return;
+    }
+    teacherStep();
+  }, 400);
 }
 
 async function step(rot, x) {
@@ -248,5 +302,8 @@ newGameForm.addEventListener("submit", (e) => {
   seedInput.value = "";
   seedInput.blur();
 });
+
+teacherStepBtn.addEventListener("click", () => teacherStep());
+teacherAutoplayBtn.addEventListener("click", () => toggleAutoplay());
 
 newGame(null);
