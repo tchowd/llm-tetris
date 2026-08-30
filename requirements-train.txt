@@ -1,0 +1,17 @@
+# Stage 4 (SFT) training extras. The base project's pyproject.toml targets
+# whatever Python this repo's .venv uses; if that's newer than PyPI's torch
+# wheels support (e.g. 3.14 at the time this was pinned), build a separate
+# venv on Python 3.13 for training:
+#
+#   /opt/homebrew/bin/python3.13 -m venv .venv-train
+#   source .venv-train/bin/activate
+#   pip install -e . -r requirements-train.txt
+#
+accelerate==1.14.0
+huggingface_hub==1.29.0
+numpy==2.5.2
+peft==0.20.0
+safetensors==0.8.0
+tokenizers==0.23.1
+torch==2.13.0
+transformers==5.16.1
