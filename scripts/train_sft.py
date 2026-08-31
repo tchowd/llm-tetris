@@ -25,21 +25,27 @@ reason to prefer that over a separate script. Needs a CUDA GPU and
 requirements-train.txt's pinned torch/transformers build -- see
 requirements-train-unsloth.txt.
 
-Untested on real hardware in this repo (no CUDA box was available to run it
-against). tests/test_sft.py's overfit check does NOT exercise this branch
--- it loads the model inline with plain transformers/peft, independent of
-this script's --backend flag -- so it only re-validates the (already
-backend-agnostic) chat-template/masking logic, not the unsloth wiring
-itself. Before trusting a full run, do a real dry run of *this script*
-instead:
+tests/test_sft.py's overfit check does NOT exercise this branch -- it loads
+the model inline with plain transformers/peft, independent of this script's
+--backend flag -- so it only re-validates the (already backend-agnostic)
+chat-template/masking logic, not the unsloth wiring itself. Before trusting
+a full run, do a real dry run of *this script* instead:
 
     python scripts/train_sft.py --backend unsloth --data-dirs data/batch1 \
         --out-dir /tmp/unsloth-smoke --max-train-rows 200 --max-steps 300 \
         --lr 1e-3 --eval-steps 100 --gen-eval-rows 200
 
-and check the printed `eval_gen_exact_match` climbs toward ~1.0 on those
-200 memorized rows -- mirrors tests/test_sft.py's own overfit check
-(stage-4-sft.md test #4), just run against the real --backend unsloth path.
+**Watch the periodic `loss` value, not `eval_gen_exact_match`.** The
+generation-eval callback samples from the held-out EVAL split, not from the
+`--max-train-rows` TRAIN subset -- with only 200 training rows, ~10-15%
+exact match on genuinely unseen eval boards is normal generalization, not
+a broken run. What actually indicates the unsloth wiring works is `loss`
+dropping to near-zero (verified: this backend was confirmed working on a
+real g5.xlarge -- 300 steps at lr=1e-3 reached loss ~0.0002, and a direct
+check against the actual 200 memorized train rows scored 100% exact match).
+If you want the same direct verification, evaluate the saved adapter
+against `subsample(load_rows(data_dirs, "train"), 200, seed)` -- the same
+selection train_sft.py itself makes -- rather than against `eval_rows`.
 """
 from __future__ import annotations
 
