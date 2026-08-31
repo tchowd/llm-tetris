@@ -13,6 +13,33 @@ Loss falls only on the completion + EOS (prompt and the `<think></think>`
 generation prefix are masked to -100). No packing: each row is one padded
 example, since rows are short (~130-150 tokens) and packing would blur the
 completion mask for no throughput that matters at this scale.
+
+`--backend unsloth` swaps only the model-loading/LoRA-wrapping step for
+Unsloth's `FastLanguageModel` (2x claimed speed / less VRAM on NVIDIA GPUs
+-- see plan/stage-4-sft.md's history for why: Apple Silicon isn't supported
+by Unsloth's pip package as of this writing, so this only helps on a CUDA
+box). Everything else -- dataset loading, `tetris.chat`'s masking, the
+Trainer/TrainingArguments -- is unchanged and backend-agnostic; this is the
+reason to prefer that over a separate script. Needs a CUDA GPU and
+`pip install unsloth unsloth_zoo` in place of (not alongside)
+requirements-train.txt's pinned torch/transformers build -- see
+requirements-train-unsloth.txt.
+
+Untested on real hardware in this repo (no CUDA box was available to run it
+against). tests/test_sft.py's overfit check does NOT exercise this branch
+-- it loads the model inline with plain transformers/peft, independent of
+this script's --backend flag -- so it only re-validates the (already
+backend-agnostic) chat-template/masking logic, not the unsloth wiring
+itself. Before trusting a full run, do a real dry run of *this script*
+instead:
+
+    python scripts/train_sft.py --backend unsloth --data-dirs data/batch1 \
+        --out-dir /tmp/unsloth-smoke --max-train-rows 200 --max-steps 300 \
+        --lr 1e-3 --eval-steps 100 --gen-eval-rows 200
+
+and check the printed `eval_gen_exact_match` climbs toward ~1.0 on those
+200 memorized rows -- mirrors tests/test_sft.py's own overfit check
+(stage-4-sft.md test #4), just run against the real --backend unsloth path.
 """
 from __future__ import annotations
 
@@ -105,16 +132,24 @@ class GenerationExactMatchCallback(TrainerCallback):
     sample so this stays cheap enough to run every eval_steps.
     """
 
-    def __init__(self, tokenizer, sample_rows: list[dict], batch_size: int = 32):
+    def __init__(self, tokenizer, sample_rows: list[dict], batch_size: int = 32, use_unsloth: bool = False):
         self.tokenizer = tokenizer
         self.sample_rows = sample_rows
         self.batch_size = batch_size
+        self.use_unsloth = use_unsloth
 
     def on_evaluate(self, args, state, control, model=None, **kwargs):
         if model is None or not self.sample_rows:
             return
         was_training = model.training
         model.eval()
+        if self.use_unsloth:
+            # Unsloth's training-optimized kernels aren't the same code
+            # path as generate(); for_inference/for_training toggle which
+            # one is active, on top of the usual eval()/train() switch.
+            from unsloth import FastLanguageModel
+
+            FastLanguageModel.for_inference(model)
         device = next(model.parameters()).device
         correct = 0
         parsed = 0
@@ -140,6 +175,10 @@ class GenerationExactMatchCallback(TrainerCallback):
                             correct += 1
                     except ValueError:
                         pass
+        if self.use_unsloth:
+            from unsloth import FastLanguageModel
+
+            FastLanguageModel.for_training(model)
         if was_training:
             model.train()
         n = len(self.sample_rows)
@@ -170,7 +209,10 @@ def main() -> None:
     parser.add_argument("--lora-r", type=int, default=16)
     parser.add_argument("--lora-alpha", type=int, default=32)
     parser.add_argument("--lora-dropout", type=float, default=0.05)
-    parser.add_argument("--device", default=None, help="default: mps if available, else cpu")
+    parser.add_argument("--device", default=None, help="default: mps if available, else cpu (--backend hf only)")
+    parser.add_argument("--backend", choices=["hf", "unsloth"], default="hf", help="unsloth needs a CUDA GPU -- see this script's docstring")
+    parser.add_argument("--max-seq-length", type=int, default=256, help="--backend unsloth only")
+    parser.add_argument("--load-in-4bit", action="store_true", help="QLoRA instead of full-precision LoRA -- --backend unsloth only")
     args = parser.parse_args()
 
     device = args.device or ("mps" if torch.backends.mps.is_available() else "cpu")
@@ -188,19 +230,47 @@ def main() -> None:
     if leak:
         raise SystemExit(f"train/eval game_id leakage: {len(leak)} games, e.g. {sorted(leak)[:5]}")
 
-    print(f"loading tokenizer + base model {args.base_model} on {device}...")
-    tokenizer = AutoTokenizer.from_pretrained(args.base_model)
-    model = AutoModelForCausalLM.from_pretrained(args.base_model, dtype=torch.bfloat16)
-    model.to(device)
+    if args.backend == "unsloth":
+        # Deferred import: the hf backend (default, and the only one usable
+        # on this repo's Mac dev machine) must not require unsloth
+        # installed. Unsloth's from_pretrained loads straight onto the GPU
+        # and wraps in its own optimized kernels; get_peft_model returns a
+        # standard PEFT-compatible model (save_pretrained, generate,
+        # print_trainable_parameters all work as usual).
+        from unsloth import FastLanguageModel
 
-    lora_cfg = LoraConfig(
-        r=args.lora_r,
-        lora_alpha=args.lora_alpha,
-        lora_dropout=args.lora_dropout,
-        target_modules=LORA_TARGET_MODULES,
-        task_type="CAUSAL_LM",
-    )
-    model = get_peft_model(model, lora_cfg)
+        print(f"loading tokenizer + base model {args.base_model} via unsloth (4bit={args.load_in_4bit})...")
+        model, tokenizer = FastLanguageModel.from_pretrained(
+            model_name=args.base_model,
+            max_seq_length=args.max_seq_length,
+            dtype=None,
+            load_in_4bit=args.load_in_4bit,
+        )
+        model = FastLanguageModel.get_peft_model(
+            model,
+            r=args.lora_r,
+            lora_alpha=args.lora_alpha,
+            lora_dropout=args.lora_dropout,
+            target_modules=LORA_TARGET_MODULES,
+            bias="none",
+            use_gradient_checkpointing="unsloth",
+            random_state=args.seed,
+        )
+        device = "cuda"
+    else:
+        print(f"loading tokenizer + base model {args.base_model} on {device}...")
+        tokenizer = AutoTokenizer.from_pretrained(args.base_model)
+        model = AutoModelForCausalLM.from_pretrained(args.base_model, dtype=torch.bfloat16)
+        model.to(device)
+
+        lora_cfg = LoraConfig(
+            r=args.lora_r,
+            lora_alpha=args.lora_alpha,
+            lora_dropout=args.lora_dropout,
+            target_modules=LORA_TARGET_MODULES,
+            task_type="CAUSAL_LM",
+        )
+        model = get_peft_model(model, lora_cfg)
     model.print_trainable_parameters()
 
     print("tokenizing...")
@@ -244,7 +314,7 @@ def main() -> None:
 
     callbacks = []
     if gen_eval_sample:
-        callbacks.append(GenerationExactMatchCallback(tokenizer, gen_eval_sample))
+        callbacks.append(GenerationExactMatchCallback(tokenizer, gen_eval_sample, use_unsloth=(args.backend == "unsloth")))
 
     trainer = Trainer(
         model=model,
@@ -281,6 +351,8 @@ def main() -> None:
         "lora_dropout": args.lora_dropout,
         "seed": args.seed,
         "device": device,
+        "backend": args.backend,
+        "load_in_4bit": args.load_in_4bit if args.backend == "unsloth" else None,
         "wall_clock_seconds": elapsed,
     }
     (args.out_dir / "train_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")

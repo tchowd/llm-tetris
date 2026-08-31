@@ -1,0 +1,19 @@
+# Stage 4 (SFT) training extras for `scripts/train_sft.py --backend unsloth`.
+# This is an ALTERNATIVE to requirements-train.txt, not an addition to it --
+# Unsloth needs a CUDA GPU and pins its own compatible torch/transformers/
+# peft/trl/bitsandbytes/triton/xformers versions, which don't match
+# requirements-train.txt's pins (chosen for this repo's Mac/MPS dev box, see
+# that file's own comment). Use a fresh venv on your CUDA machine:
+#
+#   python3 -m venv .venv-train-unsloth
+#   source .venv-train-unsloth/bin/activate
+#   pip install -e . -r requirements-train-unsloth.txt
+#
+# Deliberately unpinned: Unsloth's installer resolves its own known-good
+# dependency set for your CUDA/driver version, which is the whole point of
+# installing it this way rather than us guessing exact pins here. See
+# https://unsloth.ai/docs for the current install instructions if this
+# breaks -- Unsloth's releases move faster than this file will be kept in
+# sync with.
+unsloth
+unsloth_zoo
