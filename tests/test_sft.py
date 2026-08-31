@@ -158,16 +158,18 @@ def test_overfit_200_rows_reaches_near_perfect_exact_match(tokenizer, train_rows
             labels[i, :n] = torch.tensor(e["labels"])
         return input_ids.to(device), attn.to(device), labels.to(device)
 
-    opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=5e-4)
-    batch_size, steps = 25, 150
+    opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=1e-3)
+    batch_size, steps = 25, 450
     rng = random.Random(0)
-    for _ in range(steps):
+    for step in range(steps):
         indices = rng.sample(range(len(rows)), batch_size)
         input_ids, attn, labels = batch_of(indices)
         opt.zero_grad()
         out = model(input_ids=input_ids, attention_mask=attn, labels=labels)
         out.loss.backward()
         opt.step()
+        if step % 20 == 0 or step == steps - 1:
+            print(f"[overfit check] step {step}: loss={out.loss.item():.4f}")
 
     model.eval()
     correct = 0
