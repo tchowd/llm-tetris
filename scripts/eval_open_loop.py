@@ -169,6 +169,7 @@ def main() -> None:
     run_id = args.adapter_dir.parent.name or "open-loop"
     events = EventWriter(event_path, run_id=run_id, stage=4, lineage={"parent_run_ids": [run_id]})
     started = time.time()
+    run_git_sha = _git_sha()
 
     device = args.device or default_device()
     print(f"evaluation device: {device}", flush=True)
@@ -198,7 +199,7 @@ def main() -> None:
         "run_id": f"{run_id}-open-loop",
         "stage": 4,
         "status": "passed",
-        "git_sha": _git_sha(),
+        "git_sha": run_git_sha,
         "host": socket.gethostname(),
         "parent_run_ids": [run_id],
         "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),

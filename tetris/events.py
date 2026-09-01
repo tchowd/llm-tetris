@@ -42,6 +42,7 @@ class EventWriter:
         self.run_id = run_id
         self.stage = stage
         self.lineage = lineage or {}
+        self.git_sha = _git_sha()
         path.parent.mkdir(parents=True, exist_ok=True)
 
     def emit(
@@ -65,7 +66,7 @@ class EventWriter:
             "total": total,
             "metrics": metrics or {},
             "message": message,
-            "git_sha": _git_sha(),
+            "git_sha": self.git_sha,
             "host": socket.gethostname(),
             **self.lineage,
             **extra,

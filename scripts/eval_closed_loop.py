@@ -204,6 +204,7 @@ def main() -> None:
     run_id = f"{base_run_id}-closed-loop"
     parent_run_ids = [parent_run_id] if parent_run_id else []
     events = EventWriter(args.out_dir / "events.jsonl", run_id=run_id, stage=5, lineage={"parent_run_ids": parent_run_ids})
+    run_git_sha = _git_sha()
     total_groups = len(policies) * len(modes)
     events.emit("job_started", phase="closed_loop", current=0, total=total_groups, metrics={"planned_games": total_groups * len(seeds)})
 
@@ -266,7 +267,7 @@ def main() -> None:
         "host": socket.gethostname(),
         "parent_run_ids": parent_run_ids,
         "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),
-        "git_sha": _git_sha(),
+        "git_sha": run_git_sha,
         "policies": policies,
         "modes": modes,
         "seeds": seeds,

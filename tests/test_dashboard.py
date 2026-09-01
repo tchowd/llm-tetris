@@ -1,6 +1,7 @@
 import json
 
 from tetris import dashboard
+from tetris import events
 from tetris.events import EventWriter
 
 
@@ -78,3 +79,13 @@ def test_aws_permission_and_overbroad_policy_become_normalized_issues():
     )
 
     assert {(item["severity"], item["source"]) for item in issues} == {("amber", "aws"), ("red", "aws")}
+
+
+def test_event_writer_pins_the_run_git_sha(tmp_path, monkeypatch):
+    monkeypatch.setattr(events, "_git_sha", lambda: "start-sha")
+    writer = EventWriter(tmp_path / "events.jsonl", run_id="run", stage=4)
+    monkeypatch.setattr(events, "_git_sha", lambda: "later-sha")
+
+    event = writer.emit("heartbeat")
+
+    assert event["git_sha"] == "start-sha"
