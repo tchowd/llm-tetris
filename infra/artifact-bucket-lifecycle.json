@@ -1,0 +1,17 @@
+{
+  "Rules": [
+    {
+      "ID": "expire-noncurrent-artifact-versions",
+      "Status": "Enabled",
+      "Filter": {
+        "Prefix": "runs/"
+      },
+      "NoncurrentVersionExpiration": {
+        "NoncurrentDays": 30
+      },
+      "AbortIncompleteMultipartUpload": {
+        "DaysAfterInitiation": 7
+      }
+    }
+  ]
+}

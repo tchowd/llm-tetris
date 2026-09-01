@@ -2,6 +2,11 @@
 // This file only renders snapshots and turns key presses into
 // POST /api/games/{id}/step calls.
 import "./style.css";
+import { renderDashboard } from "./dashboard.js";
+
+if (window.location.pathname.startsWith("/dashboard")) {
+  renderDashboard();
+} else {
 
 const WIDTH = 10;
 const HEIGHT = 20;
@@ -307,3 +312,4 @@ teacherStepBtn.addEventListener("click", () => teacherStep());
 teacherAutoplayBtn.addEventListener("click", () => toggleAutoplay());
 
 newGame(null);
+}

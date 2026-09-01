@@ -53,6 +53,8 @@ import argparse
 import json
 import math
 import random
+import socket
+import subprocess
 import time
 from pathlib import Path
 
@@ -68,10 +70,18 @@ from transformers import (
 from peft import LoraConfig, get_peft_model
 
 from tetris.chat import build_training_example
+from tetris.events import EventWriter, manifest_hashes
 from tetris.serialize import parse_action
 
 BASE_MODEL = "Qwen/Qwen3-1.7B"
 LORA_TARGET_MODULES = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+
+
+def _git_sha() -> str | None:
+    try:
+        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=Path(__file__).resolve().parent.parent, text=True, stderr=subprocess.DEVNULL).strip()
+    except Exception:
+        return None
 
 
 def load_rows(data_dirs: list[Path], split: str) -> list[dict]:
@@ -138,11 +148,12 @@ class GenerationExactMatchCallback(TrainerCallback):
     sample so this stays cheap enough to run every eval_steps.
     """
 
-    def __init__(self, tokenizer, sample_rows: list[dict], batch_size: int = 32, use_unsloth: bool = False):
+    def __init__(self, tokenizer, sample_rows: list[dict], batch_size: int = 32, use_unsloth: bool = False, events: EventWriter | None = None):
         self.tokenizer = tokenizer
         self.sample_rows = sample_rows
         self.batch_size = batch_size
         self.use_unsloth = use_unsloth
+        self.events = events
 
     def on_evaluate(self, args, state, control, model=None, **kwargs):
         if model is None or not self.sample_rows:
@@ -193,6 +204,19 @@ class GenerationExactMatchCallback(TrainerCallback):
             "eval_gen_exact_match": correct / n,
         }
         print(f"[step {state.global_step}] generation eval: {metrics}")
+        if self.events:
+            self.events.emit("eval_metrics", phase="generation_eval", current=state.global_step, total=state.max_steps, metrics=metrics)
+
+
+class StructuredTrainingCallback(TrainerCallback):
+    def __init__(self, events: EventWriter):
+        self.events = events
+
+    def on_log(self, args, state, control, logs=None, **kwargs):
+        self.events.emit("train_metrics", phase="training", current=state.global_step, total=state.max_steps, metrics=logs or {})
+
+    def on_save(self, args, state, control, **kwargs):
+        self.events.emit("checkpoint_saved", phase="training", current=state.global_step, total=state.max_steps, checkpoint=f"checkpoint-{state.global_step}")
 
 
 def main() -> None:
@@ -220,6 +244,11 @@ def main() -> None:
     parser.add_argument("--max-seq-length", type=int, default=256, help="--backend unsloth only")
     parser.add_argument("--load-in-4bit", action="store_true", help="QLoRA instead of full-precision LoRA -- --backend unsloth only")
     args = parser.parse_args()
+
+    args.out_dir.mkdir(parents=True, exist_ok=True)
+    run_id = args.out_dir.name
+    events = EventWriter(args.out_dir / "events.jsonl", run_id=run_id, stage=4, lineage={"data_dirs": [str(path) for path in args.data_dirs]})
+    events.emit("job_started", phase="initializing", current=0, total=None, metrics={"backend": args.backend, "base_model": args.base_model})
 
     device = args.device or ("mps" if torch.backends.mps.is_available() else "cpu")
     random.seed(args.seed)
@@ -291,8 +320,8 @@ def main() -> None:
     total_steps = args.max_steps if args.max_steps > 0 else max(1, int(steps_per_epoch * args.epochs))
     warmup_steps = max(1, round(0.03 * total_steps))
     print(f"steps_per_epoch={steps_per_epoch} total_steps={total_steps} warmup_steps={warmup_steps}")
+    events.emit("progress", phase="tokenized", current=0, total=total_steps, metrics={"train_rows": len(train_rows), "eval_rows": len(eval_rows), "steps_per_epoch": steps_per_epoch})
 
-    args.out_dir.mkdir(parents=True, exist_ok=True)
     training_args = TrainingArguments(
         output_dir=str(args.out_dir),
         num_train_epochs=args.epochs,
@@ -318,9 +347,9 @@ def main() -> None:
         remove_unused_columns=False,
     )
 
-    callbacks = []
+    callbacks = [StructuredTrainingCallback(events)]
     if gen_eval_sample:
-        callbacks.append(GenerationExactMatchCallback(tokenizer, gen_eval_sample, use_unsloth=(args.backend == "unsloth")))
+        callbacks.append(GenerationExactMatchCallback(tokenizer, gen_eval_sample, use_unsloth=(args.backend == "unsloth"), events=events))
 
     trainer = Trainer(
         model=model,
@@ -342,6 +371,13 @@ def main() -> None:
     tokenizer.save_pretrained(str(adapter_dir))
 
     manifest = {
+        "run_id": run_id,
+        "stage": 4,
+        "status": "passed",
+        "git_sha": _git_sha(),
+        "host": socket.gethostname(),
+        "parent_run_ids": [],
+        "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),
         "base_model": args.base_model,
         "data_dirs": [str(d) for d in args.data_dirs],
         "num_train_rows": len(train_rows),
@@ -360,8 +396,10 @@ def main() -> None:
         "backend": args.backend,
         "load_in_4bit": args.load_in_4bit if args.backend == "unsloth" else None,
         "wall_clock_seconds": elapsed,
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
     (args.out_dir / "train_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    events.emit("job_completed", phase="training", current=total_steps, total=total_steps, metrics={"wall_clock_seconds": elapsed}, artifacts=[str(adapter_dir), str(args.out_dir / "train_manifest.json")])
     print(f"adapter saved to {adapter_dir}")
 
 

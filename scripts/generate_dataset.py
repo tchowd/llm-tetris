@@ -22,6 +22,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 from tetris.dataset import DEFAULT_MAX_PIECES, EVAL_SPLIT_PERCENT, NOISE_SALT, generate_game
+from tetris.events import EventWriter, file_sha256
 from tetris.teacher import WEIGHTS
 
 
@@ -50,6 +51,9 @@ def main() -> None:
     games_path = args.out_dir / "games.jsonl"
     rows_path = args.out_dir / "rows.jsonl"
     manifest_path = args.out_dir / "manifest.json"
+    run_id = f"dataset-{args.out_dir.name}"
+    events = EventWriter(args.out_dir / "events.jsonl", run_id=run_id, stage=3)
+    events.emit("job_started", phase="generation", current=0, total=args.games, metrics={"rows": 0})
 
     seeds = range(args.seed_start, args.seed_start + args.games)
     t0 = time.time()
@@ -71,9 +75,13 @@ def main() -> None:
                 if i % max(1, args.games // 20) == 0 or i == args.games:
                     elapsed = time.time() - t0
                     print(f"  {i}/{args.games} games, {num_rows} rows, {elapsed:.1f}s elapsed", flush=True)
+                    events.emit("progress", phase="generation", current=i, total=args.games, metrics={"rows": num_rows, "deaths": died_count, "elapsed_seconds": elapsed})
 
     elapsed = time.time() - t0
     manifest = {
+        "run_id": run_id,
+        "stage": 3,
+        "status": "passed",
         "git_sha": _git_sha(),
         "teacher_weights": WEIGHTS,
         "search_depth": 2,
@@ -87,8 +95,13 @@ def main() -> None:
         "workers": args.workers,
         "wall_clock_seconds": elapsed,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "content_hashes": {
+            "games.jsonl": file_sha256(games_path),
+            "rows.jsonl": file_sha256(rows_path),
+        },
     }
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    events.emit("job_completed", phase="generation", current=num_games, total=args.games, metrics={"rows": num_rows, "deaths": died_count, "wall_clock_seconds": elapsed}, artifacts=[str(games_path), str(rows_path), str(manifest_path)])
 
     print(f"wrote {num_games} games / {num_rows} rows to {args.out_dir} in {elapsed:.1f}s")
     print(f"deaths: {died_count}/{num_games} (rest hit the {args.max_pieces}-piece cap)")

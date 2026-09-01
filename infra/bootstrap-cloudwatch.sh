@@ -13,9 +13,5 @@ fi
 sudo "$agent_ctl" -a fetch-config -m ec2 \
   -c "file:${repo_dir}/infra/cloudwatch-agent.json" -s
 
-aws logs put-retention-policy \
-  --log-group-name /llm-tetris/jobs \
-  --retention-in-days 30 \
-  --region "${AWS_REGION:-us-east-1}"
-
 echo "CloudWatch logs and 60-second GPU/system metrics are configured."
+echo "Log retention is managed by the dashboard operator, not the instance role."
