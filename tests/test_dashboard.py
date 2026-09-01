@@ -89,3 +89,13 @@ def test_event_writer_pins_the_run_git_sha(tmp_path, monkeypatch):
     event = writer.emit("heartbeat")
 
     assert event["git_sha"] == "start-sha"
+
+
+def test_active_cloudwatch_alarm_becomes_a_red_issue():
+    issues = dashboard._aws_alarm_issues(
+        {"alarms": [{"name": "llm-tetris-gpu-idle", "state": "ALARM", "reason": "idle", "region": "us-east-1"}]}
+    )
+
+    assert len(issues) == 1
+    assert issues[0]["severity"] == "red"
+    assert "gpu-idle" in issues[0]["title"]

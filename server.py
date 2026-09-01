@@ -209,6 +209,12 @@ def dashboard_aws_quotas():
     return dashboard.envelope(payload["quotas"], errors=payload["errors"])
 
 
+@app.get("/api/dashboard/aws/alarms")
+def dashboard_aws_alarms():
+    payload = dashboard.aws_alarms()
+    return dashboard.envelope(payload["alarms"], errors=payload["errors"])
+
+
 @app.get("/api/dashboard/aws/security")
 def dashboard_aws_security():
     payload = dashboard.aws_security()

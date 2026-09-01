@@ -964,6 +964,36 @@ def aws_quotas() -> dict:
     return _CACHE.get("aws.quotas", 900, load)
 
 
+def aws_alarms() -> dict:
+    def load() -> dict:
+        session, config, metadata = _aws_context()
+        if session is None:
+            return {"alarms": [], "errors": metadata}
+        alarms, errors = [], []
+        for region in config.regions:
+            try:
+                cloudwatch = _client(session, "cloudwatch", region, metadata)
+                response = cloudwatch.describe_alarms(AlarmNamePrefix="llm-tetris")
+                for item in [*response.get("MetricAlarms", []), *response.get("CompositeAlarms", [])]:
+                    updated = item.get("StateUpdatedTimestamp")
+                    alarms.append(
+                        {
+                            "name": item.get("AlarmName"),
+                            "description": item.get("AlarmDescription"),
+                            "state": item.get("StateValue"),
+                            "reason": item.get("StateReason"),
+                            "updated_at": updated.astimezone(UTC).isoformat().replace("+00:00", "Z") if updated else None,
+                            "region": region,
+                        }
+                    )
+            except Exception as exc:
+                errors.append(_aws_error(f"cloudwatch:DescribeAlarms:{region}", exc))
+        alarms.sort(key=lambda item: (item.get("state") != "ALARM", item.get("name") or ""))
+        return {"alarms": alarms, "errors": errors}
+
+    return _CACHE.get("aws.alarms", 30, load)
+
+
 def aws_security() -> dict:
     def load() -> dict:
         session, config, metadata = _aws_context()
@@ -1004,6 +1034,29 @@ def _aws_issues(resources_payload: dict, jobs_payload: dict) -> list[dict]:
     for job in jobs:
         if job["status"] == "stale":
             issues.append(issue(f"aws.job.{job['run_id']}.stale", "red", job.get("stage"), "Active job heartbeat is stale", observed=job.get("last_updated"), expected="within 5 minutes", evidence=f"cloudwatch:{job['run_id']}", next_action="Inspect CloudWatch logs and the backing instance.", source="aws", scope=f"run:{job['run_id']}"))
+    return issues
+
+
+def _aws_alarm_issues(alarms_payload: dict) -> list[dict]:
+    issues = []
+    for alarm in alarms_payload.get("alarms", []):
+        if alarm.get("state") != "ALARM":
+            continue
+        name = alarm.get("name") or "unknown"
+        issues.append(
+            issue(
+                f"aws.alarm.{hashlib.sha1(name.encode()).hexdigest()[:8]}",
+                "red",
+                None,
+                f"CloudWatch alarm is active: {name}",
+                observed=alarm.get("reason"),
+                expected="OK",
+                evidence=f"aws:cloudwatch:{alarm.get('region')}:{name}",
+                next_action="Inspect the tagged instance and current job before allowing additional spend.",
+                source="aws",
+                scope="aws:alarms",
+            )
+        )
     return issues
 
 
@@ -1101,11 +1154,13 @@ def dashboard_summary(include_aws: bool = True) -> dict:
         credits = aws_credits()
         quotas = aws_quotas()
         security = aws_security()
+        alarms = aws_alarms()
         metrics = aws_metrics()
-        aws_errors = resources.get("errors", []) + jobs.get("errors", []) + costs.get("errors", []) + credits.get("errors", []) + quotas.get("errors", []) + security.get("errors", []) + metrics.get("errors", [])
+        aws_errors = resources.get("errors", []) + jobs.get("errors", []) + costs.get("errors", []) + credits.get("errors", []) + quotas.get("errors", []) + security.get("errors", []) + alarms.get("errors", []) + metrics.get("errors", [])
         snapshot["issues"].extend(_aws_issues(resources, jobs))
         snapshot["issues"].extend(_aws_extended_issues(credits, quotas, security, metrics, resources, jobs))
-        aws_summary = {"resources": resources.get("resources", []), "jobs": jobs.get("jobs", []), "live_cost": costs.get("live")}
+        snapshot["issues"].extend(_aws_alarm_issues(alarms))
+        aws_summary = {"resources": resources.get("resources", []), "jobs": jobs.get("jobs", []), "alarms": alarms.get("alarms", []), "live_cost": costs.get("live")}
     severity_rank = {"red": 3, "amber": 2, "info": 1}
     snapshot["issues"].sort(key=lambda item: (-severity_rank[item["severity"]], item.get("detected_at") or ""))
     snapshot["top_issues"] = snapshot["issues"][:3]
