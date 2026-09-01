@@ -146,3 +146,36 @@ def test_cloudwatch_job_normalizes_to_a_dashboard_run():
     assert run["backend"] == "AWS"
     assert run["progress"] == {"phase": "teacher/strict", "current": 2, "total": 6, "metrics": {}}
     assert run["manifest"]["parent_run_ids"] == ["sft-v1"]
+
+
+def test_stage_six_requests_rl_decision_after_stage_five_passes(tmp_path, monkeypatch):
+    configure_paths(monkeypatch, tmp_path)
+    run = {
+        "stage": 5,
+        "status": "passed",
+        "run_id": "eval",
+        "manifest_path": "runs/eval/closed_loop/manifest.json",
+        "metrics_path": "runs/eval/closed_loop/metrics.json",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "manifest": {"seeds": [1]},
+        "metrics": {
+            "model": {
+                "strict": {
+                    "lines": {"mean": 197.0},
+                    "parse_failure_rate": {"mean": 0.0},
+                    "illegal_rate": {"mean": 0.0},
+                    "n_games": 1,
+                }
+            }
+        },
+    }
+
+    stages, _ = dashboard._stage_local_state(
+        {"batches": [], "totals": {"validated_batches": 0}},
+        [run],
+        {"sha": "", "short_sha": "", "dirty": False},
+    )
+
+    stage_six = stages[5]
+    assert stage_six["status"] == "ready"
+    assert stage_six["progress"]["label"] == "RL readiness decision pending"

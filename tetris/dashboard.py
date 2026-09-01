@@ -557,7 +557,12 @@ def _stage_local_state(datasets: dict, runs: list[dict], git: dict) -> tuple[lis
                 stage5_passed = by_number.get(5, {}).get("status") == "passed"
                 status = "ready" if stage5_passed else "blocked"
                 gate_state = "pending"
-                prog = progress(0, 1, "decision", "awaiting Stage 5 verdict")
+                prog = progress(
+                    0,
+                    1,
+                    "decision",
+                    "RL readiness decision pending" if stage5_passed else "awaiting Stage 5 verdict",
+                )
                 next_action = "Write the explicit RL readiness decision." if stage5_passed else "Do not start RL until strict Stage 5 passes."
 
         elif number == 7:
