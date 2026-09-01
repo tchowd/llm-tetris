@@ -44,6 +44,21 @@
             "file_path": "/home/ubuntu/llm-tetris/runs/**/train.log",
             "log_group_name": "/llm-tetris/jobs",
             "log_stream_name": "{instance_id}/train"
+          },
+          {
+            "file_path": "/home/ubuntu/train.log",
+            "log_group_name": "/llm-tetris/jobs",
+            "log_stream_name": "{instance_id}/train"
+          },
+          {
+            "file_path": "/home/ubuntu/eval_open_loop.cuda.log",
+            "log_group_name": "/llm-tetris/jobs",
+            "log_stream_name": "{instance_id}/open-loop"
+          },
+          {
+            "file_path": "/home/ubuntu/eval_closed_loop.cuda.log",
+            "log_group_name": "/llm-tetris/jobs",
+            "log_stream_name": "{instance_id}/closed-loop"
           }
         ]
       }
