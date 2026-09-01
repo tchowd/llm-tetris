@@ -18,6 +18,9 @@ import argparse
 import json
 import math
 import random
+import socket
+import subprocess
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -27,10 +30,18 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from tetris.board import board_to_lists
 from tetris.chat import build_generation_prompt
+from tetris.events import EventWriter, manifest_hashes
 from tetris.placement import legal_placements_on
 from tetris.serialize import parse_action
 from tetris.teacher import WEIGHTS as LIVE_WEIGHTS
 from tetris.teacher import value_of_placement
+
+
+def _git_sha() -> str | None:
+    try:
+        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=Path(__file__).resolve().parent.parent, text=True, stderr=subprocess.DEVNULL).strip()
+    except Exception:
+        return None
 
 
 def load_eval_rows(data_dirs: list[Path], max_rows: int | None, seed: int) -> list[dict]:
@@ -133,6 +144,15 @@ def generate_actions(tokenizer, model, prompts: list[str], device: str, batch_si
     return texts
 
 
+def default_device() -> str:
+    """Prefer the fastest available accelerator without requiring a flag."""
+    if torch.cuda.is_available():
+        return "cuda"
+    if torch.backends.mps.is_available():
+        return "mps"
+    return "cpu"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--data-dirs", nargs="+", type=Path, required=True)
@@ -145,7 +165,21 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=None)
     args = parser.parse_args()
 
-    device = args.device or ("mps" if torch.backends.mps.is_available() else "cpu")
+    event_path = (args.out.parent if args.out else args.adapter_dir.parent) / "events.jsonl"
+    run_id = args.adapter_dir.parent.name or "open-loop"
+    events = EventWriter(event_path, run_id=run_id, stage=4, lineage={"parent_run_ids": [run_id]})
+    started = time.time()
+
+    device = args.device or default_device()
+    print(f"evaluation device: {device}", flush=True)
+    events.emit(
+        "job_started",
+        phase="open_loop_eval",
+        current=0,
+        total=args.max_rows,
+        message=f"evaluation device: {device}",
+        device=device,
+    )
     rows = load_eval_rows(args.data_dirs, args.max_rows, args.seed)
     print(f"evaluating on {len(rows)} held-out rows from {args.data_dirs}")
     weights = resolve_weights(args.data_dirs)
@@ -160,11 +194,23 @@ def main() -> None:
     results = [score_row(row, text, weights) for row, text in zip(rows, generated)]
 
     report = aggregate(results)
+    report.update({
+        "run_id": f"{run_id}-open-loop",
+        "stage": 4,
+        "status": "passed",
+        "git_sha": _git_sha(),
+        "host": socket.gethostname(),
+        "parent_run_ids": [run_id],
+        "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+    })
+    events.emit("eval_metrics", phase="open_loop_eval", current=len(results), total=len(rows), metrics={key: report.get(key) for key in ("parse_rate", "legality_rate", "exact_match", "value_match")})
     print(json.dumps(report, indent=2))
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(json.dumps(report, indent=2) + "\n")
         print(f"wrote {args.out}")
+    events.emit("job_completed", phase="open_loop_eval", current=len(results), total=len(rows), metrics={**{key: report.get(key) for key in ("parse_rate", "legality_rate", "exact_match", "value_match")}, "wall_clock_seconds": time.time() - started}, artifacts=[str(args.out)] if args.out else [])
 
 
 if __name__ == "__main__":
