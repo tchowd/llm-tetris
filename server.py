@@ -111,7 +111,8 @@ def dashboard_stages():
 def dashboard_stage(stage: int):
     if stage < 1 or stage > 7:
         raise HTTPException(status_code=404, detail="stage must be between 1 and 7")
-    snapshot = dashboard.local_snapshot()
+    summary = dashboard.dashboard_summary()
+    snapshot = summary["data"]
     item = next(value for value in snapshot["stages"] if value["number"] == stage)
     data = {
         **item,
@@ -120,7 +121,7 @@ def dashboard_stage(stage: int):
         "datasets": snapshot["datasets"]["batches"] if stage == 3 else [],
         "thresholds": dashboard.THRESHOLDS,
     }
-    return dashboard.envelope(data)
+    return dashboard.envelope(data, errors=summary["errors"])
 
 
 @app.get("/api/dashboard/issues")
@@ -144,13 +145,17 @@ def dashboard_issues(
 @app.get("/api/dashboard/runs")
 def dashboard_runs(stage: int | None = None, status: str | None = None, backend: str | None = None):
     runs = dashboard.discover_runs()
+    jobs = dashboard.aws_jobs()
+    local_ids = {run["run_id"] for run in runs}
+    runs.extend(dashboard.cloud_run(job) for job in jobs["jobs"] if job.get("run_id") not in local_ids)
+    runs.sort(key=lambda run: run.get("updated_at") or "", reverse=True)
     if stage:
         runs = [run for run in runs if run["stage"] == stage]
     if status:
         runs = [run for run in runs if run["status"] == status]
     if backend:
         runs = [run for run in runs if run.get("backend") == backend]
-    return dashboard.envelope(runs)
+    return dashboard.envelope(runs, errors=jobs["errors"])
 
 
 @app.get("/api/dashboard/runs/{run_id}")

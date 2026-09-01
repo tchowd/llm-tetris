@@ -855,6 +855,35 @@ def aws_jobs() -> dict:
     return {"jobs": sorted(jobs.values(), key=lambda job: job.get("last_updated") or "", reverse=True), "errors": logs["errors"]}
 
 
+def cloud_run(job: dict) -> dict:
+    """Normalize a CloudWatch job into the run shape used by dashboard pages."""
+    last_event = job.get("last_event") or {}
+    return {
+        "run_id": job.get("run_id"),
+        "stage": job.get("stage"),
+        "kind": job.get("phase") or "job",
+        "backend": "AWS",
+        "host": last_event.get("host") or "CloudWatch",
+        "path": "cloudwatch",
+        "status": job.get("status"),
+        "updated_at": job.get("last_updated"),
+        "progress": {
+            "phase": job.get("phase"),
+            "current": job.get("current"),
+            "total": job.get("total"),
+            "metrics": job.get("metrics", {}),
+        },
+        "events": [last_event] if last_event else [],
+        "metrics": job.get("metrics", {}),
+        "manifest": {
+            "run_id": job.get("run_id"),
+            "stage": job.get("stage"),
+            "git_sha": last_event.get("git_sha"),
+            "parent_run_ids": last_event.get("parent_run_ids", []),
+        },
+    }
+
+
 def aws_metrics(hours: int = 1) -> dict:
     def load() -> dict:
         session, config, metadata = _aws_context()
@@ -1184,17 +1213,21 @@ def dashboard_summary(include_aws: bool = True) -> dict:
         if snapshot["project"].get("active_job") is None:
             aws_active_job = next((job for job in jobs.get("jobs", []) if job.get("status") == "running"), None)
             if aws_active_job:
-                snapshot["project"]["active_job"] = {
-                    **aws_active_job,
-                    "backend": "aws",
-                    "updated_at": aws_active_job.get("last_updated"),
-                    "progress": {
-                        "phase": aws_active_job.get("phase"),
-                        "current": aws_active_job.get("current"),
-                        "total": aws_active_job.get("total"),
-                        "metrics": aws_active_job.get("metrics", {}),
-                    },
-                }
+                active_run = cloud_run(aws_active_job)
+                snapshot["project"]["active_job"] = active_run
+                active_stage = next((stage for stage in snapshot["stages"] if stage["number"] == active_run.get("stage")), None)
+                if active_stage and active_stage.get("status") != "passed":
+                    active_stage["status"] = "running"
+                    active_stage["progress"] = {
+                        **active_run["progress"],
+                        "value": (
+                            active_run["progress"]["current"] / active_run["progress"]["total"]
+                            if active_run["progress"].get("current") is not None and active_run["progress"].get("total")
+                            else None
+                        ),
+                        "label": active_run["progress"].get("phase") or "AWS job running",
+                    }
+                    active_stage["next_action"] = "Monitor the live AWS job and verify its final artifact."
     severity_rank = {"red": 3, "amber": 2, "info": 1}
     snapshot["issues"].sort(key=lambda item: (-severity_rank[item["severity"]], item.get("detected_at") or ""))
     snapshot["top_issues"] = snapshot["issues"][:3]

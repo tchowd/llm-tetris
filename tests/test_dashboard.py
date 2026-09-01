@@ -126,3 +126,23 @@ def test_child_cloudwatch_job_keeps_parent_tagged_instance_from_looking_orphaned
     }
 
     assert dashboard._aws_issues(resources, jobs) == []
+
+
+def test_cloudwatch_job_normalizes_to_a_dashboard_run():
+    run = dashboard.cloud_run(
+        {
+            "run_id": "sft-v1-closed-loop",
+            "stage": 5,
+            "status": "running",
+            "phase": "teacher/strict",
+            "current": 2,
+            "total": 6,
+            "last_updated": "2026-09-01T20:00:00Z",
+            "last_event": {"host": "gpu-host", "git_sha": "abc", "parent_run_ids": ["sft-v1"]},
+        }
+    )
+
+    assert run["path"] == "cloudwatch"
+    assert run["backend"] == "AWS"
+    assert run["progress"] == {"phase": "teacher/strict", "current": 2, "total": 6, "metrics": {}}
+    assert run["manifest"]["parent_run_ids"] == ["sft-v1"]
