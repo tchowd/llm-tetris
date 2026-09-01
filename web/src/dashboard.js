@@ -31,7 +31,11 @@ let currentLoad = null;
 const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[ch]));
 const fmt = new Intl.NumberFormat("en-US");
 const pct = (value, digits = 0) => value === null || value === undefined ? "—" : `${(Number(value) * 100).toFixed(digits)}%`;
-const money = (value) => value === null || value === undefined ? "—" : new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 }).format(value);
+const money = (value) => {
+  if (value === null || value === undefined) return "—";
+  const normalized = Math.abs(Number(value)) < 0.005 ? 0 : Number(value);
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 }).format(normalized);
+};
 const duration = (seconds) => {
   if (seconds === null || seconds === undefined) return "—";
   const hours = Math.floor(seconds / 3600);
