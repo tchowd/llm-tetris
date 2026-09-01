@@ -1,0 +1,8 @@
+[aws]
+profile = "default"
+regions = ["us-east-1"]
+project_tag = "llm-tetris"
+gpu_quota_code = "L-DB2E81BA"
+log_group = "/llm-tetris/jobs"
+metrics_namespace = "LLMTetris/Training"
+dashboard_user = "gpu"
