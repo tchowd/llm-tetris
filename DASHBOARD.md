@@ -44,10 +44,12 @@ Checkpoint directories are always excluded. Adapter files are transferred only w
 ## AWS setup
 
 1. Copy `infra/dashboard.example.toml` to the gitignored `infra/dashboard.toml` and set the profile, regions, log group, and dashboard principal.
-2. Attach a policy based on `infra/dashboard-readonly-policy.json` to the local dashboard principal.
+2. Attach managed policies based on `infra/dashboard-readonly-policy.json` and `infra/dashboard-operator-policy.json` to the local dashboard principal. The first is read-only; the second is limited to tagged instance lifecycle, project alarms, log retention, and artifact uploads.
 3. Attach `infra/instance-telemetry-policy.json` through an EC2 instance role—do not copy static AWS keys to the instance.
 4. On the instance, run `infra/bootstrap-cloudwatch.sh /home/ubuntu/llm-tetris` after installing the unified CloudWatch agent.
 5. Tag project resources with `Project=llm-tetris`, `Stage=<n>`, `RunId=<id>`, and `ManagedBy=llm-tetris`.
+
+The production setup uses the private, versioned `llm-tetris-artifacts-566629888938-us-east-1` bucket with the lifecycle rules in `infra/artifact-bucket-lifecycle.json`. `infra/monthly-budget.json` and `infra/budget-notifications.json` define the project cost guardrail. Validate replacement policies with IAM Access Analyzer and the policy simulator before removing broad bootstrap permissions.
 
 AWS panels fail independently. For example, missing `billing:GetCredits` access produces a visible amber source error without hiding EC2 inventory or quotas.
 

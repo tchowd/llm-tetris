@@ -23,7 +23,9 @@ import argparse
 import json
 import socket
 import subprocess
+import threading
 import time
+from contextlib import contextmanager
 from pathlib import Path
 
 from tetris.rollout import (
@@ -129,6 +131,30 @@ def _default_device() -> str:
     return "cpu"
 
 
+@contextmanager
+def event_heartbeat(events: EventWriter, *, phase: str, current: int, total: int):
+    """Keep long rollout groups visibly alive between their final metrics."""
+    stopped = threading.Event()
+
+    def emit() -> None:
+        while not stopped.wait(60):
+            events.emit(
+                "heartbeat",
+                phase=phase,
+                current=current,
+                total=total,
+                message="closed-loop rollout is still running",
+            )
+
+    thread = threading.Thread(target=emit, name="closed-loop-heartbeat", daemon=True)
+    thread.start()
+    try:
+        yield
+    finally:
+        stopped.set()
+        thread.join(timeout=2)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--policies", default="random,teacher,model", help="comma-separated subset of random,teacher,model")
@@ -140,6 +166,7 @@ def main() -> None:
     parser.add_argument("--seed-offset", type=int, default=None, help="default: tetris.rollout.EVAL_SEED_OFFSET")
     parser.add_argument("--cap", type=int, default=500)
     parser.add_argument("--gen-batch-size", type=int, default=64)
+    parser.add_argument("--teacher-workers", type=int, default=1, help="processes used for per-state teacher scoring")
     parser.add_argument("--device", default=None, help="default: cuda, then mps, then cpu (model policy only)")
     parser.add_argument("--out-dir", type=Path, required=True)
     args = parser.parse_args()
@@ -176,15 +203,22 @@ def main() -> None:
             for mode in modes:
                 print(f"[{policy_name}/{mode}] running {len(seeds)} seeds, cap={args.cap} ...", flush=True)
                 t_start = time.time()
-                records, diagnostics = run_rollout(
-                    seeds,
-                    policy_fn,
-                    mode=mode,
-                    cap=args.cap,
-                    teacher_weights=weights,
-                    gen_batch_size=args.gen_batch_size,
-                    game_id_prefix=policy_name,
-                )
+                with event_heartbeat(
+                    events,
+                    phase=f"{policy_name}/{mode}",
+                    current=completed_groups,
+                    total=total_groups,
+                ):
+                    records, diagnostics = run_rollout(
+                        seeds,
+                        policy_fn,
+                        mode=mode,
+                        cap=args.cap,
+                        teacher_weights=weights,
+                        gen_batch_size=args.gen_batch_size,
+                        game_id_prefix=policy_name,
+                        teacher_workers=args.teacher_workers,
+                    )
                 for rec in records:
                     rec["policy"] = policy_name
                     games_f.write(json.dumps(rec) + "\n")
@@ -217,6 +251,7 @@ def main() -> None:
         "seeds": seeds,
         "cap": args.cap,
         "gen_batch_size": args.gen_batch_size,
+        "teacher_workers": args.teacher_workers,
         "teacher_weights": weights,
         "adapter_dir": str(args.adapter_dir) if args.adapter_dir else None,
         "base_model": args.base_model,

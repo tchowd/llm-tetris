@@ -30,8 +30,11 @@ arithmetic" gate tests). See plan/stage-5-eval.md.
 from __future__ import annotations
 
 import math
+import multiprocessing
 import random
 import statistics
+from concurrent.futures import ProcessPoolExecutor
+from itertools import repeat
 from typing import Callable
 
 from .board import board_to_lists
@@ -125,6 +128,7 @@ def run_rollout(
     teacher_weights: dict | None = None,
     gen_batch_size: int = 64,
     game_id_prefix: str = "eval",
+    teacher_workers: int = 1,
 ) -> tuple[list[dict], dict[str, list[dict]]]:
     """Play every seed to death or `cap`, one lockstep round at a time.
 
@@ -153,6 +157,7 @@ def run_rollout(
     """
     assert mode in (STRICT, ASSISTED)
     assert gen_batch_size >= 1
+    assert teacher_workers >= 1
     weights = teacher_weights if teacher_weights is not None else DEFAULT_WEIGHTS
 
     games = {seed: Game(seed=seed, game_id=f"{game_id_prefix}-{mode}-{seed}") for seed in seeds}
@@ -173,76 +178,92 @@ def run_rollout(
     }
     diagnostics: dict[str, list[dict]] = {games[seed].game_id: [] for seed in seeds}
 
-    while alive:
-        round_alive = list(alive)  # frozen for this round; `alive` itself shrinks below
-        for i in range(0, len(round_alive), gen_batch_size):
-            chunk = round_alive[i : i + gen_batch_size]
-            snapshots = [games[s].snapshot() for s in chunk]
-            teacher_infos = [_teacher_best(snap, weights) for snap in snapshots]
-            outputs = policy_fn(snapshots, teacher_infos)
-            assert len(outputs) == len(chunk), (
-                f"policy_fn returned {len(outputs)} results for {len(chunk)} snapshots"
-            )
-
-            for seed, snap, (teacher_action, values), (raw, raw_text) in zip(chunk, snapshots, teacher_infos, outputs):
-                g = games[seed]
-                rec = records[seed]
-                legal = snap["legal"]
-                legal_pairs = {(p["rot"], p["x"]) for p in legal}
-                best_value = values[teacher_action]
-
-                is_legal = raw is not None and raw in legal_pairs
-                incident = False
-                if is_legal:
-                    taken = raw
-                elif mode == ASSISTED:
-                    first = legal[0]
-                    taken = (first["rot"], first["x"])
-                    incident = True
+    pool = (
+        ProcessPoolExecutor(
+            max_workers=teacher_workers,
+            mp_context=multiprocessing.get_context("spawn"),
+        )
+        if teacher_workers > 1
+        else None
+    )
+    try:
+        while alive:
+            round_alive = list(alive)  # frozen for this round; `alive` itself shrinks below
+            for i in range(0, len(round_alive), gen_batch_size):
+                chunk = round_alive[i : i + gen_batch_size]
+                snapshots = [games[s].snapshot() for s in chunk]
+                if pool:
+                    chunksize = max(1, len(snapshots) // (teacher_workers * 4))
+                    teacher_infos = list(pool.map(_teacher_best, snapshots, repeat(weights), chunksize=chunksize))
                 else:
-                    taken = None
-
-                rec["raw_model_output"].append(raw_text)
-
-                if taken is None:
-                    rec["death_reason"] = DEATH_ILLEGAL_ACTION
-                    alive.remove(seed)
-                    continue
-
-                taken_value = values[taken]
-                holes_before = snap["holes_total"]
-
-                rec["actions"].append(list(taken))
-                rec["labels"].append(list(teacher_action))
-                rec["raw_actions"].append(list(raw) if raw is not None else None)
-                if incident:
-                    rec["incidents"].append(snap["turn"])
-
-                result = g.step(*taken)
-
-                diagnostics[g.game_id].append(
-                    {
-                        "turn": snap["turn"],
-                        "parsed": raw is not None,
-                        "legal": is_legal,
-                        "teacher_match": raw == teacher_action if raw is not None else False,
-                        "value_gap": taken_value - best_value,
-                        "holes_before": holes_before,
-                        "holes_after": result["holes_total"],
-                        "holes_created": max(0, result["holes_total"] - holes_before),
-                        "max_height": result["max_height"],
-                        "aggregate_height": result["aggregate_height"],
-                        "lines_after": result["lines"],
-                        "score_after": result["score"],
-                    }
+                    teacher_infos = [_teacher_best(snap, weights) for snap in snapshots]
+                outputs = policy_fn(snapshots, teacher_infos)
+                assert len(outputs) == len(chunk), (
+                    f"policy_fn returned {len(outputs)} results for {len(chunk)} snapshots"
                 )
 
-                if g.game_over:
-                    rec["death_reason"] = DEATH_TOPPED_OUT
-                    alive.remove(seed)
-                elif g.turn >= cap:
-                    rec["death_reason"] = CAP_REACHED
-                    alive.remove(seed)
+                for seed, snap, (teacher_action, values), (raw, raw_text) in zip(chunk, snapshots, teacher_infos, outputs):
+                    g = games[seed]
+                    rec = records[seed]
+                    legal = snap["legal"]
+                    legal_pairs = {(p["rot"], p["x"]) for p in legal}
+                    best_value = values[teacher_action]
+
+                    is_legal = raw is not None and raw in legal_pairs
+                    incident = False
+                    if is_legal:
+                        taken = raw
+                    elif mode == ASSISTED:
+                        first = legal[0]
+                        taken = (first["rot"], first["x"])
+                        incident = True
+                    else:
+                        taken = None
+
+                    rec["raw_model_output"].append(raw_text)
+
+                    if taken is None:
+                        rec["death_reason"] = DEATH_ILLEGAL_ACTION
+                        alive.remove(seed)
+                        continue
+
+                    taken_value = values[taken]
+                    holes_before = snap["holes_total"]
+
+                    rec["actions"].append(list(taken))
+                    rec["labels"].append(list(teacher_action))
+                    rec["raw_actions"].append(list(raw) if raw is not None else None)
+                    if incident:
+                        rec["incidents"].append(snap["turn"])
+
+                    result = g.step(*taken)
+
+                    diagnostics[g.game_id].append(
+                        {
+                            "turn": snap["turn"],
+                            "parsed": raw is not None,
+                            "legal": is_legal,
+                            "teacher_match": raw == teacher_action if raw is not None else False,
+                            "value_gap": taken_value - best_value,
+                            "holes_before": holes_before,
+                            "holes_after": result["holes_total"],
+                            "holes_created": max(0, result["holes_total"] - holes_before),
+                            "max_height": result["max_height"],
+                            "aggregate_height": result["aggregate_height"],
+                            "lines_after": result["lines"],
+                            "score_after": result["score"],
+                        }
+                    )
+
+                    if g.game_over:
+                        rec["death_reason"] = DEATH_TOPPED_OUT
+                        alive.remove(seed)
+                    elif g.turn >= cap:
+                        rec["death_reason"] = CAP_REACHED
+                        alive.remove(seed)
+    finally:
+        if pool:
+            pool.shutdown()
 
     game_records = []
     for seed in seeds:
