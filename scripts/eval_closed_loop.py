@@ -20,6 +20,7 @@ nothing beyond the base project.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import socket
 import subprocess
@@ -155,6 +156,19 @@ def event_heartbeat(events: EventWriter, *, phase: str, current: int, total: int
         thread.join(timeout=2)
 
 
+def assisted_copy(records: list[dict], diagnostics: dict[str, list[dict]]) -> tuple[list[dict], dict[str, list[dict]]]:
+    """Random and teacher are always legal, so strict and assisted are identical."""
+    copied_records = copy.deepcopy(records)
+    copied_diagnostics: dict[str, list[dict]] = {}
+    for record in copied_records:
+        old_game_id = record["game_id"]
+        new_game_id = old_game_id.replace("-strict-", "-assisted-")
+        record["game_id"] = new_game_id
+        record["mode"] = ASSISTED
+        copied_diagnostics[new_game_id] = copy.deepcopy(diagnostics[old_game_id])
+    return copied_records, copied_diagnostics
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--policies", default="random,teacher,model", help="comma-separated subset of random,teacher,model")
@@ -200,25 +214,32 @@ def main() -> None:
         for policy_name in policies:
             policy_fn = build_policy(policy_name, args, weights)
             report[policy_name] = {}
+            strict_legal_result = None
             for mode in modes:
                 print(f"[{policy_name}/{mode}] running {len(seeds)} seeds, cap={args.cap} ...", flush=True)
                 t_start = time.time()
-                with event_heartbeat(
-                    events,
-                    phase=f"{policy_name}/{mode}",
-                    current=completed_groups,
-                    total=total_groups,
-                ):
-                    records, diagnostics = run_rollout(
-                        seeds,
-                        policy_fn,
-                        mode=mode,
-                        cap=args.cap,
-                        teacher_weights=weights,
-                        gen_batch_size=args.gen_batch_size,
-                        game_id_prefix=policy_name,
-                        teacher_workers=args.teacher_workers,
-                    )
+                if mode == ASSISTED and strict_legal_result is not None:
+                    records, diagnostics = assisted_copy(*strict_legal_result)
+                    print("  reused strict result because this policy always emits legal actions", flush=True)
+                else:
+                    with event_heartbeat(
+                        events,
+                        phase=f"{policy_name}/{mode}",
+                        current=completed_groups,
+                        total=total_groups,
+                    ):
+                        records, diagnostics = run_rollout(
+                            seeds,
+                            policy_fn,
+                            mode=mode,
+                            cap=args.cap,
+                            teacher_weights=weights,
+                            gen_batch_size=args.gen_batch_size,
+                            game_id_prefix=policy_name,
+                            teacher_workers=args.teacher_workers,
+                        )
+                    if mode == STRICT and policy_name in {"random", "teacher"}:
+                        strict_legal_result = (records, diagnostics)
                 for rec in records:
                     rec["policy"] = policy_name
                     games_f.write(json.dumps(rec) + "\n")

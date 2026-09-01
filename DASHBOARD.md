@@ -30,6 +30,13 @@ python scripts/validate_dataset.py \
   --report-json data/batch1/validation.json
 ```
 
+Legacy manifests created before content hashing can be migrated explicitly, without changing their dataset files:
+
+```bash
+python scripts/migrate_manifest_hashes.py \
+  --data-dir data/smoke --data-dir data/batch1 --data-dir data/batch2
+```
+
 Long-running generation, training, open-loop evaluation, and closed-loop evaluation commands append structured events to their run's `events.jsonl`. The dashboard tails these files locally; the same files can be shipped to CloudWatch.
 
 Publish durable run evidence to the private artifact bucket, or retrieve only the small dashboard metadata files:
