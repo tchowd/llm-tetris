@@ -99,3 +99,30 @@ def test_active_cloudwatch_alarm_becomes_a_red_issue():
     assert len(issues) == 1
     assert issues[0]["severity"] == "red"
     assert "gpu-idle" in issues[0]["title"]
+
+
+def test_child_cloudwatch_job_keeps_parent_tagged_instance_from_looking_orphaned():
+    resources = {
+        "resources": [
+            {
+                "instance_id": "i-123",
+                "region": "us-east-1",
+                "state": "running",
+                "launch_time": "2026-01-01T00:00:00Z",
+                "instance_status": "ok",
+                "system_status": "ok",
+                "tags": {"RunId": "sft-v1", "Stage": "4"},
+            }
+        ]
+    }
+    jobs = {
+        "jobs": [
+            {
+                "run_id": "sft-v1-closed-loop",
+                "status": "running",
+                "last_event": {"parent_run_ids": ["sft-v1"]},
+            }
+        ]
+    }
+
+    assert dashboard._aws_issues(resources, jobs) == []

@@ -1033,12 +1033,18 @@ def aws_security() -> dict:
 def _aws_issues(resources_payload: dict, jobs_payload: dict) -> list[dict]:
     issues = []
     jobs = jobs_payload.get("jobs", [])
-    active_run_ids = {job["run_id"] for job in jobs if job["status"] == "running"}
+    active_jobs = [job for job in jobs if job["status"] == "running"]
+
+    def job_matches_run(job: dict, run_id: str) -> bool:
+        job_run_id = job.get("run_id")
+        parent_run_ids = (job.get("last_event") or {}).get("parent_run_ids") or []
+        return job_run_id == run_id or run_id in parent_run_ids or bool(job_run_id and job_run_id.startswith(f"{run_id}-"))
+
     for resource in resources_payload.get("resources", []):
         if resource["state"] != "running":
             continue
         run_id = resource.get("tags", {}).get("RunId")
-        if not run_id or run_id not in active_run_ids:
+        if not run_id or not any(job_matches_run(job, run_id) for job in active_jobs):
             launch = parse_timestamp(resource.get("launch_time"))
             old_enough = launch and (utc_now() - launch).total_seconds() > THRESHOLDS["orphan_instance_seconds"]
             if old_enough:
@@ -1175,6 +1181,20 @@ def dashboard_summary(include_aws: bool = True) -> dict:
         snapshot["issues"].extend(_aws_extended_issues(credits, quotas, security, metrics, resources, jobs))
         snapshot["issues"].extend(_aws_alarm_issues(alarms))
         aws_summary = {"resources": resources.get("resources", []), "jobs": jobs.get("jobs", []), "alarms": alarms.get("alarms", []), "live_cost": costs.get("live")}
+        if snapshot["project"].get("active_job") is None:
+            aws_active_job = next((job for job in jobs.get("jobs", []) if job.get("status") == "running"), None)
+            if aws_active_job:
+                snapshot["project"]["active_job"] = {
+                    **aws_active_job,
+                    "backend": "aws",
+                    "updated_at": aws_active_job.get("last_updated"),
+                    "progress": {
+                        "phase": aws_active_job.get("phase"),
+                        "current": aws_active_job.get("current"),
+                        "total": aws_active_job.get("total"),
+                        "metrics": aws_active_job.get("metrics", {}),
+                    },
+                }
     severity_rank = {"red": 3, "amber": 2, "info": 1}
     snapshot["issues"].sort(key=lambda item: (-severity_rank[item["severity"]], item.get("detected_at") or ""))
     snapshot["top_issues"] = snapshot["issues"][:3]
