@@ -256,6 +256,7 @@ async function renderEval(content) {
   const runs = runsPayload.data;
   const replays = replaysPayload.data;
   const latest = runs[0];
+  const active = runs.find((run) => run.status === "running");
   const metrics = latest?.metrics || {};
   const policies = ["random", "teacher", "model"];
   const comparison = policies.map((policy) => {
@@ -263,6 +264,7 @@ async function renderEval(content) {
     return `<div class="policy-card policy-${policy}"><div><span>${esc(policy)}</span>${strict ? statusPill("passed", `${strict.n_games} games`) : statusPill("not_started", "no result")}</div><strong>${strict?.lines?.mean !== undefined ? strict.lines.mean.toFixed(1) : "—"}<small> mean lines</small></strong><div class="policy-stats"><span>max <b>${strict?.lines?.max ?? "—"}</b></span><span>deaths <b>${strict?.deaths ?? "—"}</b></span><span>match <b>${strict?.teacher_match_rate ? pct(strict.teacher_match_rate.mean) : "—"}</b></span></div></div>`;
   }).join("");
   content.innerHTML = `${pageHeader("Stage 5", "Closed-loop evaluation", "The model plays its own boards. Strict mode is the headline; assisted mode isolates strategy from formatting.", statusPill(stagePayload.data.status))}
+    ${active ? `<section class="active-run-banner"><div class="pulse-ring"><i></i></div><div><span>Active rollout</span><h2>${esc(active.run_id)}</h2><p>${esc(active.progress?.phase || "evaluating")} · heartbeat ${ago(active.updated_at)}</p></div><div class="active-progress"><strong>${fmt.format(active.progress?.current || 0)} / ${fmt.format(active.progress?.total || 0)}</strong>${progressBar(progress(active.progress?.current, active.progress?.total))}</div></section>` : ""}
     <section class="policy-comparison">${comparison}</section>
     <div class="content-grid two-one"><section class="panel"><div class="panel-heading"><div><span class="section-kicker">Artifact-backed playback</span><h2>Game browser</h2></div><span>${replays.length} games</span></div>${replays.length ? `<div class="game-list">${replays.slice(0, 12).map((game) => `<a href="/dashboard/replays/${game.replay_id}" data-route><span class="piece-mini ${esc(game.policy || "model")}"></span><div><strong>${esc(game.policy || "unknown")} · ${esc(game.mode || "unknown")}</strong><small>seed ${game.seed} · ${game.death_reason || "complete"}</small></div><span>${game.lines} lines</span>${icon("arrow")}</a>`).join("")}</div>` : emptyState("No rollout games yet", "Completed Stage 5 games will be replayable turn by turn here.", "game")}</section><section class="panel"><div class="panel-heading"><div><span class="section-kicker">Strict vs assisted</span><h2>Failure attribution</h2></div></div><p class="panel-copy">A large strict/assisted gap points to output formatting. Weak results in both modes point to stacking policy or distribution shift.</p><div class="mode-legend"><div><i class="strict"></i><span><strong>Strict</strong>Bad output ends the game.</span></div><div><i class="assisted"></i><span><strong>Assisted</strong>First legal move substitutes and play continues.</span></div></div></section></div>`;
 }

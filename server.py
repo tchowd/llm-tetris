@@ -114,10 +114,14 @@ def dashboard_stage(stage: int):
     summary = dashboard.dashboard_summary()
     snapshot = summary["data"]
     item = next(value for value in snapshot["stages"] if value["number"] == stage)
+    stage_runs = [value for value in snapshot["runs"] if value["stage"] == stage]
+    active_job = snapshot["project"].get("active_job")
+    if active_job and active_job.get("stage") == stage and active_job.get("run_id") not in {run["run_id"] for run in stage_runs}:
+        stage_runs.insert(0, active_job)
     data = {
         **item,
         "issues": [value for value in snapshot["issues"] if value["stage"] == stage],
-        "runs": [value for value in snapshot["runs"] if value["stage"] == stage],
+        "runs": stage_runs,
         "datasets": snapshot["datasets"]["batches"] if stage == 3 else [],
         "thresholds": dashboard.THRESHOLDS,
     }
