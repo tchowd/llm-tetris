@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import socket
 import subprocess
 import time
 from pathlib import Path
@@ -34,6 +35,8 @@ from tetris.rollout import (
     run_rollout,
     teacher_policy,
 )
+from tetris.events import EventWriter
+from tetris.events import manifest_hashes
 from tetris.teacher import WEIGHTS as LIVE_WEIGHTS
 
 
@@ -119,7 +122,11 @@ def build_policy(name: str, args, weights: dict):
 def _default_device() -> str:
     import torch
 
-    return "mps" if torch.backends.mps.is_available() else "cpu"
+    if torch.cuda.is_available():
+        return "cuda"
+    if torch.backends.mps.is_available():
+        return "mps"
+    return "cpu"
 
 
 def main() -> None:
@@ -133,7 +140,7 @@ def main() -> None:
     parser.add_argument("--seed-offset", type=int, default=None, help="default: tetris.rollout.EVAL_SEED_OFFSET")
     parser.add_argument("--cap", type=int, default=500)
     parser.add_argument("--gen-batch-size", type=int, default=64)
-    parser.add_argument("--device", default=None, help="default: mps if available, else cpu (model policy only)")
+    parser.add_argument("--device", default=None, help="default: cuda, then mps, then cpu (model policy only)")
     parser.add_argument("--out-dir", type=Path, required=True)
     args = parser.parse_args()
 
@@ -151,9 +158,17 @@ def main() -> None:
     games_path = args.out_dir / "games.jsonl"
     metrics_path = args.out_dir / "metrics.json"
     manifest_path = args.out_dir / "manifest.json"
+    parent_run_id = args.adapter_dir.parent.name if args.adapter_dir else None
+    base_run_id = args.out_dir.parent.name if args.out_dir.name == "closed_loop" else args.out_dir.name
+    run_id = f"{base_run_id}-closed-loop"
+    parent_run_ids = [parent_run_id] if parent_run_id else []
+    events = EventWriter(args.out_dir / "events.jsonl", run_id=run_id, stage=5, lineage={"parent_run_ids": parent_run_ids})
+    total_groups = len(policies) * len(modes)
+    events.emit("job_started", phase="closed_loop", current=0, total=total_groups, metrics={"planned_games": total_groups * len(seeds)})
 
     report: dict = {}
     t0 = time.time()
+    completed_groups = 0
     with games_path.open("w") as games_f:
         for policy_name in policies:
             policy_fn = build_policy(policy_name, args, weights)
@@ -175,6 +190,8 @@ def main() -> None:
                     games_f.write(json.dumps(rec) + "\n")
                 metrics = aggregate_metrics(records, diagnostics)
                 report[policy_name][mode] = metrics
+                completed_groups += 1
+                events.emit("eval_metrics", phase=f"{policy_name}/{mode}", current=completed_groups, total=total_groups, metrics={"completed_games": completed_groups * len(seeds), "planned_games": total_groups * len(seeds), "lines_mean": metrics["lines"]["mean"], "deaths": metrics["deaths"], "parse_failure_rate": metrics["parse_failure_rate"]["mean"], "teacher_match_rate": metrics["teacher_match_rate"]["mean"]})
                 elapsed = time.time() - t_start
                 lines_m = metrics["lines"]
                 print(
@@ -188,6 +205,12 @@ def main() -> None:
                 )
 
     manifest = {
+        "run_id": run_id,
+        "stage": 5,
+        "status": "passed",
+        "host": socket.gethostname(),
+        "parent_run_ids": parent_run_ids,
+        "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),
         "git_sha": _git_sha(),
         "policies": policies,
         "modes": modes,
@@ -202,7 +225,18 @@ def main() -> None:
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    report["_meta"] = {
+        "run_id": run_id,
+        "stage": 5,
+        "status": "passed",
+        "git_sha": manifest["git_sha"],
+        "host": manifest["host"],
+        "parent_run_ids": parent_run_ids,
+        "data_manifest_hashes": manifest["data_manifest_hashes"],
+        "generated_at": manifest["generated_at"],
+    }
     metrics_path.write_text(json.dumps(report, indent=2) + "\n")
+    events.emit("job_completed", phase="closed_loop", current=total_groups, total=total_groups, metrics={"completed_games": total_groups * len(seeds), "wall_clock_seconds": time.time() - t0}, artifacts=[str(games_path), str(metrics_path), str(manifest_path)])
     print(f"wrote {games_path}, {metrics_path}, {manifest_path}")
 
 
