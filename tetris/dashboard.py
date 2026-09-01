@@ -799,18 +799,32 @@ def aws_logs(limit: int = 100) -> dict:
         errors, events = [], []
         try:
             logs = _client(session, "logs", config.regions[0], metadata)
-            response = logs.filter_log_events(logGroupName=config.log_group, startTime=int((time.time() - 86400) * 1000), limit=min(limit, 1000), interleaved=True)
-            for item in response.get("events", []):
-                message = item.get("message", "").strip()
-                parsed = None
-                try:
-                    parsed = json.loads(message)
-                except json.JSONDecodeError:
-                    pass
-                events.append({"timestamp": datetime.fromtimestamp(item["timestamp"] / 1000, UTC).isoformat().replace("+00:00", "Z"), "stream": item.get("logStreamName"), "message": message, "event": parsed})
+            streams = logs.describe_log_streams(
+                logGroupName=config.log_group,
+                orderBy="LastEventTime",
+                descending=True,
+                limit=20,
+            ).get("logStreams", [])
+            per_stream_limit = min(max(limit, 50), 1000)
+            for stream in streams:
+                stream_name = stream["logStreamName"]
+                response = logs.get_log_events(
+                    logGroupName=config.log_group,
+                    logStreamName=stream_name,
+                    limit=per_stream_limit,
+                    startFromHead=False,
+                )
+                for item in response.get("events", []):
+                    message = item.get("message", "").strip()
+                    parsed = None
+                    try:
+                        parsed = json.loads(message)
+                    except json.JSONDecodeError:
+                        pass
+                    events.append({"timestamp": datetime.fromtimestamp(item["timestamp"] / 1000, UTC).isoformat().replace("+00:00", "Z"), "stream": stream_name, "message": message, "event": parsed})
         except Exception as exc:
             errors.append(_aws_error("cloudwatch-logs", exc))
-        return {"events": sorted(events, key=lambda row: row["timestamp"], reverse=True), "errors": errors}
+        return {"events": sorted(events, key=lambda row: row["timestamp"], reverse=True)[:limit], "errors": errors}
 
     return _CACHE.get(f"aws.logs.{limit}", 10, load)
 
