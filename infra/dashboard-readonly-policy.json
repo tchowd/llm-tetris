@@ -10,6 +10,7 @@
         "ec2:DescribeVolumes",
         "ec2:DescribeTags",
         "cloudwatch:GetMetricData",
+        "cloudwatch:ListMetrics",
         "cloudwatch:DescribeAlarms",
         "logs:DescribeLogGroups",
         "logs:DescribeLogStreams",
@@ -28,7 +29,8 @@
         "ce:GetCostForecast",
         "billing:GetCredits",
         "servicequotas:GetServiceQuota",
-        "servicequotas:ListRequestedServiceQuotaChangeHistoryByQuota"
+        "servicequotas:ListRequestedServiceQuotaChangeHistoryByQuota",
+        "budgets:ViewBudget"
       ],
       "Resource": "*"
     },
@@ -44,6 +46,23 @@
         "iam:GetUserPolicy"
       ],
       "Resource": "*"
+    },
+    {
+      "Sid": "ReadProjectArtifacts",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::llm-tetris-artifacts-566629888938-us-east-1",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": "runs/*"
+        }
+      }
+    },
+    {
+      "Sid": "DownloadProjectArtifacts",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::llm-tetris-artifacts-566629888938-us-east-1/runs/*"
     }
   ]
 }
