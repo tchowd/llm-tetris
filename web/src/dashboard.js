@@ -179,7 +179,12 @@ async function renderStage(content, number) {
 }
 
 function runRows(runs) {
-  return `<div class="run-list">${runs.map((run) => `<a href="/dashboard/runs/${encodeURIComponent(run.run_id)}" data-route class="run-row"><span class="run-mark">${run.stage}</span><div><strong>${esc(run.run_id)}</strong><small>${esc(run.kind)} · ${esc(run.backend || run.host || "local")}</small></div>${statusPill(run.status)}<span class="run-time">${ago(run.updated_at)}</span></a>`).join("")}</div>`;
+  return `<div class="run-list">${runs.map((run) => {
+    const body = `<span class="run-mark">${run.stage}</span><div><strong>${esc(run.run_id)}</strong><small>${esc(run.kind)} · ${esc(run.backend || run.host || "local")}</small></div>${statusPill(run.status)}<span class="run-time">${ago(run.updated_at)}</span>`;
+    return run.path === "cloudwatch"
+      ? `<div class="run-row" aria-label="CloudWatch job ${esc(run.run_id)}">${body}</div>`
+      : `<a href="/dashboard/runs/${encodeURIComponent(run.run_id)}" data-route class="run-row">${body}</a>`;
+  }).join("")}</div>`;
 }
 
 async function renderRuns(content) {
