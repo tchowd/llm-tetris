@@ -66,6 +66,7 @@ from transformers import (
     Trainer,
     TrainerCallback,
     TrainingArguments,
+    set_seed,
 )
 from peft import LoraConfig, get_peft_model
 
@@ -224,6 +225,7 @@ def main() -> None:
     parser.add_argument("--data-dirs", nargs="+", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--base-model", default=BASE_MODEL)
+    parser.add_argument("--base-model-revision", default=None, help="pin the HF base/tokenizer revision for a reproducible adapter")
     parser.add_argument("--epochs", type=float, default=1.0)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--batch-size", type=int, default=16)
@@ -244,14 +246,18 @@ def main() -> None:
     parser.add_argument("--max-seq-length", type=int, default=256, help="--backend unsloth only")
     parser.add_argument("--load-in-4bit", action="store_true", help="QLoRA instead of full-precision LoRA -- --backend unsloth only")
     args = parser.parse_args()
+    if args.backend == "unsloth" and args.base_model_revision:
+        raise SystemExit("--base-model-revision currently requires --backend hf")
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    run_id = args.out_dir.name
+    run_id = args.out_dir.parent.name if args.out_dir.name == "rl" else args.out_dir.name
     events = EventWriter(args.out_dir / "events.jsonl", run_id=run_id, stage=4, lineage={"data_dirs": [str(path) for path in args.data_dirs]})
     events.emit("job_started", phase="initializing", current=0, total=None, metrics={"backend": args.backend, "base_model": args.base_model})
 
     device = args.device or ("mps" if torch.backends.mps.is_available() else "cpu")
-    random.seed(args.seed)
+    # Trainer seeds too, but it is constructed after LoRA's random weights.
+    # Seed Python, NumPy, and torch before any model/adapter initialization.
+    set_seed(args.seed)
 
     print("loading rows...")
     train_rows = subsample(load_rows(args.data_dirs, "train"), args.max_train_rows, args.seed)
@@ -294,8 +300,8 @@ def main() -> None:
         device = "cuda"
     else:
         print(f"loading tokenizer + base model {args.base_model} on {device}...")
-        tokenizer = AutoTokenizer.from_pretrained(args.base_model)
-        model = AutoModelForCausalLM.from_pretrained(args.base_model, dtype=torch.bfloat16)
+        tokenizer = AutoTokenizer.from_pretrained(args.base_model, revision=args.base_model_revision)
+        model = AutoModelForCausalLM.from_pretrained(args.base_model, dtype=torch.bfloat16, revision=args.base_model_revision)
         model.to(device)
 
         lora_cfg = LoraConfig(
@@ -379,6 +385,8 @@ def main() -> None:
         "parent_run_ids": [],
         "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),
         "base_model": args.base_model,
+        "base_model_revision": getattr(model.config, "_commit_hash", None),
+        "requested_base_model_revision": args.base_model_revision,
         "data_dirs": [str(d) for d in args.data_dirs],
         "num_train_rows": len(train_rows),
         "num_eval_rows": len(eval_rows),
@@ -392,6 +400,7 @@ def main() -> None:
         "lora_alpha": args.lora_alpha,
         "lora_dropout": args.lora_dropout,
         "seed": args.seed,
+        "seed_applied_before_model_init": True,
         "device": device,
         "backend": args.backend,
         "load_in_4bit": args.load_in_4bit if args.backend == "unsloth" else None,

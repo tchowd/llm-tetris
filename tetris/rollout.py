@@ -72,13 +72,13 @@ def random_legal_policy() -> PolicyFn:
     seed -- so a game's choices never depend on which other games happen to
     share its batch or on call order (stage-5-eval.md's "batching is a
     no-op" test)."""
-    rngs: dict[int, random.Random] = {}
+    rngs: dict[tuple[int, str], random.Random] = {}
 
     def pick(snapshots: list[dict], teacher_infos: list[TeacherInfo]) -> list[tuple[Action | None, str | None]]:
         out = []
         for snap in snapshots:
             seed = snap["seed"]
-            rng = rngs.setdefault(seed, random.Random(seed ^ 0x52414E44))
+            rng = rngs.setdefault((seed, snap["game_id"]), random.Random(seed ^ 0x52414E44))
             choice = rng.choice(snap["legal"])
             out.append(((choice["rot"], choice["x"]), None))
         return out
@@ -224,6 +224,7 @@ def run_rollout(
 
                     if taken is None:
                         rec["death_reason"] = DEATH_ILLEGAL_ACTION
+                        rec["terminal_incident"] = {"parsed": raw is not None, "legal": False}
                         alive.remove(seed)
                         continue
 
@@ -250,6 +251,8 @@ def run_rollout(
                             "holes_created": max(0, result["holes_total"] - holes_before),
                             "max_height": result["max_height"],
                             "aggregate_height": result["aggregate_height"],
+                            "bumpiness": result["bumpiness"],
+                            "well_depth": sum(result["wells"]),
                             "lines_after": result["lines"],
                             "score_after": result["score"],
                         }
@@ -327,6 +330,8 @@ def replay_game_log(game_record: dict, teacher_weights: dict | None = None) -> t
                 "holes_created": max(0, result["holes_total"] - holes_before),
                 "max_height": result["max_height"],
                 "aggregate_height": result["aggregate_height"],
+                "bumpiness": result["bumpiness"],
+                "well_depth": sum(result["wells"]),
                 "lines_after": result["lines"],
                 "score_after": result["score"],
             }
@@ -359,6 +364,8 @@ def aggregate_metrics(game_records: list[dict], diagnostics: dict[str, list[dict
     lines = [r["lines"] for r in game_records]
     pieces = [r["pieces"] for r in game_records]
     scores = [r["score"] for r in game_records]
+    score_per_100 = [100.0 * r["score"] / r["pieces"] if r["pieces"] else 0.0 for r in game_records]
+    lines_per_100 = [100.0 * r["lines"] / r["pieces"] if r["pieces"] else 0.0 for r in game_records]
     deaths = sum(r["died"] for r in game_records)
     cap_outs = sum(r["death_reason"] == CAP_REACHED for r in game_records)
     illegal_deaths = sum(r["death_reason"] == DEATH_ILLEGAL_ACTION for r in game_records)
@@ -367,7 +374,9 @@ def aggregate_metrics(game_records: list[dict], diagnostics: dict[str, list[dict
     def per_game_rate(pred) -> list[float]:
         out = []
         for r in game_records:
-            turns = diagnostics.get(r["game_id"], [])
+            turns = list(diagnostics.get(r["game_id"], []))
+            if r.get("terminal_incident"):
+                turns.append({"teacher_match": False, **r["terminal_incident"]})
             out.append(sum(pred(t) for t in turns) / len(turns) if turns else 0.0)
         return out
 
@@ -390,13 +399,19 @@ def aggregate_metrics(game_records: list[dict], diagnostics: dict[str, list[dict
         "lines": {**mean_se(lines), "median": statistics.median(lines) if lines else 0, "max": max(lines) if lines else 0, "distribution": lines},
         "pieces_survived": mean_se(pieces),
         "score": mean_se(scores),
+        "score_per_100_pieces": {**mean_se(score_per_100), "distribution": score_per_100},
+        "lines_per_100_pieces": {**mean_se(lines_per_100), "distribution": lines_per_100},
         "deaths": deaths,
+        "early_deaths": sum(r["died"] and r["pieces"] < 10 for r in game_records),
         "cap_outs": cap_outs,
         "illegal_action_deaths": illegal_deaths,
         "topped_out_deaths": topped_out,
         "holes_created_per_piece": mean_se(per_game_mean("holes_created")),
         "max_height": mean_se(per_game_final("max_height")),
         "mean_aggregate_height": mean_se(per_game_mean("aggregate_height")),
+        "mean_holes": mean_se(per_game_mean("holes_after")),
+        "mean_bumpiness": mean_se(per_game_mean("bumpiness")),
+        "mean_well_depth": mean_se(per_game_mean("well_depth")),
         "teacher_match_rate": mean_se(per_game_rate(lambda t: t["teacher_match"])),
         "value_gap": mean_se(per_game_mean("value_gap")),
         "parse_failure_rate": mean_se(per_game_rate(lambda t: not t["parsed"])),

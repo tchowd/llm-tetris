@@ -88,6 +88,8 @@ def test_strict_mode_kills_a_garbage_policy_immediately():
         assert rec["died"] is True, rec
         assert rec["death_reason"] == DEATH_ILLEGAL_ACTION, rec
 
+    assert aggregate_metrics(records, {})["parse_failure_rate"]["mean"] == 1.0
+
 
 def test_batching_is_a_noop_for_a_batch_invariant_policy():
     """#4: the same seed produces the same game whether run alone (batch
@@ -120,9 +122,12 @@ def test_default_eval_seeds_disjoint_from_stage_3_dumps():
         return
     for manifest_path in data_dir.glob("*/manifest.json"):
         manifest = json.loads(manifest_path.read_text())
-        start = manifest["seed_start"]
-        stage3_seeds = set(range(start, start + manifest["num_games"]))
-        overlap = eval_seeds & stage3_seeds
+        if manifest.get("kind") == "recovery_sft_dataset":
+            data_seeds = set(manifest["training_seeds"]) | set(manifest["validation_seeds"])
+        else:
+            start = manifest["seed_start"]
+            data_seeds = set(range(start, start + manifest["num_games"]))
+        overlap = eval_seeds & data_seeds
         assert not overlap, f"{manifest_path} overlaps eval seeds: {sorted(overlap)[:5]}"
 
 

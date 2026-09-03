@@ -40,6 +40,8 @@ from tetris.rollout import (
 )
 from tetris.events import EventWriter
 from tetris.events import manifest_hashes
+from tetris.model_policy import build_model_policy
+from tetris.rl import directory_sha256
 from tetris.teacher import WEIGHTS as LIVE_WEIGHTS
 
 
@@ -72,41 +74,6 @@ def check_seed_disjointness(seeds: list[int], data_dirs: list[Path]) -> None:
         overlap = eval_seeds & stage3_seeds
         if overlap:
             raise SystemExit(f"{manifest_path}: eval seeds overlap Stage 3 seeds: {sorted(overlap)[:5]}")
-
-
-def build_model_policy(adapter_dir: Path, base_model: str, device: str):
-    """Loaded lazily -- only called when "model" is actually in --policies,
-    so a random/teacher-only run never needs torch installed."""
-    import torch
-    from peft import PeftModel
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-
-    from tetris.chat import build_generation_prompt
-    from tetris.serialize import parse_action
-
-    tokenizer = AutoTokenizer.from_pretrained(base_model)
-    base = AutoModelForCausalLM.from_pretrained(base_model, dtype=torch.bfloat16).to(device)
-    model = PeftModel.from_pretrained(base, str(adapter_dir)).to(device)
-    model.eval()
-
-    def pick(snapshots: list[dict], teacher_infos):
-        prompts = [build_generation_prompt(tokenizer, snap["prompt"]) for snap in snapshots]
-        enc = tokenizer(prompts, return_tensors="pt", padding=True, padding_side="left").to(device)
-        with torch.no_grad():
-            out = model.generate(**enc, max_new_tokens=16, do_sample=False, pad_token_id=tokenizer.pad_token_id)
-        new_tokens = out[:, enc["input_ids"].shape[1] :]
-        texts = tokenizer.batch_decode(new_tokens, skip_special_tokens=True)
-        results = []
-        for text in texts:
-            line = text.strip().splitlines()[0] if text.strip() else ""
-            try:
-                action = parse_action(line)
-            except ValueError:
-                action = None
-            results.append((action, text))
-        return results
-
-    return pick
 
 
 def build_policy(name: str, args, weights: dict):
@@ -174,6 +141,7 @@ def main() -> None:
     parser.add_argument("--policies", default="random,teacher,model", help="comma-separated subset of random,teacher,model")
     parser.add_argument("--modes", default="strict,assisted", help="comma-separated subset of strict,assisted")
     parser.add_argument("--adapter-dir", type=Path, default=None)
+    parser.add_argument("--model-label", default="model", help="artifact label for the model policy; decoding is unchanged")
     parser.add_argument("--base-model", default="Qwen/Qwen3-1.7B")
     parser.add_argument("--data-dirs", nargs="*", type=Path, default=[], help="Stage 3 dirs, for teacher weights + seed-disjointness check")
     parser.add_argument("--num-seeds", type=int, default=100)
@@ -199,6 +167,10 @@ def main() -> None:
     games_path = args.out_dir / "games.jsonl"
     metrics_path = args.out_dir / "metrics.json"
     manifest_path = args.out_dir / "manifest.json"
+    if manifest_path.exists() or games_path.exists():
+        raise SystemExit("evaluation artifacts already exist; use a new output directory")
+    adapter_hash = directory_sha256(args.adapter_dir) if args.adapter_dir else None
+    policy_metadata = {}
     parent_run_id = args.adapter_dir.parent.name if args.adapter_dir else None
     base_run_id = args.out_dir.parent.name if args.out_dir.name == "closed_loop" else args.out_dir.name
     run_id = f"{base_run_id}-closed-loop"
@@ -213,11 +185,13 @@ def main() -> None:
     completed_groups = 0
     with games_path.open("w") as games_f:
         for policy_name in policies:
+            policy_label = args.model_label if policy_name == "model" else policy_name
             policy_fn = build_policy(policy_name, args, weights)
-            report[policy_name] = {}
+            policy_metadata[policy_label] = getattr(policy_fn, "metadata", {})
+            report[policy_label] = {}
             strict_legal_result = None
             for mode in modes:
-                print(f"[{policy_name}/{mode}] running {len(seeds)} seeds, cap={args.cap} ...", flush=True)
+                print(f"[{policy_label}/{mode}] running {len(seeds)} seeds, cap={args.cap} ...", flush=True)
                 t_start = time.time()
                 if mode == ASSISTED and strict_legal_result is not None:
                     records, diagnostics = assisted_copy(*strict_legal_result)
@@ -225,7 +199,7 @@ def main() -> None:
                 else:
                     with event_heartbeat(
                         events,
-                        phase=f"{policy_name}/{mode}",
+                        phase=f"{policy_label}/{mode}",
                         current=completed_groups,
                         total=total_groups,
                     ):
@@ -236,18 +210,18 @@ def main() -> None:
                             cap=args.cap,
                             teacher_weights=weights,
                             gen_batch_size=args.gen_batch_size,
-                            game_id_prefix=policy_name,
+                            game_id_prefix=policy_label,
                             teacher_workers=args.teacher_workers,
                         )
                     if mode == STRICT and policy_name in {"random", "teacher"}:
                         strict_legal_result = (records, diagnostics)
                 for rec in records:
-                    rec["policy"] = policy_name
+                    rec["policy"] = policy_label
                     games_f.write(json.dumps(rec) + "\n")
                 metrics = aggregate_metrics(records, diagnostics)
-                report[policy_name][mode] = metrics
+                report[policy_label][mode] = metrics
                 completed_groups += 1
-                events.emit("eval_metrics", phase=f"{policy_name}/{mode}", current=completed_groups, total=total_groups, metrics={"completed_games": completed_groups * len(seeds), "planned_games": total_groups * len(seeds), "lines_mean": metrics["lines"]["mean"], "deaths": metrics["deaths"], "parse_failure_rate": metrics["parse_failure_rate"]["mean"], "teacher_match_rate": metrics["teacher_match_rate"]["mean"]})
+                events.emit("eval_metrics", phase=f"{policy_label}/{mode}", current=completed_groups, total=total_groups, metrics={"completed_games": completed_groups * len(seeds), "planned_games": total_groups * len(seeds), "lines_mean": metrics["lines"]["mean"], "deaths": metrics["deaths"], "parse_failure_rate": metrics["parse_failure_rate"]["mean"], "teacher_match_rate": metrics["teacher_match_rate"]["mean"]})
                 elapsed = time.time() - t_start
                 lines_m = metrics["lines"]
                 print(
@@ -260,6 +234,8 @@ def main() -> None:
                     flush=True,
                 )
 
+    if args.adapter_dir and directory_sha256(args.adapter_dir) != adapter_hash:
+        raise RuntimeError("adapter changed during closed-loop evaluation")
     manifest = {
         "run_id": run_id,
         "stage": 5,
@@ -268,7 +244,7 @@ def main() -> None:
         "parent_run_ids": parent_run_ids,
         "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),
         "git_sha": run_git_sha,
-        "policies": policies,
+        "policies": [args.model_label if policy == "model" else policy for policy in policies],
         "modes": modes,
         "seeds": seeds,
         "cap": args.cap,
@@ -276,6 +252,9 @@ def main() -> None:
         "teacher_workers": args.teacher_workers,
         "teacher_weights": weights,
         "adapter_dir": str(args.adapter_dir) if args.adapter_dir else None,
+        "adapter_sha256": adapter_hash,
+        "policy_metadata": policy_metadata,
+        "greedy": True,
         "base_model": args.base_model,
         "data_dirs": [str(d) for d in args.data_dirs],
         "wall_clock_seconds": time.time() - t0,
