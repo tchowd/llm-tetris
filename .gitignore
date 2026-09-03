@@ -10,6 +10,36 @@ dist/
 .ruff_cache/
 node_modules/
 web/dist/
+infra/dashboard.toml
 plan/
 data/
 
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
+
+# Model artifacts
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Local databases, logs, and coverage
+*.sqlite
+*.sqlite3
+*.db
+*.log
+.coverage
+coverage.xml
+htmlcov/
+
+# Editors
+.vscode/
+.idea/

@@ -1,0 +1,940 @@
+{
+  "experiment": "stage6-feedback-v1",
+  "status": "registered_awaiting_budget_approval",
+  "registered_at": "2026-09-03T21:19:55.098693+00:00",
+  "question": "Does fixed-zero reward-to-go improve greedy recovery relative to original RL?",
+  "base_model": "Qwen/Qwen3-1.7B",
+  "base_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "initial_adapter": "runs/sft-v1/adapter",
+  "initial_adapter_sha256": "7d753d616d3b9174f489e103f37193fccda28c46b1c7ac91e2f4e87efde01171",
+  "tokenizer": "pinned base revision; identical across arms",
+  "final_test_access": false,
+  "deployment_authorized": false,
+  "methods": [
+    "active_group",
+    "fixed_zero"
+  ],
+  "training_seeds": [
+    6201,
+    6202,
+    6203
+  ],
+  "training_seed_file": "data/stage6-recovery-v1/training-seeds.json",
+  "recovery_start_file": "data/stage6-recovery-v1/train-starts.jsonl",
+  "benchmark_manifest": "benchmarks/stress-v1/manifest.json",
+  "recipe": {
+    "updates": 32,
+    "horizon": 128,
+    "group_size": 4,
+    "gamma": 0.99,
+    "temperature": 1.0,
+    "train_batch_size": 4,
+    "learning_rate": 1e-06,
+    "kl_beta": 0.05,
+    "score_scale": 100.0,
+    "death_penalty": 2.0,
+    "illegal_penalty": 10.0,
+    "advantage_reward_scale": 10.0,
+    "save_every": 4
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "gradient_clip_norm": 1.0,
+    "scheduler": "cosine",
+    "warmup_updates": 1,
+    "horizon": 32
+  },
+  "sampling": {
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_new_tokens": 16
+  },
+  "schedules": {
+    "6201": [
+      {
+        "update": 1,
+        "environment_seed": 20000181,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 2,
+        "environment_seed": 20000104,
+        "state_hash": "11e31c22f345f6142f7774237b47ac5d02f87dd519bdc8f9fc1ff53c5626e027",
+        "state_id": "train-20000104-104"
+      },
+      {
+        "update": 3,
+        "environment_seed": 20000155,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 4,
+        "environment_seed": 20000021,
+        "state_hash": "0f6981228c74a9c58d8d858acf9814f13abd5b19872a3e04a9a9110f3518f85e",
+        "state_id": "train-20000021-21"
+      },
+      {
+        "update": 5,
+        "environment_seed": 20000130,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 6,
+        "environment_seed": 20000057,
+        "state_hash": "f24f3456cc97bed06381c8803942526ce6c6971814f2a5636ff49e3493cb59eb",
+        "state_id": "train-20000057-57"
+      },
+      {
+        "update": 7,
+        "environment_seed": 20000093,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 8,
+        "environment_seed": 20000117,
+        "state_hash": "4e9baac4a6d59383e53568d47a80362b2c2ff347fcdb1ba544bb053320e6f464",
+        "state_id": "train-20000117-117"
+      },
+      {
+        "update": 9,
+        "environment_seed": 20000038,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 10,
+        "environment_seed": 20000089,
+        "state_hash": "f533b021e4b43be960c754bab8b3e13a1abc19b9bd84cb9c948de486de4da275",
+        "state_id": "train-20000089-89"
+      },
+      {
+        "update": 11,
+        "environment_seed": 20000040,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 12,
+        "environment_seed": 20000116,
+        "state_hash": "eec28379cf4ecf051f8b91cb83ff0816387fcc93f7b3539bf1d3ecfaeed87753",
+        "state_id": "train-20000116-116"
+      },
+      {
+        "update": 13,
+        "environment_seed": 20000034,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 14,
+        "environment_seed": 20000033,
+        "state_hash": "ff83446bd0cb7f996f7e917155e674c0c098c07bcbf5577276e7659658b97c27",
+        "state_id": "train-20000033-33"
+      },
+      {
+        "update": 15,
+        "environment_seed": 20000126,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 16,
+        "environment_seed": 20000060,
+        "state_hash": "cb3aa412b6376f702c42fa84062ad74bf26765c2b38bf500a1c9cc55c15dd890",
+        "state_id": "train-20000060-60"
+      },
+      {
+        "update": 17,
+        "environment_seed": 20000066,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 18,
+        "environment_seed": 20000102,
+        "state_hash": "303062291456e13f08457de55dfd0c2bbb07963ae5482658fe29ce30d63fc2ab",
+        "state_id": "train-20000102-102"
+      },
+      {
+        "update": 19,
+        "environment_seed": 20000176,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 20,
+        "environment_seed": 20000106,
+        "state_hash": "7c0ad040f8eb9da028cfa26e3b012d66ba5c155d081932966a747327ff32d59f",
+        "state_id": "train-20000106-106"
+      },
+      {
+        "update": 21,
+        "environment_seed": 20000025,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 22,
+        "environment_seed": 20000105,
+        "state_hash": "94d9ff8fe75124929bc0dd11e6cbf59295aeda931ec5b65526250e92019a7b49",
+        "state_id": "train-20000105-105"
+      },
+      {
+        "update": 23,
+        "environment_seed": 20000093,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 24,
+        "environment_seed": 20000079,
+        "state_hash": "f78eb10dda6be1df84c8f74df92031aec478b8197cfe72eb527c326ed7c7f262",
+        "state_id": "train-20000079-79"
+      },
+      {
+        "update": 25,
+        "environment_seed": 20000147,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 26,
+        "environment_seed": 20000047,
+        "state_hash": "10ab5d9f50b93c3e8c5c69f7cceeb2bbbfc264f2a38ee6f3e0a2469e1a2dd077",
+        "state_id": "train-20000047-47"
+      },
+      {
+        "update": 27,
+        "environment_seed": 20000154,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 28,
+        "environment_seed": 20000066,
+        "state_hash": "1f9fe7aee2702235b24eb448e64a58e44c6a5b2415ea0eff2a078d1a9eb4f481",
+        "state_id": "train-20000066-66"
+      },
+      {
+        "update": 29,
+        "environment_seed": 20000151,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 30,
+        "environment_seed": 20000086,
+        "state_hash": "a96b89b92b80700f1a867642002a614900ba8ebf23edbecc27b5081feda61286",
+        "state_id": "train-20000086-86"
+      },
+      {
+        "update": 31,
+        "environment_seed": 20000138,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 32,
+        "environment_seed": 20000058,
+        "state_hash": "ddfaa3719893a5d42deb152424f82a682a74a1dde53dc898c89d02f001d14798",
+        "state_id": "train-20000058-58"
+      }
+    ],
+    "6202": [
+      {
+        "update": 1,
+        "environment_seed": 20000147,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 2,
+        "environment_seed": 20000046,
+        "state_hash": "4be2c3dbea5d213237a2755d53f594503ef9fa81db79b01d66908b36e4913f2e",
+        "state_id": "train-20000046-46"
+      },
+      {
+        "update": 3,
+        "environment_seed": 20000040,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 4,
+        "environment_seed": 20000022,
+        "state_hash": "abb03d02046ee4821ec744afef6486a359ea2b8491eef4827ce1e284365fcee3",
+        "state_id": "train-20000022-22"
+      },
+      {
+        "update": 5,
+        "environment_seed": 20000101,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 6,
+        "environment_seed": 20000064,
+        "state_hash": "03e5d89244c429eb39a7bb28fbc0394f0a144cdf66bc84ee6344d64edb61ffab",
+        "state_id": "train-20000064-64"
+      },
+      {
+        "update": 7,
+        "environment_seed": 20000152,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 8,
+        "environment_seed": 20000030,
+        "state_hash": "1ac1310fc540e679d290162e074cf30cb5d2dc35ae074ecfe48a41e2c6f4d52e",
+        "state_id": "train-20000030-30"
+      },
+      {
+        "update": 9,
+        "environment_seed": 20000021,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 10,
+        "environment_seed": 20000025,
+        "state_hash": "0df5b4c5446bb1a4d9187ad54a133724be195ce6be1aef3738e87c232a44470c",
+        "state_id": "train-20000025-25"
+      },
+      {
+        "update": 11,
+        "environment_seed": 20000124,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 12,
+        "environment_seed": 20000010,
+        "state_hash": "f4cdc58eb5b2ce3311e514506bde00771ca7cd3e28122d562ad6e140eb92ca7b",
+        "state_id": "train-20000010-10"
+      },
+      {
+        "update": 13,
+        "environment_seed": 20000172,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 14,
+        "environment_seed": 20000124,
+        "state_hash": "0235ae99e721782f7c19b97c6bf595a417fccf930f255686a343259b845511e9",
+        "state_id": "train-20000124-124"
+      },
+      {
+        "update": 15,
+        "environment_seed": 20000010,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 16,
+        "environment_seed": 20000008,
+        "state_hash": "faa06b8edcf966c254ebb89f5f27d443142b5c06fdc438a28e1e14b79c9d87be",
+        "state_id": "train-20000008-8"
+      },
+      {
+        "update": 17,
+        "environment_seed": 20000077,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 18,
+        "environment_seed": 20000021,
+        "state_hash": "0f6981228c74a9c58d8d858acf9814f13abd5b19872a3e04a9a9110f3518f85e",
+        "state_id": "train-20000021-21"
+      },
+      {
+        "update": 19,
+        "environment_seed": 20000022,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 20,
+        "environment_seed": 20000118,
+        "state_hash": "b423d94cac1de33a57ca58cf938e4ec0d482afa030c8b209de34f37409016b03",
+        "state_id": "train-20000118-118"
+      },
+      {
+        "update": 21,
+        "environment_seed": 20000168,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 22,
+        "environment_seed": 20000059,
+        "state_hash": "d9a04dceeb46e59decd34255bc0cce323d00b1c74aae731262cf24e1c77675d0",
+        "state_id": "train-20000059-59"
+      },
+      {
+        "update": 23,
+        "environment_seed": 20000045,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 24,
+        "environment_seed": 20000056,
+        "state_hash": "1fc60cdb7cddebe2236e982d1704bbba40b319568800309bf5221c4b9af0af32",
+        "state_id": "train-20000056-56"
+      },
+      {
+        "update": 25,
+        "environment_seed": 20000107,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 26,
+        "environment_seed": 20000071,
+        "state_hash": "103d14749153dce5bcb21fce8b1da08fc648b1aedacff93f72e60fec8f0b2a08",
+        "state_id": "train-20000071-71"
+      },
+      {
+        "update": 27,
+        "environment_seed": 20000009,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 28,
+        "environment_seed": 20000038,
+        "state_hash": "3e3794f367e45d6f255b332b5c948de62764f3c154ed727b358a401a42f73daf",
+        "state_id": "train-20000038-38"
+      },
+      {
+        "update": 29,
+        "environment_seed": 20000103,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 30,
+        "environment_seed": 20000070,
+        "state_hash": "cc38a4a905dff56ccfc8e55f66e2e638e1bc00c0a384cc11b472114223397a7c",
+        "state_id": "train-20000070-70"
+      },
+      {
+        "update": 31,
+        "environment_seed": 20000160,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 32,
+        "environment_seed": 20000063,
+        "state_hash": "758ae8c12ed5ecbd48c85b20beee9742ac7aca647d936b609666c8f775053e7c",
+        "state_id": "train-20000063-63"
+      }
+    ],
+    "6203": [
+      {
+        "update": 1,
+        "environment_seed": 20000063,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 2,
+        "environment_seed": 20000085,
+        "state_hash": "736f919259f5f8e010cc77b11b6a87dfea2d90f685ed2fc6fe3b048613012b7d",
+        "state_id": "train-20000085-85"
+      },
+      {
+        "update": 3,
+        "environment_seed": 20000031,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 4,
+        "environment_seed": 20000038,
+        "state_hash": "3e3794f367e45d6f255b332b5c948de62764f3c154ed727b358a401a42f73daf",
+        "state_id": "train-20000038-38"
+      },
+      {
+        "update": 5,
+        "environment_seed": 20000136,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 6,
+        "environment_seed": 20000097,
+        "state_hash": "d00cac0d58478d122ee0b79def7482b3d07db859f056bba396250204b79b4278",
+        "state_id": "train-20000097-97"
+      },
+      {
+        "update": 7,
+        "environment_seed": 20000130,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 8,
+        "environment_seed": 20000036,
+        "state_hash": "5d1f51e7363d0fc5de3fd867beb2aae324683532b084c54f9310f2f539f9c576",
+        "state_id": "train-20000036-36"
+      },
+      {
+        "update": 9,
+        "environment_seed": 20000079,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 10,
+        "environment_seed": 20000032,
+        "state_hash": "0ea1474af146c8900ebce29c30e4d38a0f18035b7f57d41ff7aea26cefe2c657",
+        "state_id": "train-20000032-32"
+      },
+      {
+        "update": 11,
+        "environment_seed": 20000059,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 12,
+        "environment_seed": 20000016,
+        "state_hash": "fa707a1fbd909a054776541d0ca6635ae62e9302c0be241896ff09eb293657e1",
+        "state_id": "train-20000016-16"
+      },
+      {
+        "update": 13,
+        "environment_seed": 20000122,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 14,
+        "environment_seed": 20000104,
+        "state_hash": "11e31c22f345f6142f7774237b47ac5d02f87dd519bdc8f9fc1ff53c5626e027",
+        "state_id": "train-20000104-104"
+      },
+      {
+        "update": 15,
+        "environment_seed": 20000024,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 16,
+        "environment_seed": 20000126,
+        "state_hash": "c3ae27ec3d10ba02494882a230404f9f48edb4b39a3815e32fbfde836fb6be17",
+        "state_id": "train-20000126-126"
+      },
+      {
+        "update": 17,
+        "environment_seed": 20000031,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 18,
+        "environment_seed": 20000096,
+        "state_hash": "fd57ad4d5f11a4985b9fd067531b3521a9757aa9cf6dd7e6c0905f6fb15589f0",
+        "state_id": "train-20000096-96"
+      },
+      {
+        "update": 19,
+        "environment_seed": 20000152,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 20,
+        "environment_seed": 20000028,
+        "state_hash": "ccb6ef397c07e7a3dcfb6f598391b6f86e0ad657ca113b1da35a0ccba551a27f",
+        "state_id": "train-20000028-28"
+      },
+      {
+        "update": 21,
+        "environment_seed": 20000097,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 22,
+        "environment_seed": 20000004,
+        "state_hash": "40f3fecf1d585b11d0e6274e47ecac5ae329508fe9b80cf2c479c60bc02fe8b8",
+        "state_id": "train-20000004-4"
+      },
+      {
+        "update": 23,
+        "environment_seed": 20000100,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 24,
+        "environment_seed": 20000038,
+        "state_hash": "3e3794f367e45d6f255b332b5c948de62764f3c154ed727b358a401a42f73daf",
+        "state_id": "train-20000038-38"
+      },
+      {
+        "update": 25,
+        "environment_seed": 20000041,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 26,
+        "environment_seed": 20000080,
+        "state_hash": "64cb65e51270fd9675945f4de57bb5277f8e9b87459a782e762561e1e4aac7f3",
+        "state_id": "train-20000080-80"
+      },
+      {
+        "update": 27,
+        "environment_seed": 20000179,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 28,
+        "environment_seed": 20000010,
+        "state_hash": "f4cdc58eb5b2ce3311e514506bde00771ca7cd3e28122d562ad6e140eb92ca7b",
+        "state_id": "train-20000010-10"
+      },
+      {
+        "update": 29,
+        "environment_seed": 20000010,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 30,
+        "environment_seed": 20000018,
+        "state_hash": "cdcdbde48ce0270125d8d70069a3fb3f148a9c4be0c4a361a32bbe5e66295bd7",
+        "state_id": "train-20000018-18"
+      },
+      {
+        "update": 31,
+        "environment_seed": 20000040,
+        "state_hash": null,
+        "state_id": null
+      },
+      {
+        "update": 32,
+        "environment_seed": 20000055,
+        "state_hash": "5991303b1ce3e976a2ecea6412b36c01825cb1226023290daf7cf612a6420cf3",
+        "state_id": "train-20000055-55"
+      }
+    ]
+  },
+  "run_order": [
+    {
+      "run_id": "rl-feedback-v1-active_group-seed6201",
+      "method": "active_group",
+      "seed": 6201
+    },
+    {
+      "run_id": "rl-feedback-v1-fixed_zero-seed6201",
+      "method": "fixed_zero",
+      "seed": 6201
+    },
+    {
+      "run_id": "rl-feedback-v1-fixed_zero-seed6202",
+      "method": "fixed_zero",
+      "seed": 6202
+    },
+    {
+      "run_id": "rl-feedback-v1-active_group-seed6202",
+      "method": "active_group",
+      "seed": 6202
+    },
+    {
+      "run_id": "rl-feedback-v1-active_group-seed6203",
+      "method": "active_group",
+      "seed": 6203
+    },
+    {
+      "run_id": "rl-feedback-v1-fixed_zero-seed6203",
+      "method": "fixed_zero",
+      "seed": 6203
+    }
+  ],
+  "evaluation": {
+    "recovery_path": "experiments/stage6-feedback-v1/recovery-development.jsonl",
+    "recovery_seeds": [
+      81000000,
+      81000001,
+      81000002,
+      81000003,
+      81000004,
+      81000005,
+      81000006,
+      81000007,
+      81000008,
+      81000009,
+      81000010,
+      81000011,
+      81000012,
+      81000013,
+      81000014,
+      81000015,
+      81000016,
+      81000017,
+      81000018,
+      81000019,
+      81000020,
+      81000021,
+      81000022,
+      81000023,
+      81000024,
+      81000025,
+      81000026,
+      81000027,
+      81000028,
+      81000029,
+      81000030,
+      81000031,
+      81000032,
+      81000033,
+      81000034,
+      81000035,
+      81000036,
+      81000037,
+      81000038,
+      81000039,
+      81000040,
+      81000041,
+      81000042,
+      81000043,
+      81000044,
+      81000045,
+      81000046,
+      81000047,
+      81000048,
+      81000049,
+      81000050,
+      81000051,
+      81000052,
+      81000053,
+      81000054,
+      81000055,
+      81000056,
+      81000057,
+      81000058,
+      81000059,
+      81000060,
+      81000061,
+      81000062,
+      81000063,
+      81000064,
+      81000065,
+      81000066,
+      81000067,
+      81000068,
+      81000069,
+      81000070,
+      81000071,
+      81000072,
+      81000073,
+      81000074,
+      81000075,
+      81000076,
+      81000077,
+      81000078,
+      81000079,
+      81000080,
+      81000081,
+      81000082,
+      81000083,
+      81000084,
+      81000085,
+      81000086,
+      81000087,
+      81000088,
+      81000089,
+      81000090,
+      81000091,
+      81000092,
+      81000093,
+      81000094,
+      81000095,
+      81000096,
+      81000097,
+      81000098,
+      81000099,
+      81000100,
+      81000101,
+      81000102,
+      81000103,
+      81000104,
+      81000105,
+      81000106,
+      81000107,
+      81000108,
+      81000109,
+      81000110,
+      81000111,
+      81000112,
+      81000113,
+      81000114,
+      81000115,
+      81000116,
+      81000117,
+      81000118,
+      81000119,
+      81000120,
+      81000121,
+      81000122,
+      81000123,
+      81000124,
+      81000125,
+      81000126,
+      81000127
+    ],
+    "ordinary_seeds": [
+      82000000,
+      82000001,
+      82000002,
+      82000003,
+      82000004,
+      82000005,
+      82000006,
+      82000007,
+      82000008,
+      82000009,
+      82000010,
+      82000011,
+      82000012,
+      82000013,
+      82000014,
+      82000015,
+      82000016,
+      82000017,
+      82000018,
+      82000019
+    ],
+    "recovery_cap": 200,
+    "ordinary_cap": 1000,
+    "batch_size": 32,
+    "greedy": true,
+    "mode": "strict",
+    "checkpoint": "final update 32 only",
+    "baseline": "original SFT evaluated once on exactly the same cases",
+    "sealed_confirmation_seed_ranges_half_open": {
+      "recovery": [
+        83000000,
+        83000256
+      ],
+      "ordinary": [
+        84000000,
+        84000100
+      ]
+    },
+    "confirmation_access": false
+  },
+  "analysis": {
+    "primary": "absolute recovery illegal-ending rate reduction: original minus revised",
+    "minimum_useful_reduction": 0.1,
+    "min_improving_seeds": 2,
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 73220,
+    "interval": "crossed paired bootstrap: resample three seed pairs and source games, 95% percentile",
+    "require_lower_bound_above": 0.0,
+    "max_recovery_survival_regression": 0.0,
+    "ordinary_min_score_ratio": 0.99,
+    "ordinary_min_lines_ratio": 0.99,
+    "ordinary_max_illegal_endings": 0,
+    "ordinary_max_topouts": 0,
+    "ordinary_max_parse_failures": 0
+  },
+  "source_and_input_sha256": {
+    "benchmarks/stress-v1/manifest.json": "e63b7dcabe4e568f5d73c6132bafebae272339606c7beb075a025001dcddcfcf",
+    "data/batch1/manifest.json": "cadaae6bcf6e811466eaab2ec8726b974b0b17bf0968b8cfb2eb456893bfee38",
+    "data/batch2/manifest.json": "85068bf089d9094306419f69ca9b99050986a0ca88d5413ba5ce555fc86c8d3d",
+    "data/smoke/manifest.json": "ac29cc3fe143206586d73295c85ea142e52f6f82acfa655a4157685558f0ec05",
+    "data/stage6-recovery-v1/manifest.json": "92679167226b4c72d3c4407e0c793cfc294763d0adb500e23ab39d1cdcb97232",
+    "data/stage6-recovery-v1/train-starts.jsonl": "fac38b40dc86f5ac24e99e167397d1de06b14829054971b32bfb82e8cc9a300d",
+    "data/stage6-recovery-v1/training-seeds.json": "2f2d6eef7527a510985b2ad09f6d02e67da168a9f4ffb9bdae3679d196d07f4b",
+    "experiments/stage6-feedback-v1/feedback-spec.md": "85fe6cf9881aa2e1bcd16fdcfaa3ea7e5737a7b680f07a9a985ecd95f4273b82",
+    "experiments/stage6-feedback-v1/operations.md": "d79ad7d65199c2ed0e3d217cd0c9e2b7364861e167d5d129576b4ab7af3a6d4d",
+    "experiments/stage6-feedback-v1/protocol.md": "2d0933144c3d2589ae92fee8dc2b8c85f1108f9deed842cd590707264001ae58",
+    "experiments/stage6-feedback-v1/recovery-development.jsonl": "496b6316388e40346f5dfa0c885475515ceedf57825cdb4a4cfabcfce9cb8348",
+    "pyproject.toml": "d1d34279f54e4836dc335a9368e8e57d7ba618ff14a461cce46cff42d57ed83d",
+    "requirements-rl.txt": "13e3b5ffac2a5c308fc96dccbafa1e6644f8af1324576d21df7a65fa32b4d183",
+    "requirements-train.txt": "85187e2b9512ecdece2204421a45fd10fb06215f21d630aff2e8c12e0ae796c4",
+    "runs/sft-v1/closed_loop/manifest.json": "22a49e6627e34488a588e790ee07b8f33a0d170663185ee50b1eeebeffcd1ab0",
+    "runs/sft-v1/closed_loop/metrics.json": "8ad504dd0f884dd70c5ecc6082e739c2b471544014f83b376e82459b7190648c",
+    "scripts/analyze_feedback.py": "f7caca2fc16defc221462fc1f78ef32c899c338ec4e28fc589778eb52a6754db",
+    "scripts/analyze_stage6.py": "d12def4cb051206d16273a2585d1c01fb9166af0c5616b5508f1b48281fabbb1",
+    "scripts/audit_recovery_artifacts.py": "07354fd7874fb075a17a6b52049a2d3ba490b8156349bc262e9611b413aaba8e",
+    "scripts/audit_recovery_failures.py": "534602b5dd7f88070ca36955d05509e62417106e8c88d6fc1e9845525eeb9e09",
+    "scripts/check_e2_learning.py": "d046610c68c478ffcb062853a72464ce6948f839da4679c9c101ec79d9c26f5d",
+    "scripts/check_e4_pilot.py": "fd901ada6cb6cfb6a916760a30b787ce281cca0a1b960765f0b7e94820b88535",
+    "scripts/check_episode_pilot.py": "a49efdd6e6a50ca7b188f3e5e32dd21c34b6ce77efc71e15e6a2508dc21c8246",
+    "scripts/check_episode_proof.py": "4c69c467705b711a5ccd4cf0fc673048744f2d6bb97f140e8c47ecd226dfe0f7",
+    "scripts/check_episode_runtime.py": "093eaa0a7e4b146bae588859e5eb073a4dada1281be69963b78e87d22124d6fb",
+    "scripts/check_recovery_pilot.py": "8cba8668fe3aa97cb142fc2a22eeb77b7ec29b6d0f885e88b966f097994d8194",
+    "scripts/check_rl_cleanup.py": "efc4968bdb4683b22ac2605e2dcc531ffbe027d65800d1109b25714ef47f6522",
+    "scripts/check_sft_reproduction.py": "322d839968d010d27caf0d64f4aded51c5c66bd9678397346ac91dbc7974f101",
+    "scripts/diagnose_episode_gradients.py": "2d95a24789b3880399e073abc12b0e8a70fb45d51926109383c0d9c6d630aa68",
+    "scripts/diagnose_episode_resume.py": "e8ba96c46fa6b9cc59ab9b136e073fe9331569955c7ea26bb48fa2bcb62ac6ae",
+    "scripts/eval_closed_loop.py": "c0ad00c44d9144eed30ddeac0a2344645f4838a4e0cbea4c9f717d3874ee0374",
+    "scripts/eval_feedback.py": "6f78c7b0906090998530575d1b7273523b36838e2e8d991394efa5e35752c378",
+    "scripts/eval_open_loop.py": "a02766efca7132ed4af5253845371a29068cfb7df60d7371bcc2ae90103a04ba",
+    "scripts/eval_recovery_only.py": "2602c1b2168cf51d98a2cf37a63f61301af831ce0a559b2d13bea882c9d73296",
+    "scripts/eval_stress.py": "32c33a1588923ca35a5d2f5096086af0eb5f21b6a95f58f13b4ef47fc82876b6",
+    "scripts/generate_dataset.py": "448ed1eac003336556743cdc59ecf58583d266f925641aee167e1bb3c207a2ca",
+    "scripts/generate_recovery_data.py": "974878cc5a7af1df941c9b8780d451fcab499a2ff8d66414ee5cf469fc1504e0",
+    "scripts/generate_stress_manifest.py": "54d41a333347994f6829b7760b062f279ff1cdcd70c1fca3f1e66f79ddb112c5",
+    "scripts/migrate_manifest_hashes.py": "101b2c72daa7060d25041763e02e1d27358c76dadcebdc377a39c92a0c7031fb",
+    "scripts/prove_scale10x_gpu.py": "5e94297a8d0870b2b5449447aff1ce1499fb4a082130e768af7f231ba8e3c4a8",
+    "scripts/provision_scale10x.py": "31c8083df79a28aa10ff9d7a76fcc68773f5c3132b1b4129eeefecb6f9862343",
+    "scripts/report_recovery_outcome.py": "be8c319bea647dcafae6a37b358e02320b1f0cc00577dc0fdcfdf480daceac5a",
+    "scripts/report_scale10x.py": "600d8bb22d86036e092840ea5ac9bee8086f8cfc99e01a80d91d9a2ece3a550a",
+    "scripts/run_scale10x.py": "84f844e8aa80ba7338d34b31503e03eea3dc64e8fdcf38d0e89c91c1758a5e1a",
+    "scripts/select_e3_kl.py": "5ad4fa1a2fd89f5add6f81c1668cf44ac13788081f3891e38b0171d3b4e63325",
+    "scripts/stage6_feedback.py": "789941c9daacfe7edc31167f39e723e6325a7f66ae6c668d07096681937cdcc0",
+    "scripts/stage6_scale10x.py": "6d1335551f85aad76391b4412c2c88119454df891e407280585ebe18e641ad0a",
+    "scripts/sync_run_artifacts.py": "4c249f3b7d09a38a537707693c70a0b33dcfb5a6a5fb2910c65a6262b6af434a",
+    "scripts/train_episode_rl.py": "6e5a760ea28fb66a845b5b4881a3b548eed1545c9d05fd84d900fd5045a04ab4",
+    "scripts/train_recovery_sft.py": "7aaf4826097c94edd8b1f3885d585a51de4310f4f754a76b1a1c7f3cace3c787",
+    "scripts/train_rl.py": "1ef3ecda98747126de4e963fdf4a833c2557197bc16c1de99253033fcfcbe171",
+    "scripts/train_sft.py": "4efcc4c92241ec6480bc403c6d83146746fd53119781cce50707cb247e79aa5a",
+    "scripts/validate_dataset.py": "f2ef6b9b34a3bce82009f6f4f5028e767019c560e411704b4facaca4950634df",
+    "scripts/verify_stages.py": "1961c5b87a39da50dd5ac3c95946658cc8b6d273ee73550a2d48a48abda47e6f",
+    "tests/test_episode_rl.py": "92238d7bd952985b9bbe63d9015f0d1c511f0a51d685ca0a9f72f7cab7f2c697",
+    "tests/test_feedback.py": "6eb708ad68a44801c5c94e472edb834f7deaa2b6fe810ccdcbe2994518228a98",
+    "tests/test_feedback_pilot.py": "ecae4082b3f33296b87b683e6efe57f00d8a41d69016c413b10fd5641845229b",
+    "tetris/__init__.py": "18760cf269e591c7aeac8860ade74870e4f4b81b69da9b2ab082d73567900ed2",
+    "tetris/board.py": "2f1cd31d43d42e9a30f8c18cf126933a952c6e75522762bf868178a4ffa575ac",
+    "tetris/chat.py": "c2d60e151e3eaf4129626dddc7d4d02a84ba71e77d627545752fd61b28886eb8",
+    "tetris/dashboard.py": "41d62b531367620628a700744042132defe52ed9d695e9da09379a516f599c22",
+    "tetris/dashboard_thresholds.py": "c96d58b16cd3b1bf94a3a8e237c57f8322db070c8ee224a3198cf948a751da95",
+    "tetris/dataset.py": "1df3022ff7ba0ce0b02b00e4e7dec709308636412f7e7d431d4b3b67f5641b2a",
+    "tetris/dataset_validate.py": "b23052171a60efc4e414ec488066b6c9d9c9ea20c420086a268fe101bcd60ed5",
+    "tetris/engine.py": "64a164cefa8920438e7a051dd7fcd178a4474f3f79059243e71d45a0ef7f6968",
+    "tetris/events.py": "eb6ce05df22087273021d977fd2762ac5494c010c67199e55c53b3fa3ba9cec2",
+    "tetris/features.py": "2f56085ccfca2c8e7f0d40d615af2ebe840fdf11bfd7e4c0d5d7cdaf105686a5",
+    "tetris/model_policy.py": "9daab08bc64c6d6c2a483e5fa2952fc41092dd670a0f3231fe6f61c3dbc808cb",
+    "tetris/pieces.py": "8bd61fc9f9b8827f9320f83572230bdeebd14dbe49b56e664f8cc0b63c9fa762",
+    "tetris/placement.py": "bc5142703b1c3fa3753863f87c4a52d540b9499a416ea89234669a7c4621722f",
+    "tetris/recovery.py": "e732627805e7b997bc677a9712d2df7236c8bdbd0f79b20075bf6d74280af532",
+    "tetris/rl.py": "733d227dde664ff1078cdd815f7fdbccc55021e28071b37dad45909be36b7e99",
+    "tetris/rollout.py": "b909535d0da42b0d742c278cc35ab13f0bf1e8a154e66d597c3474126091c666",
+    "tetris/serialize.py": "087ad73371cc4312b6d570d56caceda57931419014ea4a384a46c7ddc62a57b0",
+    "tetris/teacher.py": "09fc803d6b48f2da8aa03e9b82d0baa130d828389cbe65cc8ccb81c3d29691ed"
+  },
+  "budget_approval": null
+}

@@ -20,10 +20,25 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
+import time
 from pathlib import Path
 
 from tetris.dataset import DEFAULT_MAX_PIECES
 from tetris.dataset_validate import run_all_checks, sample_rows_as_text
+from tetris.events import file_sha256
+
+
+def _git_sha() -> str | None:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"],
+            cwd=Path(__file__).resolve().parent.parent,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except Exception:
+        return None
 
 
 def _load_jsonl(path: Path) -> list[dict]:
@@ -42,6 +57,7 @@ def main() -> None:
     )
     parser.add_argument("--sample", type=int, default=0, help="also dump N random rows as text for a human to read")
     parser.add_argument("--sample-out", type=Path, default=None, help="file to write the sample to (default: stdout)")
+    parser.add_argument("--report-json", type=Path, default=None, help="write the durable machine-readable validation report")
     args = parser.parse_args()
 
     games = _load_jsonl(args.data_dir / "games.jsonl")
@@ -59,6 +75,22 @@ def main() -> None:
 
     report = run_all_checks(games, rows, max_pieces=max_pieces, workers=args.workers, weights=weights)
 
+    expected_hashes = manifest.get("content_hashes")
+    if expected_hashes:
+        actual_hashes = {
+            "games.jsonl": file_sha256(args.data_dir / "games.jsonl"),
+            "rows.jsonl": file_sha256(args.data_dir / "rows.jsonl"),
+        }
+        report["content_hashes"] = {
+            "ok": actual_hashes == expected_hashes,
+            "detail": {"expected": expected_hashes, "actual": actual_hashes},
+        }
+    else:
+        report["content_hashes"] = {
+            "ok": False,
+            "detail": "manifest.json has no content_hashes; regenerate or explicitly migrate the manifest before trusting lineage",
+        }
+
     all_ok = True
     for name, result in report.items():
         status = "PASS" if result["ok"] else "FAIL"
@@ -73,6 +105,26 @@ def main() -> None:
         else:
             print("\n=== sample rows (check #6: read these) ===\n")
             print(text)
+
+    if args.report_json:
+        payload = {
+            "run_id": f"validate-{args.data_dir.name}",
+            "stage": 3,
+            "status": "passed" if all_ok else "failed",
+            "ok": all_ok,
+            "git_sha": _git_sha(),
+            "dataset_manifest_git_sha": manifest.get("git_sha"),
+            "data_dir": str(args.data_dir),
+            "manifest": str(manifest_path),
+            "games": len(games),
+            "rows": len(rows),
+            "max_pieces": max_pieces,
+            "checks": report,
+            "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        }
+        args.report_json.parent.mkdir(parents=True, exist_ok=True)
+        args.report_json.write_text(json.dumps(payload, indent=2) + "\n")
+        print(f"wrote validation report to {args.report_json}")
 
     if not all_ok:
         raise SystemExit("one or more validation checks FAILED -- do not train on this dump")

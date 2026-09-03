@@ -1,0 +1,40 @@
+{
+  "source": "runs/rl-scale10x-seed0/rl/trajectory_batches/update-000006.json",
+  "source_sha256": "761af6fa0be5cd367f42eefa39876341c2f824a7f4842e36021654e1d8101bd7",
+  "historical_advantages_reproduced_exactly": true,
+  "rows": [
+    {
+      "episode": "episode-20000061-0",
+      "length": 18,
+      "terminal_reason": "illegal_action",
+      "terminal_reward": -10.0,
+      "original_terminal_advantage": -0.6151164545307134,
+      "revised_terminal_advantage": -1.0
+    },
+    {
+      "episode": "episode-20000061-1",
+      "length": 38,
+      "terminal_reason": "illegal_action",
+      "terminal_reward": -10.0,
+      "original_terminal_advantage": 0.0,
+      "revised_terminal_advantage": -1.0
+    },
+    {
+      "episode": "episode-20000061-2",
+      "length": 20,
+      "terminal_reason": "illegal_action",
+      "terminal_reward": -10.0,
+      "original_terminal_advantage": -0.7183648447877399,
+      "revised_terminal_advantage": -1.0
+    },
+    {
+      "episode": "episode-20000061-3",
+      "length": 21,
+      "terminal_reason": "illegal_action",
+      "terminal_reward": -10.0,
+      "original_terminal_advantage": -0.9999999998057022,
+      "revised_terminal_advantage": -1.0
+    }
+  ],
+  "interpretation": "Counterfactual coefficients on historical trajectories only. No model trained; no causal performance evidence."
+}

@@ -20,9 +20,13 @@ nothing beyond the base project.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
+import socket
 import subprocess
+import threading
 import time
+from contextlib import contextmanager
 from pathlib import Path
 
 from tetris.rollout import (
@@ -34,6 +38,10 @@ from tetris.rollout import (
     run_rollout,
     teacher_policy,
 )
+from tetris.events import EventWriter
+from tetris.events import manifest_hashes
+from tetris.model_policy import build_model_policy
+from tetris.rl import directory_sha256
 from tetris.teacher import WEIGHTS as LIVE_WEIGHTS
 
 
@@ -68,41 +76,6 @@ def check_seed_disjointness(seeds: list[int], data_dirs: list[Path]) -> None:
             raise SystemExit(f"{manifest_path}: eval seeds overlap Stage 3 seeds: {sorted(overlap)[:5]}")
 
 
-def build_model_policy(adapter_dir: Path, base_model: str, device: str):
-    """Loaded lazily -- only called when "model" is actually in --policies,
-    so a random/teacher-only run never needs torch installed."""
-    import torch
-    from peft import PeftModel
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-
-    from tetris.chat import build_generation_prompt
-    from tetris.serialize import parse_action
-
-    tokenizer = AutoTokenizer.from_pretrained(base_model)
-    base = AutoModelForCausalLM.from_pretrained(base_model, dtype=torch.bfloat16).to(device)
-    model = PeftModel.from_pretrained(base, str(adapter_dir)).to(device)
-    model.eval()
-
-    def pick(snapshots: list[dict], teacher_infos):
-        prompts = [build_generation_prompt(tokenizer, snap["prompt"]) for snap in snapshots]
-        enc = tokenizer(prompts, return_tensors="pt", padding=True, padding_side="left").to(device)
-        with torch.no_grad():
-            out = model.generate(**enc, max_new_tokens=16, do_sample=False, pad_token_id=tokenizer.pad_token_id)
-        new_tokens = out[:, enc["input_ids"].shape[1] :]
-        texts = tokenizer.batch_decode(new_tokens, skip_special_tokens=True)
-        results = []
-        for text in texts:
-            line = text.strip().splitlines()[0] if text.strip() else ""
-            try:
-                action = parse_action(line)
-            except ValueError:
-                action = None
-            results.append((action, text))
-        return results
-
-    return pick
-
-
 def build_policy(name: str, args, weights: dict):
     if name == "random":
         return random_legal_policy()
@@ -119,7 +92,48 @@ def build_policy(name: str, args, weights: dict):
 def _default_device() -> str:
     import torch
 
-    return "mps" if torch.backends.mps.is_available() else "cpu"
+    if torch.cuda.is_available():
+        return "cuda"
+    if torch.backends.mps.is_available():
+        return "mps"
+    return "cpu"
+
+
+@contextmanager
+def event_heartbeat(events: EventWriter, *, phase: str, current: int, total: int):
+    """Keep long rollout groups visibly alive between their final metrics."""
+    stopped = threading.Event()
+
+    def emit() -> None:
+        while not stopped.wait(60):
+            events.emit(
+                "heartbeat",
+                phase=phase,
+                current=current,
+                total=total,
+                message="closed-loop rollout is still running",
+            )
+
+    thread = threading.Thread(target=emit, name="closed-loop-heartbeat", daemon=True)
+    thread.start()
+    try:
+        yield
+    finally:
+        stopped.set()
+        thread.join(timeout=2)
+
+
+def assisted_copy(records: list[dict], diagnostics: dict[str, list[dict]]) -> tuple[list[dict], dict[str, list[dict]]]:
+    """Random and teacher are always legal, so strict and assisted are identical."""
+    copied_records = copy.deepcopy(records)
+    copied_diagnostics: dict[str, list[dict]] = {}
+    for record in copied_records:
+        old_game_id = record["game_id"]
+        new_game_id = old_game_id.replace("-strict-", "-assisted-")
+        record["game_id"] = new_game_id
+        record["mode"] = ASSISTED
+        copied_diagnostics[new_game_id] = copy.deepcopy(diagnostics[old_game_id])
+    return copied_records, copied_diagnostics
 
 
 def main() -> None:
@@ -127,13 +141,15 @@ def main() -> None:
     parser.add_argument("--policies", default="random,teacher,model", help="comma-separated subset of random,teacher,model")
     parser.add_argument("--modes", default="strict,assisted", help="comma-separated subset of strict,assisted")
     parser.add_argument("--adapter-dir", type=Path, default=None)
+    parser.add_argument("--model-label", default="model", help="artifact label for the model policy; decoding is unchanged")
     parser.add_argument("--base-model", default="Qwen/Qwen3-1.7B")
     parser.add_argument("--data-dirs", nargs="*", type=Path, default=[], help="Stage 3 dirs, for teacher weights + seed-disjointness check")
     parser.add_argument("--num-seeds", type=int, default=100)
     parser.add_argument("--seed-offset", type=int, default=None, help="default: tetris.rollout.EVAL_SEED_OFFSET")
     parser.add_argument("--cap", type=int, default=500)
     parser.add_argument("--gen-batch-size", type=int, default=64)
-    parser.add_argument("--device", default=None, help="default: mps if available, else cpu (model policy only)")
+    parser.add_argument("--teacher-workers", type=int, default=1, help="processes used for per-state teacher scoring")
+    parser.add_argument("--device", default=None, help="default: cuda, then mps, then cpu (model policy only)")
     parser.add_argument("--out-dir", type=Path, required=True)
     args = parser.parse_args()
 
@@ -151,30 +167,61 @@ def main() -> None:
     games_path = args.out_dir / "games.jsonl"
     metrics_path = args.out_dir / "metrics.json"
     manifest_path = args.out_dir / "manifest.json"
+    if manifest_path.exists() or games_path.exists():
+        raise SystemExit("evaluation artifacts already exist; use a new output directory")
+    adapter_hash = directory_sha256(args.adapter_dir) if args.adapter_dir else None
+    policy_metadata = {}
+    parent_run_id = args.adapter_dir.parent.name if args.adapter_dir else None
+    base_run_id = args.out_dir.parent.name if args.out_dir.name == "closed_loop" else args.out_dir.name
+    run_id = f"{base_run_id}-closed-loop"
+    parent_run_ids = [parent_run_id] if parent_run_id else []
+    events = EventWriter(args.out_dir / "events.jsonl", run_id=run_id, stage=5, lineage={"parent_run_ids": parent_run_ids})
+    run_git_sha = _git_sha()
+    total_groups = len(policies) * len(modes)
+    events.emit("job_started", phase="closed_loop", current=0, total=total_groups, metrics={"planned_games": total_groups * len(seeds)})
 
     report: dict = {}
     t0 = time.time()
+    completed_groups = 0
     with games_path.open("w") as games_f:
         for policy_name in policies:
+            policy_label = args.model_label if policy_name == "model" else policy_name
             policy_fn = build_policy(policy_name, args, weights)
-            report[policy_name] = {}
+            policy_metadata[policy_label] = getattr(policy_fn, "metadata", {})
+            report[policy_label] = {}
+            strict_legal_result = None
             for mode in modes:
-                print(f"[{policy_name}/{mode}] running {len(seeds)} seeds, cap={args.cap} ...", flush=True)
+                print(f"[{policy_label}/{mode}] running {len(seeds)} seeds, cap={args.cap} ...", flush=True)
                 t_start = time.time()
-                records, diagnostics = run_rollout(
-                    seeds,
-                    policy_fn,
-                    mode=mode,
-                    cap=args.cap,
-                    teacher_weights=weights,
-                    gen_batch_size=args.gen_batch_size,
-                    game_id_prefix=policy_name,
-                )
+                if mode == ASSISTED and strict_legal_result is not None:
+                    records, diagnostics = assisted_copy(*strict_legal_result)
+                    print("  reused strict result because this policy always emits legal actions", flush=True)
+                else:
+                    with event_heartbeat(
+                        events,
+                        phase=f"{policy_label}/{mode}",
+                        current=completed_groups,
+                        total=total_groups,
+                    ):
+                        records, diagnostics = run_rollout(
+                            seeds,
+                            policy_fn,
+                            mode=mode,
+                            cap=args.cap,
+                            teacher_weights=weights,
+                            gen_batch_size=args.gen_batch_size,
+                            game_id_prefix=policy_label,
+                            teacher_workers=args.teacher_workers,
+                        )
+                    if mode == STRICT and policy_name in {"random", "teacher"}:
+                        strict_legal_result = (records, diagnostics)
                 for rec in records:
-                    rec["policy"] = policy_name
+                    rec["policy"] = policy_label
                     games_f.write(json.dumps(rec) + "\n")
                 metrics = aggregate_metrics(records, diagnostics)
-                report[policy_name][mode] = metrics
+                report[policy_label][mode] = metrics
+                completed_groups += 1
+                events.emit("eval_metrics", phase=f"{policy_label}/{mode}", current=completed_groups, total=total_groups, metrics={"completed_games": completed_groups * len(seeds), "planned_games": total_groups * len(seeds), "lines_mean": metrics["lines"]["mean"], "deaths": metrics["deaths"], "parse_failure_rate": metrics["parse_failure_rate"]["mean"], "teacher_match_rate": metrics["teacher_match_rate"]["mean"]})
                 elapsed = time.time() - t_start
                 lines_m = metrics["lines"]
                 print(
@@ -187,22 +234,45 @@ def main() -> None:
                     flush=True,
                 )
 
+    if args.adapter_dir and directory_sha256(args.adapter_dir) != adapter_hash:
+        raise RuntimeError("adapter changed during closed-loop evaluation")
     manifest = {
-        "git_sha": _git_sha(),
-        "policies": policies,
+        "run_id": run_id,
+        "stage": 5,
+        "status": "passed",
+        "host": socket.gethostname(),
+        "parent_run_ids": parent_run_ids,
+        "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),
+        "git_sha": run_git_sha,
+        "policies": [args.model_label if policy == "model" else policy for policy in policies],
         "modes": modes,
         "seeds": seeds,
         "cap": args.cap,
         "gen_batch_size": args.gen_batch_size,
+        "teacher_workers": args.teacher_workers,
         "teacher_weights": weights,
         "adapter_dir": str(args.adapter_dir) if args.adapter_dir else None,
+        "adapter_sha256": adapter_hash,
+        "policy_metadata": policy_metadata,
+        "greedy": True,
         "base_model": args.base_model,
         "data_dirs": [str(d) for d in args.data_dirs],
         "wall_clock_seconds": time.time() - t0,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    report["_meta"] = {
+        "run_id": run_id,
+        "stage": 5,
+        "status": "passed",
+        "git_sha": manifest["git_sha"],
+        "host": manifest["host"],
+        "parent_run_ids": parent_run_ids,
+        "data_manifest_hashes": manifest["data_manifest_hashes"],
+        "generated_at": manifest["generated_at"],
+    }
     metrics_path.write_text(json.dumps(report, indent=2) + "\n")
+    events.emit("job_completed", phase="closed_loop", current=total_groups, total=total_groups, metrics={"completed_games": total_groups * len(seeds), "wall_clock_seconds": time.time() - t0}, artifacts=[str(games_path), str(metrics_path), str(manifest_path)])
     print(f"wrote {games_path}, {metrics_path}, {manifest_path}")
 
 

@@ -1,0 +1,3 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+*/5 * * * * ubuntu /usr/bin/flock -n /home/ubuntu/llm-tetris/.stage6-monitor.lock /bin/bash /home/ubuntu/llm-tetris/infra/rl-monitor.sh >> /home/ubuntu/stage6-monitor.log 2>&1

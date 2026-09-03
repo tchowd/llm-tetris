@@ -1,0 +1,181 @@
+import json
+
+from tetris import dashboard
+from tetris import events
+from tetris.events import EventWriter
+
+
+def configure_paths(monkeypatch, root):
+    monkeypatch.setattr(dashboard, "ROOT", root)
+    monkeypatch.setattr(dashboard, "DATA_DIR", root / "data")
+    monkeypatch.setattr(dashboard, "RUNS_DIR", root / "runs")
+    monkeypatch.setattr(dashboard, "STATUS_DIR", root / "runs/status")
+
+
+def test_dataset_discovery_keeps_missing_validation_explicit(tmp_path, monkeypatch):
+    configure_paths(monkeypatch, tmp_path)
+    batch = tmp_path / "data/batch1"
+    batch.mkdir(parents=True)
+    (batch / "games.jsonl").write_text("")
+    (batch / "rows.jsonl").write_text("")
+    (batch / "manifest.json").write_text(json.dumps({"num_games": 2, "num_rows": 8, "died_count": 1, "git_sha": "abc", "search_depth": 2}))
+
+    result = dashboard.discover_datasets()
+
+    assert result["totals"] == {"batches": 1, "games": 2, "rows": 8, "deaths": 1, "validated_batches": 0}
+    assert result["batches"][0]["validation"]["status"] == "missing"
+    assert result["batches"][0]["files"]["rows_exists"] is True
+
+
+def test_dataset_validation_report_is_counted(tmp_path, monkeypatch):
+    configure_paths(monkeypatch, tmp_path)
+    batch = tmp_path / "data/batch1"
+    batch.mkdir(parents=True)
+    (batch / "games.jsonl").write_text("")
+    (batch / "rows.jsonl").write_text("")
+    (batch / "manifest.json").write_text(json.dumps({"num_games": 1, "num_rows": 4, "died_count": 0}))
+    (batch / "validation.json").write_text(json.dumps({"checks": {"replay": {"ok": True}, "legality": {"ok": True}}}))
+
+    result = dashboard.discover_datasets()
+
+    validation = result["batches"][0]["validation"]
+    assert validation["status"] == "passed"
+    assert validation["checks_passed"] == validation["checks_total"] == 2
+
+
+def test_run_discovery_reads_progress_without_loading_whole_event_file(tmp_path, monkeypatch):
+    configure_paths(monkeypatch, tmp_path)
+    run = tmp_path / "runs/sft-v1"
+    run.mkdir(parents=True)
+    (run / "train_manifest.json").write_text(json.dumps({"run_id": "sft-v1", "stage": 4, "backend": "unsloth"}))
+    writer = EventWriter(run / "events.jsonl", run_id="sft-v1", stage=4)
+    writer.emit("job_started", phase="training", current=0, total=10)
+    writer.emit("train_metrics", phase="training", current=4, total=10, metrics={"loss": 0.8})
+
+    runs = dashboard.discover_runs()
+
+    assert len(runs) == 1
+    assert runs[0]["status"] == "running"
+    assert runs[0]["progress"]["current"] == 4
+    assert runs[0]["progress"]["metrics"]["loss"] == 0.8
+
+
+def test_summary_always_contains_all_seven_stages_without_aws():
+    payload = dashboard.dashboard_summary(include_aws=False)
+
+    assert payload["partial"] is False
+    assert [stage["number"] for stage in payload["data"]["stages"]] == list(range(1, 8))
+    assert payload["data"]["project"]["next_action"]
+
+
+def test_aws_permission_and_overbroad_policy_become_normalized_issues():
+    issues = dashboard._aws_extended_issues(
+        {"credits": None, "errors": [{"code": "AccessDenied", "source": "billing:GetCredits", "message": "denied"}]},
+        {"quotas": [], "errors": []},
+        {"warnings": [{"severity": "red", "title": "Over-broad policy attached: AdministratorAccess", "next_action": "Scope it."}], "errors": []},
+        {"series": [], "errors": []},
+        {"resources": [], "errors": []},
+        {"jobs": [], "errors": []},
+    )
+
+    assert {(item["severity"], item["source"]) for item in issues} == {("amber", "aws"), ("red", "aws")}
+
+
+def test_event_writer_pins_the_run_git_sha(tmp_path, monkeypatch):
+    monkeypatch.setattr(events, "_git_sha", lambda: "start-sha")
+    writer = EventWriter(tmp_path / "events.jsonl", run_id="run", stage=4)
+    monkeypatch.setattr(events, "_git_sha", lambda: "later-sha")
+
+    event = writer.emit("heartbeat")
+
+    assert event["git_sha"] == "start-sha"
+
+
+def test_active_cloudwatch_alarm_becomes_a_red_issue():
+    issues = dashboard._aws_alarm_issues(
+        {"alarms": [{"name": "llm-tetris-gpu-idle", "state": "ALARM", "reason": "idle", "region": "us-east-1"}]}
+    )
+
+    assert len(issues) == 1
+    assert issues[0]["severity"] == "red"
+    assert "gpu-idle" in issues[0]["title"]
+
+
+def test_child_cloudwatch_job_keeps_parent_tagged_instance_from_looking_orphaned():
+    resources = {
+        "resources": [
+            {
+                "instance_id": "i-123",
+                "region": "us-east-1",
+                "state": "running",
+                "launch_time": "2026-01-01T00:00:00Z",
+                "instance_status": "ok",
+                "system_status": "ok",
+                "tags": {"RunId": "sft-v1", "Stage": "4"},
+            }
+        ]
+    }
+    jobs = {
+        "jobs": [
+            {
+                "run_id": "sft-v1-closed-loop",
+                "status": "running",
+                "last_event": {"parent_run_ids": ["sft-v1"]},
+            }
+        ]
+    }
+
+    assert dashboard._aws_issues(resources, jobs) == []
+
+
+def test_cloudwatch_job_normalizes_to_a_dashboard_run():
+    run = dashboard.cloud_run(
+        {
+            "run_id": "sft-v1-closed-loop",
+            "stage": 5,
+            "status": "running",
+            "phase": "teacher/strict",
+            "current": 2,
+            "total": 6,
+            "last_updated": "2026-09-01T20:00:00Z",
+            "last_event": {"host": "gpu-host", "git_sha": "abc", "parent_run_ids": ["sft-v1"]},
+        }
+    )
+
+    assert run["path"] == "cloudwatch"
+    assert run["backend"] == "AWS"
+    assert run["progress"] == {"phase": "teacher/strict", "current": 2, "total": 6, "metrics": {}}
+    assert run["manifest"]["parent_run_ids"] == ["sft-v1"]
+
+
+def test_stage_six_requests_rl_decision_after_stage_five_passes(tmp_path, monkeypatch):
+    configure_paths(monkeypatch, tmp_path)
+    run = {
+        "stage": 5,
+        "status": "passed",
+        "run_id": "eval",
+        "manifest_path": "runs/eval/closed_loop/manifest.json",
+        "metrics_path": "runs/eval/closed_loop/metrics.json",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "manifest": {"seeds": [1]},
+        "metrics": {
+            "model": {
+                "strict": {
+                    "lines": {"mean": 197.0},
+                    "parse_failure_rate": {"mean": 0.0},
+                    "illegal_rate": {"mean": 0.0},
+                    "n_games": 1,
+                }
+            }
+        },
+    }
+
+    stages, _ = dashboard._stage_local_state(
+        {"batches": [], "totals": {"validated_batches": 0}},
+        [run],
+        {"sha": "", "short_sha": "", "dirty": False},
+    )
+
+    stage_six = stages[5]
+    assert stage_six["status"] == "ready"
+    assert stage_six["progress"]["label"] == "stress-v1 registered · E0 control next"

@@ -1,0 +1,14 @@
+{
+  "BudgetName": "LLMTetrisMonthly",
+  "BudgetLimit": {
+    "Amount": "200",
+    "Unit": "USD"
+  },
+  "CostFilters": {
+    "TagKeyValue": [
+      "user:Project$llm-tetris"
+    ]
+  },
+  "TimeUnit": "MONTHLY",
+  "BudgetType": "COST"
+}

@@ -1,0 +1,34 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "WriteProjectTelemetry",
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:PutMetricData",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:DescribeLogStreams",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "PublishRunArtifacts",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::llm-tetris-artifacts-566629888938-us-east-1"
+    },
+    {
+      "Sid": "WriteRunArtifacts",
+      "Effect": "Allow",
+      "Action": [
+        "s3:AbortMultipartUpload",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::llm-tetris-artifacts-566629888938-us-east-1/runs/*"
+    }
+  ]
+}

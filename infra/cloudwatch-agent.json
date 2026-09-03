@@ -1,0 +1,67 @@
+{
+  "agent": {
+    "metrics_collection_interval": 60,
+    "run_as_user": "root"
+  },
+  "metrics": {
+    "namespace": "LLMTetris/Training",
+    "append_dimensions": {
+      "InstanceId": "${aws:InstanceId}",
+      "InstanceType": "${aws:InstanceType}"
+    },
+    "metrics_collected": {
+      "mem": {
+        "measurement": ["mem_used_percent"],
+        "metrics_collection_interval": 60
+      },
+      "disk": {
+        "measurement": ["used_percent", "free"],
+        "resources": ["/"],
+        "metrics_collection_interval": 60
+      },
+      "nvidia_gpu": {
+        "measurement": [
+          "utilization_gpu",
+          "memory_used",
+          "memory_total",
+          "temperature_gpu",
+          "power_draw"
+        ],
+        "metrics_collection_interval": 60
+      }
+    }
+  },
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/home/ubuntu/llm-tetris/runs/**/events.jsonl",
+            "log_group_name": "/llm-tetris/jobs",
+            "log_stream_name": "{instance_id}/events"
+          },
+          {
+            "file_path": "/home/ubuntu/llm-tetris/runs/**/train.log",
+            "log_group_name": "/llm-tetris/jobs",
+            "log_stream_name": "{instance_id}/train"
+          },
+          {
+            "file_path": "/home/ubuntu/train.log",
+            "log_group_name": "/llm-tetris/jobs",
+            "log_stream_name": "{instance_id}/train"
+          },
+          {
+            "file_path": "/home/ubuntu/eval_open_loop.cuda.log",
+            "log_group_name": "/llm-tetris/jobs",
+            "log_stream_name": "{instance_id}/open-loop"
+          },
+          {
+            "file_path": "/home/ubuntu/eval_closed_loop.cuda.log",
+            "log_group_name": "/llm-tetris/jobs",
+            "log_stream_name": "{instance_id}/closed-loop"
+          }
+        ]
+      }
+    }
+  }
+}
