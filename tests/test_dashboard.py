@@ -178,4 +178,4 @@ def test_stage_six_requests_rl_decision_after_stage_five_passes(tmp_path, monkey
 
     stage_six = stages[5]
     assert stage_six["status"] == "ready"
-    assert stage_six["progress"]["label"] == "RL readiness decision pending"
+    assert stage_six["progress"]["label"] == "stress-v1 registered · E0 control next"

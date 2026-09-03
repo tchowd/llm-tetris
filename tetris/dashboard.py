@@ -90,11 +90,11 @@ STAGES = [
     {
         "number": 6,
         "slug": "rl",
-        "name": "Optional RL",
+        "name": "RL research",
         "short": "RL",
-        "purpose": "Only if justified, optimize survival without regressing format or legality.",
+        "purpose": "Test dense and episode-return learning without regressing format, legality, or the frozen SFT baseline.",
         "prerequisites": [5],
-        "gate": "Stage 5 explicitly approves RL and the final policy beats SFT without constraint regression.",
+        "gate": "Stress-v1 is frozen, trajectory proofs pass, and replicated results support retaining either RL or SFT.",
     },
     {
         "number": 7,
@@ -110,6 +110,7 @@ STAGES = [
 STAGE_SOURCE_PATTERNS = {
     1: ["server.py", "tetris/board.py", "tetris/engine.py", "tetris/features.py", "tetris/pieces.py", "tetris/placement.py", "tetris/serialize.py", "web/index.html", "web/package.json", "web/vite.config.js", "web/src/*.js", "web/src/*.css", "tests/test_bag.py", "tests/test_features.py", "tests/test_game_over.py", "tests/test_line_clear.py", "tests/test_placement.py", "tests/test_replay.py", "tests/test_serialize.py"],
     2: ["tetris/teacher.py", "tetris/placement.py", "tests/test_teacher_*.py"],
+    6: ["STAGE6.md", "benchmarks/stress-v1/*", "infra/rl-*.sh", "infra/rl-instance.template.json", "requirements-rl.txt", "tetris/rl.py", "tetris/recovery.py", "tetris/model_policy.py", "tetris/rollout.py", "scripts/*rl*.py", "scripts/*recovery*.py", "scripts/*episode*.py", "scripts/train_sft.py", "scripts/generate_stress_manifest.py", "scripts/eval_stress.py", "scripts/analyze_stage6.py", "scripts/check_e2_learning.py", "scripts/select_e3_kl.py", "scripts/check_e4_pilot.py", "scripts/eval_closed_loop.py", "scripts/verify_stages.py", "tests/test_rl.py", "tests/test_recovery*.py", "tests/test_stress_eval.py", "tests/test_episode*.py", "tests/test_grpo_integration.py", "tests/test_stage6_analysis.py"],
     7: ["DASHBOARD.md", "infra/*", "server.py", "tetris/dashboard*.py", "web/src/*"],
 }
 
@@ -331,6 +332,7 @@ def _run_from_manifest(path: Path, stage: int, kind: str) -> dict | None:
     events = _read_events(events_path)
     last_event = events[-1] if events else None
     status = manifest.get("status")
+    status = {"registered": "running", "completed": "passed", "stopped_budget": "failed"}.get(status, status)
     if not status:
         if last_event and last_event.get("type") == "job_failed":
             status = "failed"
@@ -547,23 +549,26 @@ def _stage_local_state(datasets: dict, runs: list[dict], git: dict) -> tuple[lis
             stage_runs = [run for run in runs if run["stage"] == 6]
             if stage_runs:
                 latest = stage_runs[0]
-                status = latest["status"]
-                gate_state = "passed" if status == "passed" else "pending"
+                status = latest["status"] if latest["status"] in {"running", "failed", "stale"} else "ready"
+                gate_state = "pending"
                 event = latest.get("progress") or {}
                 prog = progress(event.get("current"), event.get("total"), "updates", event.get("phase") or "RL")
                 evidence.append({"label": "RL run", "path": latest["manifest_path"], "timestamp": latest["updated_at"], "state": status})
-                next_action = "Compare the final checkpoint with the frozen SFT baseline."
+                next_action = "Continue the registered ladder or compare promoted checkpoints with frozen SFT."
             else:
                 stage5_passed = by_number.get(5, {}).get("status") == "passed"
                 status = "ready" if stage5_passed else "blocked"
                 gate_state = "pending"
                 prog = progress(
                     0,
-                    1,
-                    "decision",
-                    "RL readiness decision pending" if stage5_passed else "awaiting Stage 5 verdict",
+                    7,
+                    "experiments",
+                    "stress-v1 registered · E0 control next" if stage5_passed else "awaiting Stage 5 verdict",
                 )
-                next_action = "Write the explicit RL readiness decision." if stage5_passed else "Do not start RL until strict Stage 5 passes."
+                next_action = "Reproduce the frozen SFT control on stress-v1." if stage5_passed else "Do not start RL until strict Stage 5 passes."
+            if report and report.get("research_complete") and report.get("source_fingerprint") == stage_source_fingerprint(6):
+                status, gate_state = "passed", "passed"
+                next_action = "Retain the policy selected by the complete research report and archive the evidence."
 
         elif number == 7:
             report, report_path = verification_report(7)

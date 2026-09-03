@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
+import time
 from pathlib import Path, PurePosixPath
 
 import boto3
@@ -66,6 +68,7 @@ def main() -> None:
     parser.add_argument("--bucket", default=os.environ.get("LLM_TETRIS_ARTIFACT_BUCKET", DEFAULT_BUCKET))
     parser.add_argument("--region", default=os.environ.get("AWS_REGION", "us-east-1"))
     parser.add_argument("--include-adapter", action="store_true", help="also transfer final adapter files; checkpoints are always excluded")
+    parser.add_argument("--receipt", type=Path, help="write a durable transfer receipt after success")
     args = parser.parse_args()
 
     run_dir = args.runs_dir / args.run_id
@@ -82,6 +85,19 @@ def main() -> None:
         include_adapter=args.include_adapter,
     )
     print(f"{args.direction} complete: {count} objects for {args.run_id}")
+    if args.receipt:
+        args.receipt.parent.mkdir(parents=True, exist_ok=True)
+        args.receipt.write_text(json.dumps({
+            "status": "passed",
+            "direction": args.direction,
+            "run_id": args.run_id,
+            "bucket": args.bucket,
+            "object_count": count,
+            "included_adapter": args.include_adapter,
+            "optimizer_checkpoints_included": False,
+            "server_side_encryption": "AES256" if args.direction == "upload" else None,
+            "completed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        }, indent=2) + "\n")
 
 
 if __name__ == "__main__":
