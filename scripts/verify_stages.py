@@ -38,6 +38,17 @@ STAGE_TESTS = {
         "tests/test_teacher_pick.py",
         "tests/test_teacher_benchmark.py",
     ],
+    6: [
+        "tests/test_rl.py",
+        "tests/test_stress_eval.py",
+        "tests/test_episode_rl.py",
+        "tests/test_episode_proof.py",
+        "tests/test_episode_runtime.py",
+        "tests/test_grpo_integration.py",
+        "tests/test_stage6_analysis.py",
+        "tests/test_recovery.py",
+        "tests/test_recovery_artifacts.py",
+    ],
 }
 
 
@@ -130,14 +141,81 @@ def verify_release() -> dict:
     }
 
 
+def verify_rl_stage() -> dict:
+    """Verify the local Stage 6 substrate without pretending GPU research ran."""
+
+    STATUS_DIR.mkdir(parents=True, exist_ok=True)
+    junit_path = STATUS_DIR / "stage-6-junit.xml"
+    pytest_result = run_command([sys.executable, "-m", "pytest", *STAGE_TESTS[6], "-q", f"--junitxml={junit_path}"])
+    compile_result = run_command(
+        [
+            sys.executable,
+            "-m",
+            "py_compile",
+            "scripts/generate_stress_manifest.py",
+            "scripts/eval_stress.py",
+            "scripts/train_rl.py",
+            "scripts/train_episode_rl.py",
+            "scripts/analyze_stage6.py",
+            "scripts/check_e2_learning.py",
+            "scripts/select_e3_kl.py",
+            "scripts/check_e4_pilot.py",
+            "scripts/train_recovery_sft.py",
+            "scripts/generate_recovery_data.py",
+            "scripts/audit_recovery_failures.py",
+            "scripts/eval_recovery_only.py",
+            "scripts/check_recovery_pilot.py",
+            "scripts/check_episode_proof.py",
+            "scripts/check_episode_runtime.py",
+            "scripts/check_episode_pilot.py",
+            "scripts/audit_recovery_artifacts.py",
+            "scripts/report_recovery_outcome.py",
+        ]
+    )
+    benchmark = ROOT / "benchmarks/stress-v1/manifest.json"
+    states = ROOT / "benchmarks/stress-v1/states.jsonl"
+    checks = [
+        {"name": "rl_unit_tests", "ok": pytest_result["ok"], "evidence": str(junit_path.relative_to(ROOT))},
+        {"name": "rl_entrypoints_compile", "ok": compile_result["ok"], "evidence": "scripts/train_rl.py"},
+        {"name": "stress_v1_registered", "ok": benchmark.exists() and states.exists(), "evidence": "benchmarks/stress-v1"},
+    ]
+    final_reports = list((ROOT / "runs").glob("*/rl/report.json"))
+    confirmation = False
+    if final_reports:
+        latest = max(final_reports, key=lambda path: path.stat().st_mtime)
+        try:
+            final_report = json.loads(latest.read_text())
+            confirmation = bool(final_report.get("research_complete") and final_report.get("operations_complete"))
+        except (OSError, json.JSONDecodeError):
+            confirmation = False
+        checks.append({"name": "research_report_complete", "ok": confirmation, "evidence": str(latest.relative_to(ROOT))})
+    local_ok = all(check["ok"] for check in checks[:3])
+    counts = junit_counts(junit_path) if junit_path.exists() else {"tests": 0, "failures": 0, "errors": 0, "skipped": 0, "duration_seconds": 0}
+    return {
+        "run_id": "verify-stage-6",
+        "stage": 6,
+        "status": "passed" if local_ok and confirmation else ("ready" if local_ok else "failed"),
+        "ok": local_ok,
+        "research_complete": confirmation,
+        "git_sha": git_sha(),
+        "source_fingerprint": stage_source_fingerprint(6),
+        "checks_passed": sum(check["ok"] for check in checks),
+        "checks_total": len(checks),
+        "test_counts": counts,
+        "checks": checks,
+        "commands": [pytest_result, compile_result],
+        "generated_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--stage", type=int, action="append", choices=[1, 2, 7], required=True)
+    parser.add_argument("--stage", type=int, action="append", choices=[1, 2, 6, 7], required=True)
     args = parser.parse_args()
     STATUS_DIR.mkdir(parents=True, exist_ok=True)
     failed = False
     for stage in dict.fromkeys(args.stage):
-        report = verify_release() if stage == 7 else verify_test_stage(stage)
+        report = verify_release() if stage == 7 else (verify_rl_stage() if stage == 6 else verify_test_stage(stage))
         path = STATUS_DIR / f"stage-{stage}.json"
         path.write_text(json.dumps(report, indent=2) + "\n")
         print(f"stage {stage}: {report['status']} ({report['checks_passed']}/{report['checks_total']}) -> {path}")
