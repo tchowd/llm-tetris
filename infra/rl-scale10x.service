@@ -1,0 +1,21 @@
+[Unit]
+Description=Registered 320-update LLM Tetris episode-RL workflow
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/llm-tetris
+Environment=OMP_NUM_THREADS=1
+Environment=TOKENIZERS_PARALLELISM=false
+Environment=PYTHONUNBUFFERED=1
+Environment=HF_HUB_OFFLINE=1
+Environment=TRANSFORMERS_OFFLINE=1
+ExecStart=/home/ubuntu/llm-tetris/.venv-rl/bin/python scripts/run_scale10x.py
+Restart=no
+KillMode=control-group
+KillSignal=SIGINT
+TimeoutStopSec=60
+StandardOutput=journal
+StandardError=journal

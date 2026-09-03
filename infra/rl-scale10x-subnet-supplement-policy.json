@@ -1,0 +1,30 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "UseExistingDefaultSubnetsInCapacityZones",
+      "Effect": "Allow",
+      "Action": "ec2:RunInstances",
+      "Resource": [
+        "arn:aws:ec2:us-east-1:566629888938:subnet/subnet-011c567e0b89bdea6",
+        "arn:aws:ec2:us-east-1:566629888938:subnet/subnet-07af2623089657057",
+        "arn:aws:ec2:us-east-1:566629888938:subnet/subnet-01df3bd9aafb4de79"
+      ]
+    },
+    {
+      "Sid": "LaunchNetworkInterfacesOnlyInCapacitySubnets",
+      "Effect": "Allow",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:us-east-1:566629888938:network-interface/*",
+      "Condition": {
+        "ArnEquals": {
+          "ec2:Subnet": [
+            "arn:aws:ec2:us-east-1:566629888938:subnet/subnet-011c567e0b89bdea6",
+            "arn:aws:ec2:us-east-1:566629888938:subnet/subnet-07af2623089657057",
+            "arn:aws:ec2:us-east-1:566629888938:subnet/subnet-01df3bd9aafb4de79"
+          ]
+        }
+      }
+    }
+  ]
+}

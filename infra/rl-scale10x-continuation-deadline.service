@@ -1,0 +1,6 @@
+[Unit]
+Description=Stop the Stage 6 worker at its approved absolute deadline
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/shutdown -h now

@@ -1,0 +1,6 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+AWS_DEFAULT_REGION=us-east-1
+OMP_NUM_THREADS=1
+TOKENIZERS_PARALLELISM=false
+*/5 * * * * ubuntu cd /home/ubuntu/llm-tetris && /home/ubuntu/llm-tetris/.venv-rl/bin/python infra/scale10x_continuation.py sync >> /var/log/llm-tetris-scale10x-continuation-sync.log 2>&1

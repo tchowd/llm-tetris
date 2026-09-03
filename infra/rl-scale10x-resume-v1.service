@@ -1,0 +1,21 @@
+[Unit]
+Description=Resume verified Stage 6 checkpoint 164 under unchanged approval
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/llm-tetris
+Environment=OMP_NUM_THREADS=1
+Environment=TOKENIZERS_PARALLELISM=false
+Environment=PYTHONUNBUFFERED=1
+Environment=HF_HUB_OFFLINE=1
+Environment=TRANSFORMERS_OFFLINE=1
+ExecStart=/home/ubuntu/llm-tetris/.venv-rl/bin/python infra/scale10x_resume.py run
+Restart=no
+KillMode=control-group
+KillSignal=SIGINT
+TimeoutStopSec=90
+StandardOutput=journal
+StandardError=journal
