@@ -1,0 +1,12 @@
+# Stage 6 RL extras. Install after the pinned Stage 4 training environment:
+#
+#   python3.13 -m venv .venv-rl
+#   source .venv-rl/bin/activate
+#   pip install -e . -r requirements-rl.txt
+#
+# TRL 0.29 copies a pre-trained PEFT adapter into a frozen in-model
+# reference adapter when beta is non-zero. This is required by Stage 6: the
+# reference must be the SFT adapter, not the adapter-disabled base model.
+-r requirements-train.txt
+datasets==4.8.3
+trl==0.29.1
