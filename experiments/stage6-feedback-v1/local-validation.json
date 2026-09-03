@@ -1,0 +1,34 @@
+{
+  "status": "local_validation_passed_awaiting_budget_approval",
+  "validated_at": "2026-09-03T21:21:48.049860+00:00",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "test_command": ".venv-train/bin/python -m pytest tests/test_feedback.py tests/test_feedback_pilot.py tests/test_episode_rl.py tests/test_episode_proof.py tests/test_episode_runtime.py tests/test_rl.py tests/test_recovery.py tests/test_stress_eval.py tests/test_scale10x.py -q",
+  "tests_passed": 86,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "proofs": [
+    "Original estimator bit-exact against preserved implementation on 50 ragged random groups",
+    "Real historical update 6 coefficients reproduced exactly",
+    "Tiny CPU optimizer loop and 2+2 resume yield exact same trajectories and final weights for both methods",
+    "Gradient direction, unequal token/trajectory lengths, chunk weighting, frozen reference and finite gradients",
+    "Registration verifies 75 source/input hashes, original SFT content, paired schedules and all 128 development state replays"
+  ],
+  "prechange_source_sha256": {
+    "experiments/stage6-feedback-v1/prechange/check_episode_proof.py": "e6b92f0c121f310cd7a2603a46ad08ec1c279772323e044706b11b0fa8ee7770",
+    "experiments/stage6-feedback-v1/prechange/rl.py": "1f6a5d834ebb7e8b9b53e3fe0cbed7362d9cd8f69fd3badf8da628c07ab012d8",
+    "experiments/stage6-feedback-v1/prechange/train_episode_rl.py": "eab70fff9a63058ac802c9778d064efedb0aee51733bb9646e417733d9aa5e4c"
+  },
+  "historical_report_sha256": "4b29b6326a040fa3c15c0ee7a885432905541e59aa7000b2c57047d6ed446dc8",
+  "paid_compute_started": false,
+  "aws_resources_provisioned": false,
+  "gpu_proof_passed": false,
+  "pilot_complete": false,
+  "final_test_access": false,
+  "remaining_gates": [
+    "New user spending approval",
+    "Provisioned session watchdog and ledger",
+    "Fresh GPU correctness/resume/throughput gate",
+    "Six runs and seven final greedy evaluations",
+    "Scientific report, encrypted read-back and exact-resource cleanup"
+  ]
+}
