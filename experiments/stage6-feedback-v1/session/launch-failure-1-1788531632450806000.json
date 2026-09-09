@@ -1,0 +1,6 @@
+{
+  "code": "InsufficientInstanceCapacity",
+  "message": "We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-1d). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-1a, us-east-1b, us-east-1c.",
+  "request_sha256": "94d693ad1bc9b3d0528e00972c7267ba2dbc45d22f1175d5dcce7543506b720e",
+  "at_epoch": 1788531632.451168
+}

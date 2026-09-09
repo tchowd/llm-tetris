@@ -1,0 +1,6 @@
+{
+  "region": "us-east-2",
+  "security_group": "sg-0c38f179c0800f413",
+  "key_name": "feedback-retained-v1",
+  "at_epoch": 1788543422.3909152
+}

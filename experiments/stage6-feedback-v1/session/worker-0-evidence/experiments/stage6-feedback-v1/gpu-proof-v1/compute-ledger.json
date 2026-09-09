@@ -1,0 +1,12 @@
+{
+  "run_id": "feedback-gpu-proof-v1",
+  "hard_limit_usd": 25,
+  "deadline_epoch": 1788503834.898127,
+  "charged_to_session_approval_sha256": "4130d3b8a03a6e96abca93c4b8b5595c12bff7d01e5ddf16fd6042922f9578b1",
+  "worker": {
+    "slot": 0,
+    "instance_id": "i-098c5726b527aca86",
+    "run_id": "rl-feedback-v1-active_group-seed6201"
+  },
+  "note": "Disposable proof subcap within new $250 approval; no old allowance is spent."
+}

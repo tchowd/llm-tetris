@@ -1,0 +1,42 @@
+{
+  "at_epoch": 1788541132.762563,
+  "results": [
+    {
+      "region": "us-east-2",
+      "gpu_quota_vcpus": 0.0,
+      "offerings": [
+        {
+          "InstanceType": "g6e.xlarge",
+          "LocationType": "region",
+          "Location": "us-east-2"
+        },
+        {
+          "InstanceType": "g6e.2xlarge",
+          "LocationType": "region",
+          "Location": "us-east-2"
+        }
+      ]
+    },
+    {
+      "region": "us-west-2",
+      "gpu_quota_vcpus": 0.0,
+      "offerings": [
+        {
+          "InstanceType": "g6e.2xlarge",
+          "LocationType": "region",
+          "Location": "us-west-2"
+        },
+        {
+          "InstanceType": "g6e.xlarge",
+          "LocationType": "region",
+          "Location": "us-west-2"
+        }
+      ]
+    },
+    {
+      "region": "us-west-1",
+      "gpu_quota_vcpus": 0.0,
+      "offerings": []
+    }
+  ]
+}

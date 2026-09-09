@@ -1,0 +1,8 @@
+{
+  "status": "verified",
+  "source_receipt_key": "runs/feedback-pilot-v1/worker-5/experiments/stage6-feedback-v1/session/sync-worker-5.json",
+  "source_readback_verified": true,
+  "count": 57,
+  "bytes": 349780167,
+  "at_epoch": 1788573481.2804601
+}

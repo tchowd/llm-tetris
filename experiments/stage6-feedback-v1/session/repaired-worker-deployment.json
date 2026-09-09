@@ -1,0 +1,16 @@
+{
+  "at_utc": "2026-09-04T09:04:53.898009+00:00",
+  "instance_id": "i-098c5726b527aca86",
+  "public_ip": "98.92.7.109",
+  "status": "repaired_workflow_running",
+  "quota_vcpus": 48,
+  "maximum_concurrent_workers": 1,
+  "source_bundle_sha256": "7e5c4669801f29db3e50df330c779eb55fc3ebb7d879c87f9180a444a038c666",
+  "bundle_files_verified": 106,
+  "worker_tests_passed": 13,
+  "absolute_shutdown_utc": "2026-09-04T21:28:31+00:00",
+  "monitor_timer": "active",
+  "service": "feedback-pilot.service",
+  "initial_phase": "alignment-diagnosis",
+  "pilot_runs_started": 0
+}

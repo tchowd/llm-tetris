@@ -1,0 +1,181 @@
+{
+  "objects": {
+    "experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/registration.json": {
+      "sha256": "dbb7225f06e0ed2b10e9ce6fed2303b3fd0075b6fd43a256b3f30cfc92b0a37c",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/registration.json",
+      "bytes": 1005
+    },
+    "experiments/stage6-feedback-v1/session/approval.json": {
+      "sha256": "dfd1a14babf5fa599e67dab5978152ca9c320182ba8f609fe97b43fea11895cc",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/approval.json",
+      "bytes": 2279
+    },
+    "experiments/stage6-feedback-v1/session/execution-policy.json": {
+      "sha256": "b43d5ab1225ef8b8c4fa66461f26c74ab336c7304ae58556e04c4212984d8783",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/execution-policy.json",
+      "bytes": 758
+    },
+    "experiments/stage6-feedback-v1/session/pilot-gate.json": {
+      "sha256": "f2a0f65d0b9e09838b2515b78be918ac55205422b8f6be01dc12afa69438b5ab",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/pilot-gate.json",
+      "bytes": 1338
+    },
+    "experiments/stage6-feedback-v1/session/retained-analysis-inputs.json": {
+      "sha256": "42d21fca54ae096c97bf7dd1f0d9213f277b5da6c0398c25af222b072a67e52c",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/retained-analysis-inputs.json",
+      "bytes": 613
+    },
+    "experiments/stage6-feedback-v1/session/retained-source.json": {
+      "sha256": "10c7b91828fa64d094257a79d26ac978a888a914f820734208892f59b73abbf4",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/retained-source.json",
+      "bytes": 912
+    },
+    "experiments/stage6-feedback-v1/session/setup-attempt-1.log": {
+      "sha256": "b7ce4e36db8aa8610e29d3ef6a3ccb2159f6015cf7723161c6eb4ec7d843a5ce",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/setup-attempt-1.log",
+      "bytes": 63196
+    },
+    "experiments/stage6-feedback-v1/session/source-bundle.json": {
+      "sha256": "680664a181208f06d65ef3abe53b343cc202ec4f4f1b73465d41ab03e6368ba8",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/source-bundle.json",
+      "bytes": 11682
+    },
+    "experiments/stage6-feedback-v1/session/worker-0-evidence/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json": {
+      "sha256": "88b5d25812c0b1dba6d5d1392abe72c08a23c7572975f2b88c014a5cec70083d",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/worker-0-evidence/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json",
+      "bytes": 7386
+    },
+    "experiments/stage6-feedback-v1/session/worker.json": {
+      "sha256": "604fd5fa70f684e1e39427035db503bcf6f516c5c354b72d71f1abc1778018fb",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/worker.json",
+      "bytes": 221
+    },
+    "experiments/stage6-feedback-v1/session/training-1788543975110316877.log": {
+      "sha256": "842e4a03f63f3dc9de25266a111d77ab1f980a82a233c26bf22002dc20d93b1e",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/training-1788543975110316877.log",
+      "bytes": 591
+    },
+    "experiments/stage6-feedback-v1/session/worker-status.json": {
+      "sha256": "96915c2fc9e30a04431b46c3717bcfcd2734edf5614e6afdd8cdd2552e254ca6",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/worker-status.json",
+      "bytes": 94
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/events.jsonl": {
+      "sha256": "e6087ff67a0a3931c8c46f5d6c52129789866e20e04852f3ac2036845da673b7",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/events.jsonl",
+      "bytes": 14082
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/manifest.json": {
+      "sha256": "15a0353c5938721089bf6a2fa2519d1d1e34f3efe0186bf785518ad19f83eef5",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/manifest.json",
+      "bytes": 5910
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000001.json": {
+      "sha256": "b26797a293fd0e85ade54c055729902111b061265e37cab088b594dc5c94be27",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000001.json",
+      "bytes": 2502612
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000002.json": {
+      "sha256": "5c5b96dfaded82310a3ef8f6b368f615c8a66acfed559eeb6ee1d2f3f006a708",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000002.json",
+      "bytes": 410479
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000003.json": {
+      "sha256": "dbc533343ba7640bf22f80afcea5223e39dacba16b7b7d3e3bac9aa16e3c64f2",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000003.json",
+      "bytes": 2440939
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/adapter/adapter_config.json": {
+      "sha256": "187be325b228e540dc77ad3b37489a670b93aa04fc6d03d9f01f6de14eda4b5d",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/adapter/adapter_model.safetensors": {
+      "sha256": "4fe1fbd71a4bd6dd2b894280c683a88614185d45b10de10b808d327c2b360df5",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/complete.json": {
+      "sha256": "ec15db39a4406fb46b9c21d0a23416e06d205188da9082464d1811dc211ef9bf",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/complete.json",
+      "bytes": 192
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/state.pt": {
+      "sha256": "4aa6d2ff5056fdb835414b819dd45058902a90ad3053a3000848b375e811f908",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-4/state.pt",
+      "bytes": 139754749
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/latest_checkpoint.json": {
+      "sha256": "479676437d876849838e97e3237c8eeddf6824df16eb1e78bc17e13bedd725df",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/latest_checkpoint.json",
+      "bytes": 106
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000004.json": {
+      "sha256": "c2cd5bd142a7ce4427428886a114961cd98d3be08d0f71030710ec283924dfd2",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000004.json",
+      "bytes": 733689
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000005.json": {
+      "sha256": "17dc8615c56c4a86bb66152e8e4edf81c13fdd4aacf21c2cbcbc0040a043fbe0",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000005.json",
+      "bytes": 2506355
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000006.json": {
+      "sha256": "50cba54a762c0abda364168a7d110966b9cdcf11368ccb67cf2583d71f27e1c6",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000006.json",
+      "bytes": 454619
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000007.json": {
+      "sha256": "2504a81207369fec8bbe10b59da483eeba61f6c984b265602e7be793a9f0fa25",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000007.json",
+      "bytes": 2498516
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/adapter/adapter_config.json": {
+      "sha256": "187be325b228e540dc77ad3b37489a670b93aa04fc6d03d9f01f6de14eda4b5d",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/adapter/adapter_model.safetensors": {
+      "sha256": "1cf3f03bbed21f2e9e32946f5793c69a0f2e9fd4f1acf3aa0d0c03b09755ac32",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/complete.json": {
+      "sha256": "f2a5c6bb143a7762917a3a263bb57677ef7a8ecd91af2340ce8584539db134f0",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/complete.json",
+      "bytes": 192
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/state.pt": {
+      "sha256": "f713e2a1f2284e38b46ac43309c88dc84d7f8aaffca322626fdc6be1971ab7b1",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/checkpoint-8/state.pt",
+      "bytes": 139756093
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000008.json": {
+      "sha256": "ad185e5b86c5c7794308e60a5d936088dcba9620a1b2eb0db57a40aac06dd3d7",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000008.json",
+      "bytes": 242419
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000009.json": {
+      "sha256": "489d1ce0454aa57d98bcedcdfa304d28d57f5ee6937830e11e2163a746bdde2f",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000009.json",
+      "bytes": 2525220
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000010.json": {
+      "sha256": "bc3f3603197e1366edcfe98fc0d837aced8bcb4aca9504ac2c346ca099b19cae",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/trajectory_batches/update-000010.json",
+      "bytes": 702223
+    }
+  },
+  "at_epoch": 1788544924.2239952,
+  "readback_verified": false
+}

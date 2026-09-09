@@ -1,0 +1,17 @@
+{
+  "at_epoch": 1788543413.560191,
+  "results": [
+    {
+      "region": "us-east-2",
+      "id": "b86b7d4ffd86431daf04e88d921aa642SgkJ4XBF",
+      "status": "CASE_CLOSED",
+      "quota_vcpus": 8.0
+    },
+    {
+      "region": "us-west-2",
+      "id": "30a463de1c8a45dc823f35e526da00edcqU7DGQH",
+      "status": "CASE_OPENED",
+      "quota_vcpus": 0.0
+    }
+  ]
+}

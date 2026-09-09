@@ -1,0 +1,17 @@
+{
+  "Id": "b86b7d4ffd86431daf04e88d921aa642SgkJ4XBF",
+  "CaseId": "178854115400316",
+  "ServiceCode": "ec2",
+  "ServiceName": "Amazon Elastic Compute Cloud (Amazon EC2)",
+  "QuotaCode": "L-DB2E81BA",
+  "QuotaName": "Running On-Demand G and VT instances",
+  "DesiredValue": 8.0,
+  "Status": "CASE_CLOSED",
+  "Created": "2026-09-04T12:59:13.443000-04:00",
+  "LastUpdated": "2026-09-04T13:05:03.574000-04:00",
+  "Requester": "{\"accountId\":\"566629888938\",\"callerArn\":\"arn:aws:iam::566629888938:user/gpu\"}",
+  "QuotaArn": "arn:aws:servicequotas:us-east-2:566629888938:ec2/L-DB2E81BA",
+  "GlobalQuota": false,
+  "Unit": "None",
+  "QuotaRequestedAtLevel": "ACCOUNT"
+}

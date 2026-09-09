@@ -1,0 +1,14 @@
+{
+  "region": "us-east-2",
+  "ami": "ami-01529c037984b51e9",
+  "ami_name": "Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.12 (Ubuntu 24.04) 20260827",
+  "subnets": [
+    "subnet-09a6ba344605ee5b0",
+    "subnet-013e03dadb7702ecd",
+    "subnet-058058cd6a35cd9ee"
+  ],
+  "security_group": "sg-0c38f179c0800f413",
+  "key_name": "feedback-retained-v1",
+  "quoted_hourly_usd": 2.24208,
+  "at_epoch": 1788543423.713182
+}

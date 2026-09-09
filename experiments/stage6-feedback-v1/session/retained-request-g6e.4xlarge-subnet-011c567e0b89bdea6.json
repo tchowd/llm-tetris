@@ -1,0 +1,85 @@
+{
+  "ImageId": "ami-0a4870b172edcb0f2",
+  "InstanceType": "g6e.4xlarge",
+  "MinCount": 1,
+  "MaxCount": 1,
+  "ClientToken": "feedback-retained-v1-g6e.4xlarge-subnet-011c567e0b89bdea6",
+  "KeyName": "gpu-training",
+  "SubnetId": "subnet-011c567e0b89bdea6",
+  "SecurityGroupIds": [
+    "sg-0a3c367cb69c4ea87"
+  ],
+  "IamInstanceProfile": {
+    "Name": "LLMTetrisTelemetryProfile"
+  },
+  "InstanceInitiatedShutdownBehavior": "stop",
+  "MetadataOptions": {
+    "HttpTokens": "required",
+    "HttpEndpoint": "enabled",
+    "HttpPutResponseHopLimit": 1
+  },
+  "UserData": "#!/bin/bash\nset -eu\nsystemd-run --unit=feedback-pilot-bootstrap-deadline --on-calendar=\"2026-09-05 16:53:38 UTC\" /usr/sbin/shutdown -h now\n",
+  "BlockDeviceMappings": [
+    {
+      "DeviceName": "/dev/sda1",
+      "Ebs": {
+        "VolumeSize": 100,
+        "VolumeType": "gp3",
+        "Encrypted": true,
+        "DeleteOnTermination": true
+      }
+    }
+  ],
+  "TagSpecifications": [
+    {
+      "ResourceType": "instance",
+      "Tags": [
+        {
+          "Key": "Project",
+          "Value": "llm-tetris"
+        },
+        {
+          "Key": "Stage",
+          "Value": "6"
+        },
+        {
+          "Key": "RunId",
+          "Value": "rl-feedback-v1-fixed_zero-seed6201"
+        },
+        {
+          "Key": "ManagedBy",
+          "Value": "llm-tetris"
+        },
+        {
+          "Key": "Name",
+          "Value": "rl-feedback-v1-fixed_zero-seed6201"
+        },
+        {
+          "Key": "PilotDollarLimit",
+          "Value": "250"
+        }
+      ]
+    },
+    {
+      "ResourceType": "volume",
+      "Tags": [
+        {
+          "Key": "Project",
+          "Value": "llm-tetris"
+        },
+        {
+          "Key": "Stage",
+          "Value": "6"
+        },
+        {
+          "Key": "RunId",
+          "Value": "rl-feedback-v1-fixed_zero-seed6201"
+        },
+        {
+          "Key": "ManagedBy",
+          "Value": "llm-tetris"
+        }
+      ]
+    }
+  ]
+}

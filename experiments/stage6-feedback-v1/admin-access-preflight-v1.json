@@ -1,0 +1,96 @@
+{
+  "checked_at": "2026-09-04T03:23:35.904367+00:00",
+  "identity": "arn:aws:iam::566629888938:user/gpu",
+  "attached_policies": [
+    {
+      "PolicyName": "LLMTetrisDashboardReadOnly",
+      "PolicyArn": "arn:aws:iam::566629888938:policy/LLMTetrisDashboardReadOnly"
+    },
+    {
+      "PolicyName": "LLMTetrisStage6Compute",
+      "PolicyArn": "arn:aws:iam::566629888938:policy/LLMTetrisStage6Compute"
+    },
+    {
+      "PolicyName": "LLMTetrisOperator",
+      "PolicyArn": "arn:aws:iam::566629888938:policy/LLMTetrisOperator"
+    },
+    {
+      "PolicyName": "LLMTetrisStage6Preflight",
+      "PolicyArn": "arn:aws:iam::566629888938:policy/LLMTetrisStage6Preflight"
+    },
+    {
+      "PolicyName": "AdministratorAccess",
+      "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+    }
+  ],
+  "quota": {
+    "ServiceCode": "ec2",
+    "ServiceName": "Amazon Elastic Compute Cloud (Amazon EC2)",
+    "QuotaArn": "arn:aws:servicequotas:us-east-1:566629888938:ec2/L-DB2E81BA",
+    "QuotaCode": "L-DB2E81BA",
+    "QuotaName": "Running On-Demand G and VT instances",
+    "Value": 8.0,
+    "Unit": "None",
+    "Adjustable": true,
+    "GlobalQuota": false,
+    "UsageMetric": {
+      "MetricNamespace": "AWS/Usage",
+      "MetricName": "ResourceCount",
+      "MetricDimensions": {
+        "Class": "G/OnDemand",
+        "Resource": "vCPU",
+        "Service": "EC2",
+        "Type": "Resource"
+      },
+      "MetricStatisticRecommendation": "Maximum"
+    },
+    "QuotaAppliedAtLevel": "ACCOUNT",
+    "Description": "Maximum number of vCPUs assigned to the Running On-Demand G and VT instances."
+  },
+  "quota_request": {
+    "Id": "ebb0c0bd8c654793bc970849eade21a51kZVM70o",
+    "ServiceCode": "ec2",
+    "ServiceName": "Amazon Elastic Compute Cloud (Amazon EC2)",
+    "QuotaCode": "L-DB2E81BA",
+    "QuotaName": "Running On-Demand G and VT instances",
+    "DesiredValue": 48.0,
+    "Status": "PENDING",
+    "Created": "2026-09-03 23:23:36.630000-04:00",
+    "Requester": "{\"accountId\":\"566629888938\",\"callerArn\":\"arn:aws:iam::566629888938:user/gpu\"}",
+    "QuotaArn": "arn:aws:servicequotas:us-east-1:566629888938:ec2/L-DB2E81BA",
+    "GlobalQuota": false,
+    "Unit": "None",
+    "QuotaRequestedAtLevel": "ACCOUNT"
+  },
+  "reused_pending_request": false,
+  "launch_dry_run": "DryRunOperation",
+  "existing_instances": [
+    {
+      "id": "i-0216ac3f0a976c7b5",
+      "state": "stopped",
+      "type": "g5.xlarge",
+      "tags": [
+        {
+          "Key": "Stage",
+          "Value": "4"
+        },
+        {
+          "Key": "Project",
+          "Value": "llm-tetris"
+        },
+        {
+          "Key": "Name",
+          "Value": "llm-tetris-sft"
+        },
+        {
+          "Key": "ManagedBy",
+          "Value": "llm-tetris"
+        },
+        {
+          "Key": "RunId",
+          "Value": "sft-v1"
+        }
+      ]
+    }
+  ]
+}

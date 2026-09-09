@@ -1,0 +1,77 @@
+{
+  "at_epoch": 1788541373.220101,
+  "offerings": [
+    {
+      "InstanceType": "g6e.xlarge",
+      "LocationType": "availability-zone",
+      "Location": "us-east-1a"
+    },
+    {
+      "InstanceType": "g6e.xlarge",
+      "LocationType": "availability-zone",
+      "Location": "us-east-1c"
+    },
+    {
+      "InstanceType": "g6e.2xlarge",
+      "LocationType": "availability-zone",
+      "Location": "us-east-1b"
+    },
+    {
+      "InstanceType": "g6e.2xlarge",
+      "LocationType": "availability-zone",
+      "Location": "us-east-1c"
+    },
+    {
+      "InstanceType": "g6e.xlarge",
+      "LocationType": "availability-zone",
+      "Location": "us-east-1b"
+    },
+    {
+      "InstanceType": "g6e.2xlarge",
+      "LocationType": "availability-zone",
+      "Location": "us-east-1d"
+    },
+    {
+      "InstanceType": "g6e.2xlarge",
+      "LocationType": "availability-zone",
+      "Location": "us-east-1a"
+    },
+    {
+      "InstanceType": "g6e.xlarge",
+      "LocationType": "availability-zone",
+      "Location": "us-east-1d"
+    }
+  ],
+  "default_subnets": [
+    {
+      "id": "subnet-011c567e0b89bdea6",
+      "zone": "us-east-1b",
+      "vpc": "vpc-0287a688f1df75c11"
+    },
+    {
+      "id": "subnet-07af2623089657057",
+      "zone": "us-east-1c",
+      "vpc": "vpc-0287a688f1df75c11"
+    },
+    {
+      "id": "subnet-00f75e89bc2b698b0",
+      "zone": "us-east-1f",
+      "vpc": "vpc-0287a688f1df75c11"
+    },
+    {
+      "id": "subnet-01df3bd9aafb4de79",
+      "zone": "us-east-1d",
+      "vpc": "vpc-0287a688f1df75c11"
+    },
+    {
+      "id": "subnet-094caed03deaaae73",
+      "zone": "us-east-1a",
+      "vpc": "vpc-0287a688f1df75c11"
+    },
+    {
+      "id": "subnet-09e87e97f36c2a3d1",
+      "zone": "us-east-1e",
+      "vpc": "vpc-0287a688f1df75c11"
+    }
+  ]
+}

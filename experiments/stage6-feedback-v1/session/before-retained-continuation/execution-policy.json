@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-09-04T07:09:06.329234+00:00",
+  "user_instruction": "fix the token issue and run thee 1 worker",
+  "maximum_concurrent_workers": 1,
+  "total_registered_runs": 6,
+  "hard_limit_usd": 250,
+  "absolute_deadline_unchanged": true,
+  "note": "Run one worker at a time. Preserve six paired registered runs; no concurrency expansion without further user direction."
+}

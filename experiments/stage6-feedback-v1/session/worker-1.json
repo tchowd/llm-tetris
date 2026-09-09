@@ -1,0 +1,13 @@
+{
+  "slot": 1,
+  "instance_id": "i-01de843dcdd42a824",
+  "region": "us-east-2",
+  "run_id": "rl-feedback-v1-fixed_zero-seed6201",
+  "retained_slots": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}

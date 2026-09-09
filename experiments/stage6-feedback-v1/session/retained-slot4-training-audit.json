@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "audited_at": "2026-09-04T23:15:59.101183+00:00",
+  "run_id": "rl-feedback-v1-active_group-seed6203",
+  "updates": 32,
+  "decisions": 10204,
+  "wall_clock_seconds": 3158.858116865158,
+  "reference_frozen": true,
+  "adapter_sha256": "c30177360b2978f25eac9e134d60f59b12c1ffed953728d50fa9108ad2e6210a",
+  "adapter_movement": {
+    "l2": 0.017540334354888956,
+    "relative_l2": 0.00041493593320877345,
+    "changed_tensors": 392,
+    "total_tensors": 392
+  },
+  "advantage_diagnostics_by_start_kind": {
+    "empty": {
+      "all": {
+        "count": 8065,
+        "exact_zero": 0,
+        "effective_zero": 3,
+        "negative": 3541,
+        "positive": 4521,
+        "mean_abs": 0.8676948406495639
+      },
+      "single_active": {
+        "count": 0,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 0,
+        "positive": 0,
+        "mean_abs": null
+      },
+      "single_active_illegal": {
+        "count": 0,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 0,
+        "positive": 0,
+        "mean_abs": null
+      },
+      "terminal_illegal": {
+        "count": 5,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 5,
+        "positive": 0,
+        "mean_abs": 1.712552847389554
+      },
+      "terminal_topout": {
+        "count": 0,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 0,
+        "positive": 0,
+        "mean_abs": null
+      }
+    },
+    "recovery": {
+      "all": {
+        "count": 2139,
+        "exact_zero": 355,
+        "effective_zero": 498,
+        "negative": 982,
+        "positive": 659,
+        "mean_abs": 0.6979460762684238
+      },
+      "single_active": {
+        "count": 498,
+        "exact_zero": 355,
+        "effective_zero": 498,
+        "negative": 0,
+        "positive": 0,
+        "mean_abs": 2.898253200301205e-46
+      },
+      "single_active_illegal": {
+        "count": 11,
+        "exact_zero": 11,
+        "effective_zero": 11,
+        "negative": 0,
+        "positive": 0,
+        "mean_abs": 0.0
+      },
+      "terminal_illegal": {
+        "count": 56,
+        "exact_zero": 11,
+        "effective_zero": 11,
+        "negative": 45,
+        "positive": 0,
+        "mean_abs": 0.7712170780898325
+      },
+      "terminal_topout": {
+        "count": 4,
+        "exact_zero": 1,
+        "effective_zero": 1,
+        "negative": 0,
+        "positive": 3,
+        "mean_abs": 0.8455131800878141
+      }
+    }
+  },
+  "evaluation_status": "running",
+  "final_test_access": false
+}

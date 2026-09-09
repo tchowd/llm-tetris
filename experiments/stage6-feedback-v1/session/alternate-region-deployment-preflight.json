@@ -1,0 +1,64 @@
+{
+  "at_epoch": 1788541391.616527,
+  "regions": [
+    {
+      "region": "us-east-2",
+      "images": [
+        {
+          "id": "ami-01529c037984b51e9",
+          "name": "Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.12 (Ubuntu 24.04) 20260827",
+          "owner": "898082745236"
+        }
+      ],
+      "eligible_subnets": [
+        {
+          "id": "subnet-09a6ba344605ee5b0",
+          "vpc": "vpc-073fd052366756b37",
+          "zone": "us-east-2c"
+        },
+        {
+          "id": "subnet-013e03dadb7702ecd",
+          "vpc": "vpc-073fd052366756b37",
+          "zone": "us-east-2b"
+        },
+        {
+          "id": "subnet-058058cd6a35cd9ee",
+          "vpc": "vpc-073fd052366756b37",
+          "zone": "us-east-2a"
+        }
+      ]
+    },
+    {
+      "region": "us-west-2",
+      "images": [
+        {
+          "id": "ami-0d30a0364133be3f4",
+          "name": "Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.12 (Ubuntu 24.04) 20260827",
+          "owner": "898082745236"
+        }
+      ],
+      "eligible_subnets": [
+        {
+          "id": "subnet-0bdafe0af9f5bd54e",
+          "vpc": "vpc-0be23b3a6c235842b",
+          "zone": "us-west-2b"
+        },
+        {
+          "id": "subnet-0149a7ca33ec58f0e",
+          "vpc": "vpc-0be23b3a6c235842b",
+          "zone": "us-west-2a"
+        },
+        {
+          "id": "subnet-063155d987217467e",
+          "vpc": "vpc-0be23b3a6c235842b",
+          "zone": "us-west-2c"
+        },
+        {
+          "id": "subnet-00fc55fd20a64d0ed",
+          "vpc": "vpc-0be23b3a6c235842b",
+          "zone": "us-west-2d"
+        }
+      ]
+    }
+  ]
+}

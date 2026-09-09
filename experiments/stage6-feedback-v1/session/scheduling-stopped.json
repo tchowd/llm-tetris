@@ -1,0 +1,8 @@
+{
+  "at_utc": "2026-09-04T16:51:33.982688+00:00",
+  "reason": "User explicitly requested stopping scheduled task; deleted complete-six-worker-rl-feedback-pilot automation",
+  "active_workers": 0,
+  "automatic_launch_retries": false,
+  "remaining_runs": 5,
+  "budget_and_deadline_unchanged": true
+}

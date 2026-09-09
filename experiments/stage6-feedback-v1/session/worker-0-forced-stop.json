@@ -1,0 +1,17 @@
+{
+  "at_epoch": 1788500462.671486,
+  "result": [
+    {
+      "InstanceId": "i-098c5726b527aca86",
+      "CurrentState": {
+        "Code": 64,
+        "Name": "stopping"
+      },
+      "PreviousState": {
+        "Code": 64,
+        "Name": "stopping"
+      }
+    }
+  ],
+  "reason": "Guest shutdown remained stopping for several minutes after failed-proof exit. All 14 result artifacts independently verified in S3 and downloaded; no live training/checkpoint writes."
+}

@@ -1,0 +1,16 @@
+{
+  "status": "training_started_verified",
+  "observed_at": "2026-09-04T19:15:57.001701+00:00",
+  "slot": 2,
+  "run_id": "rl-feedback-v1-fixed_zero-seed6202",
+  "training_seed": 6202,
+  "advantage_method": "fixed_zero",
+  "initial_adapter_sha256": "7d753d616d3b9174f489e103f37193fccda28c46b1c7ac91e2f4e87efde01171",
+  "reference_adapter_sha256": "7d753d616d3b9174f489e103f37193fccda28c46b1c7ac91e2f4e87efde01171",
+  "external_registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "base_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "manifest_s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/manifest.json",
+  "manifest_sha256": "aa646c573dd418fe00a29b1744663da2a3efa79386b88851887d61fe25780203",
+  "s3_encryption": "AES256",
+  "final_test_access": false
+}

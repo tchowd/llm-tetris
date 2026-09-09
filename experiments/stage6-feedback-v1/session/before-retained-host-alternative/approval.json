@@ -1,0 +1,42 @@
+{
+  "experiment": "stage6-feedback-v1",
+  "status": "user_approved",
+  "recorded_at": "2026-09-04T16:53:38.778152+00:00",
+  "user_approval_text": "continue. i want this completed end to end - stop asking me till its done",
+  "supersedes_approval_sha256": "4130d3b8a03a6e96abca93c4b8b5595c12bff7d01e5ddf16fd6042922f9578b1",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "hard_limit_usd": 250,
+  "maximum_workers": 6,
+  "hourly_usd": 2.3,
+  "session_hours": 24,
+  "maximum_aggregate_worker_hours": 96,
+  "ancillary_reserve_usd": 15,
+  "absolute_deadline_utc": "2026-09-05T16:53:38.778152+00:00",
+  "deadline_rule": "User accepted proposed extension and retained one-worker continuation. Fixed 24-hour continuation window from this amendment; do not silently extend. All previous costs count toward $250.",
+  "includes": [
+    "setup",
+    "GPU correctness and resume proof",
+    "six independently SFT-initialized runs",
+    "seven greedy development evaluations",
+    "checkpointing",
+    "monitoring",
+    "backups",
+    "cleanup"
+  ],
+  "parallel_execution_amendment": "One retained GPU runs remaining slots 1 through 5 sequentially; every run independently initializes from original SFT.",
+  "worker_run_ids": [
+    "rl-feedback-v1-active_group-seed6201",
+    "rl-feedback-v1-fixed_zero-seed6201",
+    "rl-feedback-v1-fixed_zero-seed6202",
+    "rl-feedback-v1-active_group-seed6202",
+    "rl-feedback-v1-active_group-seed6203",
+    "rl-feedback-v1-fixed_zero-seed6203"
+  ],
+  "proof_on_first_worker": true,
+  "historical_spending_approvals_reused": false,
+  "final_test_access": false,
+  "incremental_ramp_up": true,
+  "first_launch_epoch": 1788499711.0,
+  "authority_sha256": "a59b9316ff4591957679e638e65ed4f04ca9bf7eeaf1db296301678a12910b5a",
+  "maximum_concurrent_workers": 1
+}

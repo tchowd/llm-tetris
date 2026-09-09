@@ -1,0 +1,17 @@
+{
+  "at_epoch": 1788521766.809119,
+  "result": [
+    {
+      "InstanceId": "i-098c5726b527aca86",
+      "CurrentState": {
+        "Code": 48,
+        "Name": "terminated"
+      },
+      "PreviousState": {
+        "Code": 48,
+        "Name": "terminated"
+      }
+    }
+  ],
+  "reason": "Completed worker remains shutting-down after shutdown and termination; all artifacts verified and archived. Force termination of this exact disposable worker only."
+}

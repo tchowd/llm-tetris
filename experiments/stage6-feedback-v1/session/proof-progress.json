@@ -1,0 +1,14 @@
+{
+  "at_utc": "2026-09-04T09:38:28.690855+00:00",
+  "full_gpu_proof": "passed",
+  "phase": "sft-evaluation",
+  "worker_running": true,
+  "maximum_token_logprob_error": 0.0,
+  "tokens_checked": 27432,
+  "resume_weights_optimizer_scheduler_rng_trajectories": "exact",
+  "frozen_reference_unchanged": true,
+  "original_sft_unchanged": true,
+  "proof_s3_readback_verified": true,
+  "compute_allowance_usd": 2.4500910513997076,
+  "pilot_runs_started": 0
+}

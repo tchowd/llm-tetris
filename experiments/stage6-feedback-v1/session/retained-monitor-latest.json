@@ -1,0 +1,13 @@
+{
+  "at_epoch": 1788547808.3301382,
+  "service_active": true,
+  "slot": 1,
+  "phase": "candidate-evaluation",
+  "evaluation_files_backed_up": [
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/identity.json",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/recovery-0000.json",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/recovery-0032.json",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/recovery-0064.json"
+  ],
+  "backup_age_seconds": 14.77348804473877
+}

@@ -1,0 +1,18 @@
+{
+  "at_epoch": 1788541154.2523599,
+  "requests": [
+    {
+      "region": "us-east-2",
+      "id": "b86b7d4ffd86431daf04e88d921aa642SgkJ4XBF",
+      "status": "PENDING",
+      "desired": 8.0
+    },
+    {
+      "region": "us-west-2",
+      "id": "30a463de1c8a45dc823f35e526da00edcqU7DGQH",
+      "status": "PENDING",
+      "desired": 8.0
+    }
+  ],
+  "purpose": "No-charge alternate region capacity path for one retained L40S worker within existing $250 cap."
+}

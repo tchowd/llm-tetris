@@ -1,0 +1,25 @@
+{
+  "at_epoch": 1788516619.553899,
+  "verified_files": [
+    "experiments/stage6-feedback-v1/evaluation/sft/identity.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0000.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0032.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0064.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0096.json",
+    "experiments/stage6-feedback-v1/session/pilot-gate.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/complete.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/ordinary-0000.json"
+  ],
+  "source": "AES256 S3 objects matched recorded SHA256",
+  "gate": {
+    "status": "passed",
+    "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+    "approval_sha256": "4130d3b8a03a6e96abca93c4b8b5595c12bff7d01e5ddf16fd6042922f9578b1",
+    "proof_sha256": "533ade9a7f4360fc20b60b2828889aa3a7bcd902322ce3f381916ab40d468811",
+    "sft_complete_sha256": "361a3ca7a0f944dda6e4f12699f6cdd1de9abae5b25b1c6ef4fe725f9c98b570",
+    "per_run_training_seconds": 9494.029464402458,
+    "per_run_eval_seconds": 3348.4286279745006,
+    "projected_cost_usd": 78.14364609690566,
+    "generated_epoch": 1788516089.7846496
+  }
+}

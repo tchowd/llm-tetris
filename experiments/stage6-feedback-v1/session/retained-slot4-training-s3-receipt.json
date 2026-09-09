@@ -1,0 +1,298 @@
+{
+  "at_epoch": 1788563726.541615,
+  "bytes": 132499135,
+  "count": 41,
+  "objects": [
+    {
+      "bytes": 5184,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/adapter/README.md",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/adapter/README.md",
+      "server_side_encryption": "AES256",
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e"
+    },
+    {
+      "bytes": 1288,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/adapter/adapter_config.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/adapter/adapter_config.json",
+      "server_side_encryption": "AES256",
+      "sha256": "2ae2ffef59e0563a4f72a7c73a992a7a4dc9802838cab2b3fde86bc82c03e27d"
+    },
+    {
+      "bytes": 69782384,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/adapter/adapter_model.safetensors",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/adapter/adapter_model.safetensors",
+      "server_side_encryption": "AES256",
+      "sha256": "011767ed8ba1f545934c0a2a786a5638c3f94dbad51b7f6d2d22a943c9cbb43b"
+    },
+    {
+      "bytes": 4168,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/adapter/chat_template.jinja",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/adapter/chat_template.jinja",
+      "server_side_encryption": "AES256",
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+    },
+    {
+      "bytes": 11422650,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/adapter/tokenizer.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/adapter/tokenizer.json",
+      "server_side_encryption": "AES256",
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    },
+    {
+      "bytes": 693,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/adapter/tokenizer_config.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/adapter/tokenizer_config.json",
+      "server_side_encryption": "AES256",
+      "sha256": "c4f4c62b741ab2940841480f9942f378d7d3878d47c2babb862af7381c59b952"
+    },
+    {
+      "bytes": 46156,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/events.jsonl",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/events.jsonl",
+      "server_side_encryption": "AES256",
+      "sha256": "36d1f5ecee30c74d116d2f3649f49361abbf4ca67050538c0a7b5cf15bf24767"
+    },
+    {
+      "bytes": 111,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/latest_checkpoint.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/latest_checkpoint.json",
+      "server_side_encryption": "AES256",
+      "sha256": "4036df8d898ff081396f51feee0e7c486803c0e5b3c7a6b0242035747e6d5681"
+    },
+    {
+      "bytes": 57752,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/manifest.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/manifest.json",
+      "server_side_encryption": "AES256",
+      "sha256": "8a6c61a5c31256a7a5baeff591bd0b255f126d52ad6df2602761ad455729547e"
+    },
+    {
+      "bytes": 2453159,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000001.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000001.json",
+      "server_side_encryption": "AES256",
+      "sha256": "0776494a1e5c55fbc150cf9a3b0e780f5c883bb3c60150eeae27705c959d9fb8"
+    },
+    {
+      "bytes": 858699,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000002.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000002.json",
+      "server_side_encryption": "AES256",
+      "sha256": "0ff98dc7731fceef986c015f709e1c6b478d162605fa9388ab78c4593e0a7d3e"
+    },
+    {
+      "bytes": 2522165,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000003.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000003.json",
+      "server_side_encryption": "AES256",
+      "sha256": "4ecbe1f2ba3b94dc663e5838c07d4e5fb85d280d1e8ce4b871dadf04e1675b15"
+    },
+    {
+      "bytes": 348801,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000004.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000004.json",
+      "server_side_encryption": "AES256",
+      "sha256": "d546a09c92a6de9b02de2fec4cf5f18bd0ffb2e5ba4f122c838f8a0eda273221"
+    },
+    {
+      "bytes": 2526117,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000005.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000005.json",
+      "server_side_encryption": "AES256",
+      "sha256": "dc18a512454b5379b7f816ac8338e4c1ccbf5b918f62429a85bc2da220315ecd"
+    },
+    {
+      "bytes": 425168,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000006.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000006.json",
+      "server_side_encryption": "AES256",
+      "sha256": "c36ba45ba4f850e491e835bb76e1d5796ec2583d84d6085aac599948b5d6e634"
+    },
+    {
+      "bytes": 2497000,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000007.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000007.json",
+      "server_side_encryption": "AES256",
+      "sha256": "31fca8aaed995e9590355ee0a1223db150c53ddfedce3fb7c53e9e0ee1278168"
+    },
+    {
+      "bytes": 1467137,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000008.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000008.json",
+      "server_side_encryption": "AES256",
+      "sha256": "7b568d36f385324afe0131d8aaccb79ace6f4da1c63827c45b91ac8c63464f41"
+    },
+    {
+      "bytes": 2524183,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000009.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000009.json",
+      "server_side_encryption": "AES256",
+      "sha256": "5d9e5791f11d0990037d7f20dcddfcf7443ecf52a3757694ef136f3b49f691db"
+    },
+    {
+      "bytes": 1037790,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000010.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000010.json",
+      "server_side_encryption": "AES256",
+      "sha256": "3fdb8756f9f156a6aa7d9f4e5ea7d1f8f2fb6f1c50131c6c18a5be755bb7d78d"
+    },
+    {
+      "bytes": 2311895,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000011.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000011.json",
+      "server_side_encryption": "AES256",
+      "sha256": "c1e00a6040b9f9fe4b51b6feb50e1a8298df4333ee13fae90f58a15166297a51"
+    },
+    {
+      "bytes": 580100,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000012.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000012.json",
+      "server_side_encryption": "AES256",
+      "sha256": "d9c136b8aed6dd658b11c6e4051e83c5ecf1013b2d1793f084465f22aea413f4"
+    },
+    {
+      "bytes": 2509833,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000013.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000013.json",
+      "server_side_encryption": "AES256",
+      "sha256": "626c79886ab9bcebbec819d60298060e22686f4f1006e146cd08c306215fee00"
+    },
+    {
+      "bytes": 1408475,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000014.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000014.json",
+      "server_side_encryption": "AES256",
+      "sha256": "337f9d11f7a6db5933f78bd1b852868ad8a40a09b060c9ba6d18ce874b08e94c"
+    },
+    {
+      "bytes": 2512731,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000015.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000015.json",
+      "server_side_encryption": "AES256",
+      "sha256": "bf8b4b436982ca60d2898e5d50575019d8ee8508dd53f0e4454f85950ee444e2"
+    },
+    {
+      "bytes": 317739,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000016.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000016.json",
+      "server_side_encryption": "AES256",
+      "sha256": "bbb66b80df0bb6712313968c9472c680e3107e23d88d9ada3a79cbef8929ac89"
+    },
+    {
+      "bytes": 2512652,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000017.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000017.json",
+      "server_side_encryption": "AES256",
+      "sha256": "050dff10bdf054f9a97d6f5f382d847d55b3a9167cc52c9d50e563823ef6f6b8"
+    },
+    {
+      "bytes": 914409,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000018.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000018.json",
+      "server_side_encryption": "AES256",
+      "sha256": "53b55a5fa1e33d6d1fdf0054e31e0f5d389500f70ee7d3a0d03e8e2177ef7878"
+    },
+    {
+      "bytes": 2533801,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000019.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000019.json",
+      "server_side_encryption": "AES256",
+      "sha256": "a4d31eaa67cd5e4dc30a9bc50734aed68efd3b00795abd15e2b08883debe373a"
+    },
+    {
+      "bytes": 250477,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000020.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000020.json",
+      "server_side_encryption": "AES256",
+      "sha256": "8eb12721d2cc34aff4f18ea6b7f31a6e837c47d14706d0c469ddbe54bd20b3db"
+    },
+    {
+      "bytes": 2509642,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000021.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000021.json",
+      "server_side_encryption": "AES256",
+      "sha256": "c44ea2ae9c26d236d11bf427ce306d4dae9f44d4f91921626a5c3efc0494996a"
+    },
+    {
+      "bytes": 350595,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000022.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000022.json",
+      "server_side_encryption": "AES256",
+      "sha256": "0e33ebc014aceb9ef4892abef20e6531d62239c85816f43189c6853870ad8f9a"
+    },
+    {
+      "bytes": 2509208,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000023.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000023.json",
+      "server_side_encryption": "AES256",
+      "sha256": "1bf40ad917deb62072b5a864a826fca117aa9d5a06e17b3d47cc46867738add9"
+    },
+    {
+      "bytes": 633786,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000024.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000024.json",
+      "server_side_encryption": "AES256",
+      "sha256": "a1fe8136c63ec99ada60f49aa221e9e4c8e83fe61390c09a4512c143b16b5371"
+    },
+    {
+      "bytes": 2505424,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000025.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000025.json",
+      "server_side_encryption": "AES256",
+      "sha256": "3a72187b5d99d0ab1a42a3acc98ee6dbd9fdd6d2461cd4eaf8ac4a9ba73d8017"
+    },
+    {
+      "bytes": 1168192,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000026.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000026.json",
+      "server_side_encryption": "AES256",
+      "sha256": "743053e64555db4d22f1a114af1b60217a7af73d9cf80743b03dcac2acada4b0"
+    },
+    {
+      "bytes": 2509782,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000027.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000027.json",
+      "server_side_encryption": "AES256",
+      "sha256": "47e4317b87a111ad0b55097950d83e097250e63cb74ec5577c8480305e589d1a"
+    },
+    {
+      "bytes": 264231,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000028.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000028.json",
+      "server_side_encryption": "AES256",
+      "sha256": "6a958d17fb58cb9e91a680258ad6e4695b766cfd1810923afca73fe90599cb5c"
+    },
+    {
+      "bytes": 2501783,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000029.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000029.json",
+      "server_side_encryption": "AES256",
+      "sha256": "01a243501117952f2d1d891faa9596a0aa59a57a1a49bc28645e74d0930d1bb5"
+    },
+    {
+      "bytes": 1023076,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000030.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000030.json",
+      "server_side_encryption": "AES256",
+      "sha256": "443db4a5650eabb7b001f338517a12f27930ee257c63219a40c42d18d6d8f7c0"
+    },
+    {
+      "bytes": 2238325,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000031.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000031.json",
+      "server_side_encryption": "AES256",
+      "sha256": "7c7e215378c3fe926fa7e0f2b670b179aca588c232c0dc52c429b2f51d0a359e"
+    },
+    {
+      "bytes": 452374,
+      "path": "runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000032.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/trajectory_batches/update-000032.json",
+      "server_side_encryption": "AES256",
+      "sha256": "4f15364a7518acab0afa416b0015034d3e24f5d302b99e5ef07f8c011c48507f"
+    }
+  ],
+  "source_readback_verified": false,
+  "source_receipt_at_epoch": 1788563635.019283,
+  "source_receipt_key": "runs/feedback-pilot-v1/worker-4/experiments/stage6-feedback-v1/session/sync-worker-4.json",
+  "status": "verified"
+}

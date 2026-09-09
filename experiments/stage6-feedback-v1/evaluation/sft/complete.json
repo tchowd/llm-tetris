@@ -1,0 +1,16 @@
+{
+  "label": "sft",
+  "adapter_sha256": "7d753d616d3b9174f489e103f37193fccda28c46b1c7ac91e2f4e87efde01171",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "base_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "greedy": true,
+  "final_test_access": false,
+  "status": "completed",
+  "files_sha256": {
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0000.json": "205a6297abd66bb8b0415530ba3bbc6956a9ccb13539163f37f6d5d608ccabf5",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0032.json": "73bb13908423ded68ac33efacc5ecebe38bb73aa2fddeff47d518d9bbe970679",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0064.json": "764a216a0dcb35d3688139197b30757a7092ae80bf2a4d877b6125e26a4025cf",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0096.json": "abc352627d1c65e9612f03df6bd960a24fa8faa4a56d10903f27de967d2f7cb9",
+    "experiments/stage6-feedback-v1/evaluation/sft/ordinary-0000.json": "b2ba4f5784ecb49e0efc43d3ebd9b345e87ead157b6b46456ca130448773c432"
+  }
+}

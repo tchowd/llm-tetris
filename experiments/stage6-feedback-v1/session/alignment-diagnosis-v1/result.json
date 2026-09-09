@@ -1,0 +1,51 @@
+{
+  "observations": [
+    {
+      "probe_index": 0,
+      "row_index": 0,
+      "single_same_input_error": 0.0,
+      "paired_same_input_error": 0.0,
+      "batch_one_vs_two_error": 0.018873214721679688,
+      "original_proof_comparison_error": 0.018873214721679688,
+      "prompt_length": 142,
+      "completion_length": 9
+    },
+    {
+      "probe_index": 0,
+      "row_index": 1,
+      "single_same_input_error": 0.0,
+      "paired_same_input_error": 0.0,
+      "batch_one_vs_two_error": 0.1348590850830078,
+      "original_proof_comparison_error": 0.1348590850830078,
+      "prompt_length": 142,
+      "completion_length": 9
+    },
+    {
+      "probe_index": 1,
+      "row_index": 0,
+      "single_same_input_error": 0.0,
+      "paired_same_input_error": 0.0,
+      "batch_one_vs_two_error": 0.12497234344482422,
+      "original_proof_comparison_error": 0.12497234344482422,
+      "prompt_length": 138,
+      "completion_length": 9
+    },
+    {
+      "probe_index": 1,
+      "row_index": 1,
+      "single_same_input_error": 0.0,
+      "paired_same_input_error": 0.0,
+      "batch_one_vs_two_error": 2.7418136596679688e-05,
+      "original_proof_comparison_error": 2.7418136596679688e-05,
+      "prompt_length": 138,
+      "completion_length": 9
+    }
+  ],
+  "seconds": 47.5203173160553,
+  "optimizer_steps": 0,
+  "policy_unchanged": true,
+  "reference_unchanged": true,
+  "registration_sha256": "dbb7225f06e0ed2b10e9ce6fed2303b3fd0075b6fd43a256b3f30cfc92b0a37c",
+  "original_tolerance": 0.0001,
+  "note": "Diagnostic only; the original GPU proof remains failed. No tolerance is changed."
+}

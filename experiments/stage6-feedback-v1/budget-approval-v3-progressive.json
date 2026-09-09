@@ -1,0 +1,39 @@
+{
+  "experiment": "stage6-feedback-v1",
+  "status": "user_approved",
+  "recorded_at": "2026-09-04T04:19:48.825174+00:00",
+  "user_approval_text": "can we start it and ramp up once we get the quota increase?",
+  "supersedes_approval_sha256": "6fcdf0717e6953211a4f869379002cc5b97a9b85bdcf216d5df5ec58dd61df3f",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "hard_limit_usd": 250,
+  "maximum_workers": 6,
+  "hourly_usd": 2.3,
+  "session_hours": 16,
+  "maximum_aggregate_worker_hours": 96,
+  "ancillary_reserve_usd": 15,
+  "absolute_deadline_utc": null,
+  "deadline_rule": "Pin shared absolute deadline once at first successful launch plus 16 hours. Do not extend on later slots or restarts. Charge all progressive launches to this same $250 total cap. Maximum six run slots, 96 aggregate hours, $15 ancillary reserve.",
+  "includes": [
+    "setup",
+    "GPU correctness and resume proof",
+    "six independently SFT-initialized runs",
+    "seven greedy development evaluations",
+    "checkpointing",
+    "monitoring",
+    "backups",
+    "cleanup"
+  ],
+  "parallel_execution_amendment": "Start under available quota with one worker for GPU proof, baseline evaluation and first original-SFT run. Add independently initialized registered runs as applied quota and capacity allow, up to six total run slots; if quota remains eight, launch the next slot only after the preceding worker is confirmed stopped. All six methods/seeds, recipes, evaluation sets, selection and inference stay unchanged. Preserve shared 16-hour deadline and $250 total cap; no idle waiting for quota on a paid worker.",
+  "worker_run_ids": [
+    "rl-feedback-v1-active_group-seed6201",
+    "rl-feedback-v1-fixed_zero-seed6201",
+    "rl-feedback-v1-fixed_zero-seed6202",
+    "rl-feedback-v1-active_group-seed6202",
+    "rl-feedback-v1-active_group-seed6203",
+    "rl-feedback-v1-fixed_zero-seed6203"
+  ],
+  "proof_on_first_worker": true,
+  "historical_spending_approvals_reused": false,
+  "final_test_access": false,
+  "incremental_ramp_up": true
+}

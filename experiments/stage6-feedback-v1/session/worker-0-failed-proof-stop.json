@@ -1,0 +1,17 @@
+{
+  "at_epoch": 1788500389.956127,
+  "result": [
+    {
+      "InstanceId": "i-098c5726b527aca86",
+      "CurrentState": {
+        "Code": 64,
+        "Name": "stopping"
+      },
+      "PreviousState": {
+        "Code": 64,
+        "Name": "stopping"
+      }
+    }
+  ],
+  "reason": "Confirmed failed direction proof; encrypted read-back evidence verified."
+}

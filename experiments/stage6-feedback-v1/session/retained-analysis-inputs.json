@@ -1,0 +1,12 @@
+{
+  "archive": "/var/folders/d9/jwtpgh6n03j21g73kxwd__r40000gn/T/feedback-completed-inputs-s8d_p28w/completed-inputs.tgz",
+  "sha256": "ba6eae36654b551cf29e95aa809c0c2845414909aa7c2cec2114e2847959cb56",
+  "paths": [
+    "runs/rl-feedback-v1-active_group-seed6201/rl/manifest.json",
+    "runs/rl-feedback-v1-active_group-seed6201/rl/adapter",
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches",
+    "experiments/stage6-feedback-v1/evaluation/sft",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201"
+  ],
+  "source_training_and_evaluation_audits_passed": true
+}

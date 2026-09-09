@@ -1,0 +1,15 @@
+{
+  "at_epoch": 1788540922.528518,
+  "files_sha256": {
+    "infra/feedback_retained.py": "b131b810c8d9ee8bc733e5104afbb54119255a080c062c2a067f47fb640a9e08",
+    "infra/feedback_retained_launch.py": "595c0c938f90d8336f23b21bb31d0c99676fb36e984fe4ee7db7b335223b38b8",
+    "infra/test_feedback_retained.py": "ac9109c78778cf66a917e98ce2419d97ecddbd6d644318ae8785092b32432061",
+    "infra/feedback_retained_deploy.py": "ffe4d99e043248593bf598c6e068abc6889ab09c387fe3a77d2647f35bf5fe17",
+    "infra/feedback_retained_region.py": "c74063caaf0237ca9964e34e6723ed26a935d3308dc276af3afc250ace8443bf"
+  },
+  "science_unchanged": true,
+  "validation": "11 retained and operations tests pass, including historical host-rate preservation",
+  "approval_sha256": "dfd1a14babf5fa599e67dab5978152ca9c320182ba8f609fe97b43fea11895cc",
+  "deployment_added_epoch": 1788541443.86178,
+  "regional_deployment_epoch": 1788541625.236203
+}

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "validated_at": "2026-09-04T18:57:30.986220+00:00",
+  "tests_passed": 104,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "command": ".venv-train/bin/python -m pytest tests/test_feedback.py tests/test_feedback_pilot.py tests/test_episode_rl.py tests/test_episode_proof.py tests/test_episode_runtime.py tests/test_rl.py tests/test_recovery.py tests/test_stress_eval.py tests/test_scale10x.py infra/test_feedback_gpu_proof.py infra/test_feedback_gpu_proof_v2.py infra/test_feedback_retained.py infra/test_feedback_session.py -q",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "scope": "current Phase 1A scientific tests plus Phase 1B GPU proof and retained-worker operations tests",
+  "final_test_access": false
+}

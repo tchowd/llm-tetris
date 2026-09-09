@@ -1,0 +1,17 @@
+{
+  "at_epoch": 1788521706.0319822,
+  "result": [
+    {
+      "InstanceId": "i-098c5726b527aca86",
+      "CurrentState": {
+        "Code": 32,
+        "Name": "shutting-down"
+      },
+      "PreviousState": {
+        "Code": 32,
+        "Name": "shutting-down"
+      }
+    }
+  ],
+  "reason": "Workload completed and guest already shut down; all artifacts readback-verified before requesting termination. Skip additional guest shutdown wait."
+}

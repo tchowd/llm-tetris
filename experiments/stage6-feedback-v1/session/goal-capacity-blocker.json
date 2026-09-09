@@ -1,0 +1,23 @@
+{
+  "at_epoch": 1788541666.031051,
+  "goal_turns_with_same_external_blocker": 3,
+  "quota_requests": [
+    {
+      "region": "us-east-2",
+      "id": "b86b7d4ffd86431daf04e88d921aa642SgkJ4XBF",
+      "status": "CASE_CLOSED",
+      "quota_vcpus": 0.0
+    },
+    {
+      "region": "us-west-2",
+      "id": "30a463de1c8a45dc823f35e526da00edcqU7DGQH",
+      "status": "CASE_OPENED",
+      "quota_vcpus": 0.0
+    }
+  ],
+  "live_workers": [],
+  "local_sequence_and_deployment_ready": true,
+  "required_external_change": "L40S capacity in us-east-1 or applied GPU quota plus capacity in alternate region",
+  "completed_registered_runs": 1,
+  "remaining_registered_runs": 5
+}

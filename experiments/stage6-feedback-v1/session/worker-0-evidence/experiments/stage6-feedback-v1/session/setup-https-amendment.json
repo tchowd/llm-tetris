@@ -1,0 +1,8 @@
+{
+  "at_utc": "2026-09-04T05:33:21.182672+00:00",
+  "change": "Operational setup switches Ubuntu package mirrors to HTTPS and preserves an existing active absolute shutdown timer on setup retry.",
+  "reason": "HTTP mirror timed out; HTTPS mirror returned 200.",
+  "scientific_files_changed": false,
+  "deadline_extended": false,
+  "first_attempt_log": "setup-http-attempt.log"
+}

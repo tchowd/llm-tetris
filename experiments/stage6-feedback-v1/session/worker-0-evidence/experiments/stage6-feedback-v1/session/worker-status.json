@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "error": "RuntimeError('proof-0-directions exited 1; inspect experiments/stage6-feedback-v1/session/proof-0-directions-1788500234898872131.log')",
+  "run_id": "rl-feedback-v1-active_group-seed6201",
+  "at_epoch": 1788500250.3890824
+}

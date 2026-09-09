@@ -1,0 +1,531 @@
+{
+  "objects": {
+    "experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/registration.json": {
+      "sha256": "dbb7225f06e0ed2b10e9ce6fed2303b3fd0075b6fd43a256b3f30cfc92b0a37c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/registration.json",
+      "bytes": 1005
+    },
+    "experiments/stage6-feedback-v1/session/approval.json": {
+      "sha256": "dfd1a14babf5fa599e67dab5978152ca9c320182ba8f609fe97b43fea11895cc",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/approval.json",
+      "bytes": 2279
+    },
+    "experiments/stage6-feedback-v1/session/candidate-evaluation-1788547001509057274.log": {
+      "sha256": "d3c35fa2b0ce0613b8c6538b652965a5bd5317b7bf3f4664de5078b0ecbc7c06",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/candidate-evaluation-1788547001509057274.log",
+      "bytes": 147
+    },
+    "experiments/stage6-feedback-v1/session/execution-policy.json": {
+      "sha256": "b43d5ab1225ef8b8c4fa66461f26c74ab336c7304ae58556e04c4212984d8783",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/execution-policy.json",
+      "bytes": 758
+    },
+    "experiments/stage6-feedback-v1/session/pilot-gate.json": {
+      "sha256": "f2a0f65d0b9e09838b2515b78be918ac55205422b8f6be01dc12afa69438b5ab",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/pilot-gate.json",
+      "bytes": 1338
+    },
+    "experiments/stage6-feedback-v1/session/retained-analysis-inputs.json": {
+      "sha256": "42d21fca54ae096c97bf7dd1f0d9213f277b5da6c0398c25af222b072a67e52c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/retained-analysis-inputs.json",
+      "bytes": 613
+    },
+    "experiments/stage6-feedback-v1/session/retained-completion-1.json": {
+      "sha256": "a3004d14c2dcecdebbf36f34da8d1d1bf6455f2fb3b055c44d60f6da56ba4f9a",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/retained-completion-1.json",
+      "bytes": 206
+    },
+    "experiments/stage6-feedback-v1/session/retained-source.json": {
+      "sha256": "10c7b91828fa64d094257a79d26ac978a888a914f820734208892f59b73abbf4",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/retained-source.json",
+      "bytes": 912
+    },
+    "experiments/stage6-feedback-v1/session/setup-attempt-1.log": {
+      "sha256": "b7ce4e36db8aa8610e29d3ef6a3ccb2159f6015cf7723161c6eb4ec7d843a5ce",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/setup-attempt-1.log",
+      "bytes": 63196
+    },
+    "experiments/stage6-feedback-v1/session/source-bundle.json": {
+      "sha256": "680664a181208f06d65ef3abe53b343cc202ec4f4f1b73465d41ab03e6368ba8",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/source-bundle.json",
+      "bytes": 11682
+    },
+    "experiments/stage6-feedback-v1/session/training-1788543975110316877.log": {
+      "sha256": "90e78f30677e4a4f5a84eb9a1887800133de00d80980a341c33b48c71366c057",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/training-1788543975110316877.log",
+      "bytes": 675
+    },
+    "experiments/stage6-feedback-v1/session/training-1788549292963395451.log": {
+      "sha256": "55ed0e00f941a25c2457aed5559fe4de1b68a873d1d1a09ac18e8ebfe82219cd",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/training-1788549292963395451.log",
+      "bytes": 675
+    },
+    "experiments/stage6-feedback-v1/session/worker-0-evidence/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json": {
+      "sha256": "88b5d25812c0b1dba6d5d1392abe72c08a23c7572975f2b88c014a5cec70083d",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/worker-0-evidence/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json",
+      "bytes": 7386
+    },
+    "experiments/stage6-feedback-v1/session/worker-status.json": {
+      "sha256": "5ac186e20df6742d162a293fa2ba6de9ce0c591177a5bff158801780332368c6",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/worker-status.json",
+      "bytes": 105
+    },
+    "experiments/stage6-feedback-v1/session/worker.json": {
+      "sha256": "8fea14791ed4125048d1096ff794139192f814d4f78c5da01c71ed06391aa211",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/worker.json",
+      "bytes": 221
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/events.jsonl": {
+      "sha256": "008f3bbf933fe8abf07b019f59313b7ab378df29080b2e09dc33594ab00b882f",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/events.jsonl",
+      "bytes": 45445
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/manifest.json": {
+      "sha256": "142a993e6332a13105a2a69b0a1eb6f5429fe6647f881de2e4c17911b8f17e2b",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/manifest.json",
+      "bytes": 57140
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000001.json": {
+      "sha256": "cf3592916692a403423f52b87c8897a82ddb01a575185d6a980a7a4ce897cff4",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000001.json",
+      "bytes": 2500078
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000002.json": {
+      "sha256": "52f8ae4fc978b2ee59bfd146b1536697d7199521200b3323b067b2767c1b0423",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000002.json",
+      "bytes": 1754273
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000003.json": {
+      "sha256": "71c0b5f40d341c5cb21310e636d83b9373ab92c1c112a54cfdb742923a0b6e47",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000003.json",
+      "bytes": 2546661
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/adapter_model.safetensors": {
+      "sha256": "daab872c7e2b0842b7933f2ec9a40a1d264ec2af939439a1d56ce247e035453c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/complete.json": {
+      "sha256": "bf262c34e4000f0f4d02f0b461b241a65a8c93d28bbb435318fc9f5e35de8b22",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/complete.json",
+      "bytes": 192
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/state.pt": {
+      "sha256": "33f5c03aa056d46af920d4b449d8dafc8ce5631e7e74f92a9d2d52f1372bb926",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/state.pt",
+      "bytes": 139754813
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/latest_checkpoint.json": {
+      "sha256": "59af2daccf21e980a213ed9547520d5e10f991bc42123b582eb3060bcc05e42c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/latest_checkpoint.json",
+      "bytes": 109
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000004.json": {
+      "sha256": "1749dbc89b3a9b621b6bb8072d607457fd12ae878654575b9ecce38202208942",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000004.json",
+      "bytes": 957711
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000005.json": {
+      "sha256": "f98d53971bc1b0f2ece641fb7fad8768479d0e87025bd8d0418bc4a855bc5790",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000005.json",
+      "bytes": 2550485
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000006.json": {
+      "sha256": "2847a8c76b610265452e0e7403c1ef542563e7d20fbec7cc76fe43be0410628c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000006.json",
+      "bytes": 325706
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000007.json": {
+      "sha256": "8bfad807a62e0a6845e6d17caa71ba51fe7b10abaa2fc67cfd196f6b476865ab",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000007.json",
+      "bytes": 2532619
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000008.json": {
+      "sha256": "5594d5e137d748bf0041d6fcf3f9dc191e3f5bface4adff763780ab920fb576c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000008.json",
+      "bytes": 1715348
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/adapter/adapter_model.safetensors": {
+      "sha256": "0d85ac0afa4589d94aff3f224e1b92fdc2e3f0413d8181dfe932ec1ad883d39d",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/complete.json": {
+      "sha256": "9226524e1b4a7a55e261c16845a8144acc911c002a3ed0248649dca2a7a26952",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/complete.json",
+      "bytes": 192
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/state.pt": {
+      "sha256": "b54aa777daab5fd453b45d2016c5f78ce50fbdfcc6de7ef5a1e3c880e4dc2b1a",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-8/state.pt",
+      "bytes": 139756093
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000009.json": {
+      "sha256": "a1336710db65c0ae64cf6d9817ff85ba73a308d3ee1d753a3250895181b676ab",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000009.json",
+      "bytes": 2523897
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000010.json": {
+      "sha256": "583844a9ce44fbda0b42898099a50837d7f9ad47f2fe71e931db01660fd0c9dc",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000010.json",
+      "bytes": 702635
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000011.json": {
+      "sha256": "068ac523a43c82fb6aa04e9c84d17b6b2aad87c944454c6ae3f607efae725a37",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000011.json",
+      "bytes": 2501780
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/adapter/adapter_model.safetensors": {
+      "sha256": "11848b312b1337124b808fe463c3da4f836c701c82e1c877f115115d9d204651",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/complete.json": {
+      "sha256": "37164b69667bafacfcc211536871fcbe9ab2ab8c23687fa2d7ccd225da06d9eb",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/state.pt": {
+      "sha256": "2ded2722133270f0f0248b2cb0e26d062f2ce61d079ef256054dc1e99a57e7fc",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-12/state.pt",
+      "bytes": 139757437
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000012.json": {
+      "sha256": "7f9427e925ec980c028f865d56fc2db41e1d91fb1c95147a651f61dbb5829f56",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000012.json",
+      "bytes": 355923
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000013.json": {
+      "sha256": "c2ac2f18f79487732b94bdbafd1d7c4995f7ab8b789b0d39907eb3c0999cc034",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000013.json",
+      "bytes": 2538089
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000014.json": {
+      "sha256": "276c1d0dbe0cf5b8e7f389124ed0f43291e22515fdefc5f1755af4456ad8d538",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000014.json",
+      "bytes": 951146
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000015.json": {
+      "sha256": "6f495e383e7d8658fd14225556fe17b43ce158ed21e37d5d224bde1eb93a7dc0",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000015.json",
+      "bytes": 2515145
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000016.json": {
+      "sha256": "84aba479b985840d74e353ac15939afe29b52299e690b897da0ed20c5a292894",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000016.json",
+      "bytes": 608929
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/adapter/adapter_model.safetensors": {
+      "sha256": "7f8432684aa652e3179f535406ccdb13e9f5396af8266e7ffd2abbbbe344c913",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/complete.json": {
+      "sha256": "581da0db48ce0b53074e36d135f748a913bb633813347b29aaefb916f026f205",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/state.pt": {
+      "sha256": "ef6bf557a1fb27e0c3a8dce50e7d371d10c238f8afff9c51e9cfdf990741e838",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-16/state.pt",
+      "bytes": 139758781
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000017.json": {
+      "sha256": "6ff389bb92a5c6d7340a7e016f4638a6a952ae7aad2b9dc5f70bde69a96d0d8c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000017.json",
+      "bytes": 2524567
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000018.json": {
+      "sha256": "1d5a27a870c7a4ffddba8548b2b56b15e23fed5c5c6ce7f1bd545c193a87b61a",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000018.json",
+      "bytes": 722344
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000019.json": {
+      "sha256": "ddb8229ef8e25db36aa03c73519e30dea0414a448cf50c1e37fa9165d0ac8fcf",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000019.json",
+      "bytes": 2496948
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/adapter/adapter_model.safetensors": {
+      "sha256": "3b533e100c8377f321d6481be29e02285796098b917783aa5a3a2f17a4f2c305",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/complete.json": {
+      "sha256": "755cb57c7ff78cbd77534c4dd6580328c5bd859c6d605eda3da355df8090b53d",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/state.pt": {
+      "sha256": "c29d37b72cf741afb23f0aa95b2947af137d3da94ca69ad2e64af9d63fe9951c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-20/state.pt",
+      "bytes": 139760125
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000020.json": {
+      "sha256": "b6124bca7260ae95568043eb93fd800049eb6605c616a66be334a3ccf69080c6",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000020.json",
+      "bytes": 302790
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000021.json": {
+      "sha256": "33d8a6cd253767803e9928da6ca27703a159f276cec4dd61507aff585d64fc0e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000021.json",
+      "bytes": 2529691
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000022.json": {
+      "sha256": "8e2fd02c26072d1889672672861732a969092caa272ca0089581fb8cc42ca262",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000022.json",
+      "bytes": 1037227
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000023.json": {
+      "sha256": "6d4e5ffb7e229e7976d020a5f39f1c9dbcbb53106062767edf4c093751e59b14",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000023.json",
+      "bytes": 2510002
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/adapter/adapter_model.safetensors": {
+      "sha256": "1c01bf0f5649e3326a7016740084bb6adf91c12740a3a3317b593108afb8f354",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/complete.json": {
+      "sha256": "06ccceabb55217ef4d3d8156cfcde124917388b354aeded8812811419829f2df",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/state.pt": {
+      "sha256": "5f912c39c17f47bbab5811e50da2085991e41e23b653259925687ce784617ea3",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-24/state.pt",
+      "bytes": 139761469
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000024.json": {
+      "sha256": "499bd0e72883d66f2468f887e7c4d4ba7a4d2541113e234185e82e8c3d3a9131",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000024.json",
+      "bytes": 585087
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000025.json": {
+      "sha256": "180dcdaab91491bae8f7c3585898fbfb20f2aeae6a77abdeeaac59a4f9c9f63b",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000025.json",
+      "bytes": 2481788
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000026.json": {
+      "sha256": "09bc3925cdded523e3b19facb160df1f53b277c370e8cbb68831a5206aee0a2d",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000026.json",
+      "bytes": 610991
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000027.json": {
+      "sha256": "753a7e7c7293a76fb1bc71b26ae3176417dd0f713f9c0a2a16df7977ded14aac",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000027.json",
+      "bytes": 2526150
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/adapter/adapter_model.safetensors": {
+      "sha256": "1f558fe3972bbf6e94b80c109f6d4f73e1d7b975ef3ba9e566bc17dc337256bd",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/complete.json": {
+      "sha256": "113265191c5266e1ac96871e3e01ea40cf7272471cc06b06ebc18d568189211f",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/state.pt": {
+      "sha256": "a070dde55eaf8d19ee477cbc78ccc430fc3849427959f87d99c16f30e205033c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-28/state.pt",
+      "bytes": 139762813
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000028.json": {
+      "sha256": "0124fa688304586223e3abd8f3c81e434b1c7dfdee0e9682e16a5db1c2462fcb",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000028.json",
+      "bytes": 354353
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000029.json": {
+      "sha256": "db376c43314115c4ebe1de81a6c037d01ba7635400198af1bf53908dd3de1cd4",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000029.json",
+      "bytes": 2480465
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000030.json": {
+      "sha256": "c84c323db11e7d173721337b9d4679dfb225b144588e404708ee22c830ad081a",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000030.json",
+      "bytes": 689267
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000031.json": {
+      "sha256": "2046cead7745c016738d32e2f0397d544a4c3f41636228f2a8851e92548586fa",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000031.json",
+      "bytes": 2512383
+    },
+    "experiments/stage6-feedback-v1/session/candidate-evaluation-1788552505548468448.log": {
+      "sha256": "4c7235d59c5d16300f26f0034d156db8eec56cde21a2ad85787501dade5a6e60",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/candidate-evaluation-1788552505548468448.log",
+      "bytes": 147
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/identity.json": {
+      "sha256": "9ff515ee7fdbb1cf8128a3d28a7eafaf85e6e74ff3862e55689a9da76f94fbdf",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/identity.json",
+      "bytes": 350
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/adapter_model.safetensors": {
+      "sha256": "a7c0ece96bc8c1e415d5257ded526a09c986e3a6e5ed7f32e7b68d754a58e643",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/chat_template.jinja": {
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/chat_template.jinja",
+      "bytes": 4168
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/tokenizer.json": {
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/tokenizer.json",
+      "bytes": 11422650
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/tokenizer_config.json": {
+      "sha256": "c4f4c62b741ab2940841480f9942f378d7d3878d47c2babb862af7381c59b952",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/adapter/tokenizer_config.json",
+      "bytes": 693
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/adapter/adapter_config.json": {
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/adapter/adapter_model.safetensors": {
+      "sha256": "a7c0ece96bc8c1e415d5257ded526a09c986e3a6e5ed7f32e7b68d754a58e643",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/complete.json": {
+      "sha256": "f8916e8fa1bdb8e5dba8958de4856b4da302853cf4217478cd9cf521e14afe8a",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/state.pt": {
+      "sha256": "cfa594b6016162341f7d377ddf50c921708981f49da9016ad44ad1c3e2f1d985",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-32/state.pt",
+      "bytes": 139782973
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000032.json": {
+      "sha256": "f71e19d642166afd7053051c1e3d242462ba1c1c8af504d5aa43c1245d4b0328",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/trajectory_batches/update-000032.json",
+      "bytes": 1802136
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/recovery-0000.json": {
+      "sha256": "a1e18be682ac21ca57f82448215c16a1338fe95adbbdfba99297c6248a0efb41",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/recovery-0000.json",
+      "bytes": 726789
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/recovery-0032.json": {
+      "sha256": "e7361cc4420e7eed5672c25f5721262e53c9297262d89ccd1b4b9f0756ecdbd3",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/recovery-0032.json",
+      "bytes": 573622
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/recovery-0064.json": {
+      "sha256": "c4f434aa990deec7fd11aa5e95a5526736dce8b7763a7e82ea796d37368deac4",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/recovery-0064.json",
+      "bytes": 706714
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/recovery-0096.json": {
+      "sha256": "e50845a9a9df6ac1c7966b49003448aa7116d2b54a61cb3eadcf203cbdf5abea",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/recovery-0096.json",
+      "bytes": 616978
+    },
+    "experiments/stage6-feedback-v1/session/retained-completion-2.json": {
+      "sha256": "8f671e17d32ab8a34407bdb1f9b7b6aced7533ce2e3bd0c7889ec6a1d3a6aff6",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/retained-completion-2.json",
+      "bytes": 207
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/complete.json": {
+      "sha256": "e4743490e4fcd23ab7da8dfa9abca674aa78c41037501fd43057b74a6f04936d",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/complete.json",
+      "bytes": 1254
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/ordinary-0000.json": {
+      "sha256": "e0886d00b71cd3974c1077441176daa8cfd6d4e501e8dbddb4ba39fbf03c05bc",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6202/ordinary-0000.json",
+      "bytes": 3370178
+    }
+  },
+  "at_epoch": 1788554799.798506,
+  "readback_verified": true
+}

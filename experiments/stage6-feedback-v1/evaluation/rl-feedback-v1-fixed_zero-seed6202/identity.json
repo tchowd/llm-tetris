@@ -1,0 +1,8 @@
+{
+  "label": "rl-feedback-v1-fixed_zero-seed6202",
+  "adapter_sha256": "79bb20564f4f4f67ffdfa6834ec77ee146e3517bba5cf5f199f5664f673369cc",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "base_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "greedy": true,
+  "final_test_access": false
+}

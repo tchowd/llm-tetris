@@ -1,0 +1,12 @@
+{
+  "instance_id": "i-098c5726b527aca86",
+  "state": "running",
+  "ip": "100.31.42.173",
+  "volumes": [
+    "vol-03a3d93ae98a76e40"
+  ],
+  "encrypted": true,
+  "delete_on_termination": true,
+  "imds_v2": true,
+  "termination_dry_run": true
+}

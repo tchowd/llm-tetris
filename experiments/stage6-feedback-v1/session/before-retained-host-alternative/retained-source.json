@@ -1,0 +1,11 @@
+{
+  "at_epoch": 1788540922.528518,
+  "files_sha256": {
+    "infra/feedback_retained.py": "af3d7e7437221ad7472d69c5618d408064adbf2928671ecb9961b541c7051bdc",
+    "infra/feedback_retained_launch.py": "2c077e05848d28e3aa03840744922fa41b6cea7c64c96298b937f773f6c92925",
+    "infra/test_feedback_retained.py": "a8ba8f135026946cf1a9c1cb14d182d931e976b41a1f40e3b0b41a77d5e7ccff"
+  },
+  "science_unchanged": true,
+  "validation": "10 retained-sequence and existing operations tests passed",
+  "approval_sha256": "d396696767e4b2f9a7e648ceb3f593e9ce2f1c6b066a877dce5ae5dcee529950"
+}

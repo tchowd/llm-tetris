@@ -1,0 +1,6 @@
+{
+  "at_epoch": 1788514683.695776,
+  "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/gpu-proof.json",
+  "sha256": "533ade9a7f4360fc20b60b2828889aa3a7bcd902322ce3f381916ab40d468811",
+  "server_side_encryption": "AES256"
+}

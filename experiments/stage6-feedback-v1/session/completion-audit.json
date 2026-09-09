@@ -1,0 +1,40 @@
+{
+  "status": "complete",
+  "phase_1a": {
+    "feedback_methods": ["active_group", "fixed_zero"],
+    "original_baseline_preserved": true,
+    "zero_advantage_failure_confirmed": true,
+    "frozen_reference_verified": true,
+    "targeted_tests": "39 passed"
+  },
+  "phase_1b": {
+    "registered_runs": 6,
+    "updates_per_run": 32,
+    "training_seeds": [6201, 6202, 6203],
+    "methods": ["active_group", "fixed_zero"],
+    "same_frozen_sft_initialization_verified": true,
+    "greedy_recovery_cases_per_run": 128,
+    "ordinary_games_per_run": 20,
+    "final_test_access": false,
+    "outcome": "inconclusive",
+    "advance": false
+  },
+  "integrity": {
+    "s3_final_readback_verified": true,
+    "local_registered_analysis_passed": true,
+    "report": "experiments/stage6-feedback-v1/report.json"
+  },
+  "operations": {
+    "conservative_cost_including_reserve_usd": 58.96209908121161,
+    "hard_limit_usd": 250,
+    "retained_instance_terminated": true,
+    "root_volume_deleted": true,
+    "pilot_security_group_deleted": true,
+    "pilot_key_deleted": true,
+    "no_live_tagged_pilot_instances_in_checked_regions": true
+  },
+  "validation": {
+    "focused_phase_tests": "39 passed in 1.52s",
+    "broad_suite": "188 tests passed before manual interruption of an unrelated MPS-heavy autograd test after 30 minutes; no failures reported"
+  }
+}

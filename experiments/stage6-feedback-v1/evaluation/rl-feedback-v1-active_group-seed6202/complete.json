@@ -1,0 +1,16 @@
+{
+  "label": "rl-feedback-v1-active_group-seed6202",
+  "adapter_sha256": "57c7338ce9fcf4250808b7d30305a5ab1563b08c0b04f44d3db56d72097e59f4",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "base_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "greedy": true,
+  "final_test_access": false,
+  "status": "completed",
+  "files_sha256": {
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6202/recovery-0000.json": "98d184e8e1ef919fad98a31488de35c775549887647e7583528d08b73971d1a8",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6202/recovery-0032.json": "f8434914aab96daef3df9eb40c3b93918590ce129d4cd2908613db356ac2cd18",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6202/recovery-0064.json": "f6b3a9f656151ebb1214e75bd94357806e4cc135768203a63106d64bb6b3316c",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6202/recovery-0096.json": "77601f89f030f96c93d157a77bea41b1fe0d0d58715924105cab5d2c484b8b30",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6202/ordinary-0000.json": "6d21b57f028578e1c30801e247787bbcf1bb96ba87c9161b5feb9fef33c32549"
+  }
+}

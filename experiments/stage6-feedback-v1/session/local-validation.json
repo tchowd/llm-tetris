@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "tests": 60,
+  "failures": 0,
+  "skips": 0,
+  "deployment_archive_extracted_and_tested": true,
+  "scientific_registration_validated": true,
+  "gpu_proof_registration_validated": true,
+  "source_bundle_sha256": "28d3e55cb645df08e34063f6825fe456023e0ef34f3fc78431080022aab99db9",
+  "paid_compute_started": false,
+  "quota_status": "CASE_OPENED",
+  "quota_request_id": "ebb0c0bd8c654793bc970849eade21a51kZVM70o"
+}

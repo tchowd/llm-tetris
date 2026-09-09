@@ -1,0 +1,76 @@
+{
+  "objects": {
+    "experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/registration.json": {
+      "sha256": "dbb7225f06e0ed2b10e9ce6fed2303b3fd0075b6fd43a256b3f30cfc92b0a37c",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/registration.json",
+      "bytes": 1005
+    },
+    "experiments/stage6-feedback-v1/session/approval.json": {
+      "sha256": "dfd1a14babf5fa599e67dab5978152ca9c320182ba8f609fe97b43fea11895cc",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/approval.json",
+      "bytes": 2279
+    },
+    "experiments/stage6-feedback-v1/session/execution-policy.json": {
+      "sha256": "b43d5ab1225ef8b8c4fa66461f26c74ab336c7304ae58556e04c4212984d8783",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/execution-policy.json",
+      "bytes": 758
+    },
+    "experiments/stage6-feedback-v1/session/pilot-gate.json": {
+      "sha256": "f2a0f65d0b9e09838b2515b78be918ac55205422b8f6be01dc12afa69438b5ab",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/pilot-gate.json",
+      "bytes": 1338
+    },
+    "experiments/stage6-feedback-v1/session/retained-analysis-inputs.json": {
+      "sha256": "42d21fca54ae096c97bf7dd1f0d9213f277b5da6c0398c25af222b072a67e52c",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/retained-analysis-inputs.json",
+      "bytes": 613
+    },
+    "experiments/stage6-feedback-v1/session/retained-source.json": {
+      "sha256": "10c7b91828fa64d094257a79d26ac978a888a914f820734208892f59b73abbf4",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/retained-source.json",
+      "bytes": 912
+    },
+    "experiments/stage6-feedback-v1/session/setup-attempt-1.log": {
+      "sha256": "b7ce4e36db8aa8610e29d3ef6a3ccb2159f6015cf7723161c6eb4ec7d843a5ce",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/setup-attempt-1.log",
+      "bytes": 63196
+    },
+    "experiments/stage6-feedback-v1/session/source-bundle.json": {
+      "sha256": "680664a181208f06d65ef3abe53b343cc202ec4f4f1b73465d41ab03e6368ba8",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/source-bundle.json",
+      "bytes": 11682
+    },
+    "experiments/stage6-feedback-v1/session/worker-0-evidence/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json": {
+      "sha256": "88b5d25812c0b1dba6d5d1392abe72c08a23c7572975f2b88c014a5cec70083d",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/worker-0-evidence/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json",
+      "bytes": 7386
+    },
+    "experiments/stage6-feedback-v1/session/worker.json": {
+      "sha256": "604fd5fa70f684e1e39427035db503bcf6f516c5c354b72d71f1abc1778018fb",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/worker.json",
+      "bytes": 221
+    },
+    "experiments/stage6-feedback-v1/session/training-1788543975110316877.log": {
+      "sha256": "9d1ce16ddaaef34fc502630a199f20c7ff0918d13e5e1eae9b7cda64ed82dbac",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/training-1788543975110316877.log",
+      "bytes": 363
+    },
+    "experiments/stage6-feedback-v1/session/worker-status.json": {
+      "sha256": "96915c2fc9e30a04431b46c3717bcfcd2734edf5614e6afdd8cdd2552e254ca6",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/experiments/stage6-feedback-v1/session/worker-status.json",
+      "bytes": 94
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/events.jsonl": {
+      "sha256": "06b70cede689430b9c03f89a53cdb4f7266f95fbadba978da98b3b010dd7e774",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/events.jsonl",
+      "bytes": 267
+    },
+    "runs/rl-feedback-v1-fixed_zero-seed6201/rl/manifest.json": {
+      "sha256": "cd9031a3ec46999924553b236cdb35fd2b16a1dd3736546eca3d1572aff2310c",
+      "s3_key": "runs/feedback-pilot-v1/worker-1/runs/rl-feedback-v1-fixed_zero-seed6201/rl/manifest.json",
+      "bytes": 5776
+    }
+  },
+  "at_epoch": 1788544000.457246,
+  "readback_verified": false
+}

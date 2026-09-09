@@ -1,0 +1,6 @@
+{
+  "at": "2026-09-03T23:22:34Z",
+  "subnet": "subnet-07af2623089657057",
+  "error_code": "InsufficientInstanceCapacity",
+  "message": "We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-1c). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-1a, us-east-1b, us-east-1d."
+}

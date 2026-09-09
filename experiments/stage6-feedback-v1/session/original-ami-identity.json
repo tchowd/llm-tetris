@@ -1,0 +1,6 @@
+{
+  "ImageId": "ami-0a4870b172edcb0f2",
+  "Name": "Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.12 (Ubuntu 24.04) 20260827",
+  "OwnerId": "898082745236",
+  "Description": "Supported EC2 instances: G4dn, G5, G6, Gr6, G6e, P4d, P4de, P5, P5e, P5en, P6-B200. Release notes: https://docs.aws.amazon.com/dlami/latest/devguide/appendix-ami-release-notes.html"
+}

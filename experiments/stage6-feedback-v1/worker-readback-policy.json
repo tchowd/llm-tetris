@@ -1,0 +1,17 @@
+{
+  "role": "LLMTetrisTelemetryRole",
+  "policy_name": "FeedbackPilotEvidenceReadBack",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "ReadBackOnlyFeedbackPilotEvidence",
+        "Effect": "Allow",
+        "Action": "s3:GetObject",
+        "Resource": "arn:aws:s3:::llm-tetris-artifacts-566629888938-us-east-1/runs/feedback-pilot-v1/*"
+      }
+    ]
+  },
+  "verified": true,
+  "purpose": "Only read-back verification of this experiment encrypted backups; existing permissions unchanged"
+}

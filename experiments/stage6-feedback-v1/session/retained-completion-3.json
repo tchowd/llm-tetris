@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "run_id": "rl-feedback-v1-active_group-seed6202",
+  "training_updates": 32,
+  "evaluation_cases": {
+    "recovery": 128,
+    "ordinary": 20
+  },
+  "at_epoch": 1788560362.8354466
+}

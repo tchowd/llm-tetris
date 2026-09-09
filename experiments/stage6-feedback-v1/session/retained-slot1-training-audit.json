@@ -1,0 +1,1398 @@
+{
+  "at_epoch": 1788547733.216479,
+  "run_id": "rl-feedback-v1-fixed_zero-seed6201",
+  "status": "passed",
+  "updates": 32,
+  "sample_count": 10609,
+  "wall_clock_seconds": 3022.3718025684357,
+  "movement": {
+    "l2": 0.01763130004709415,
+    "relative_l2": 0.0004170878268740515,
+    "changed_tensors": 392,
+    "total_tensors": 392
+  },
+  "diagnostics": {
+    "empty": [
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.258859253447978
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 498,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 15,
+          "positive": 483,
+          "mean_abs": 2.9392117546752097
+        },
+        "terminal_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.1526317876846455
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.388278279899263
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.3350205528868844
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.2296986079382544
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.2832390911926415
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.414246320647096
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.133720408587746
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.228488341592203
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.2017200002769215
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.275917242767788
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 494,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 28,
+          "positive": 466,
+          "mean_abs": 2.9879701737014575
+        },
+        "terminal_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.2363489120146722
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.266893619823699
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 512,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 512,
+          "mean_abs": 3.4769332418443577
+        },
+        "terminal_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      }
+    ],
+    "recovery": [
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 73,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 56,
+          "positive": 17,
+          "mean_abs": 0.5200745590617594
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 9,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 9,
+          "positive": 0,
+          "mean_abs": 0.9349673202776787
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 137,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 83,
+          "positive": 54,
+          "mean_abs": 0.7493327255753444
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 26,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 26,
+          "positive": 0,
+          "mean_abs": 0.5979421215659724
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 78,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 78,
+          "positive": 0,
+          "mean_abs": 0.7437674244265701
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 2,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 2,
+          "positive": 0,
+          "mean_abs": 0.995
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 40,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 40,
+          "positive": 0,
+          "mean_abs": 0.9142260033309195
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 3,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 3,
+          "positive": 0,
+          "mean_abs": 0.9887
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 130,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 102,
+          "positive": 28,
+          "mean_abs": 0.478622628799625
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 5,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 5,
+          "positive": 0,
+          "mean_abs": 0.8588268224
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 74,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 74,
+          "positive": 0,
+          "mean_abs": 0.7878779485824076
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 0.98410475
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 72,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 65,
+          "positive": 7,
+          "mean_abs": 0.6199499917511732
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 2,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 2,
+          "positive": 0,
+          "mean_abs": 0.9890000000000001
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 114,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 86,
+          "positive": 28,
+          "mean_abs": 0.462569353859579
+        },
+        "terminal_illegal": {
+          "count": 3,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 3,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 0.2
+        },
+        "single_active": {
+          "count": 12,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 12,
+          "positive": 0,
+          "mean_abs": 0.6899416576298649
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 118,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 67,
+          "positive": 51,
+          "mean_abs": 0.6203185170786247
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 11,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 11,
+          "positive": 0,
+          "mean_abs": 0.8217894447432245
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 426,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 73,
+          "positive": 353,
+          "mean_abs": 1.856593312410438
+        },
+        "terminal_illegal": {
+          "count": 3,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 3,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 66,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 66,
+          "positive": 0,
+          "mean_abs": 0.5283872264904623
+        },
+        "terminal_illegal": {
+          "count": 3,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 3,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 0.196
+        },
+        "single_active": {
+          "count": 8,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 8,
+          "positive": 0,
+          "mean_abs": 0.836316533081573
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 46,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 46,
+          "positive": 0,
+          "mean_abs": 0.7743116906528581
+        },
+        "terminal_illegal": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 6,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 6,
+          "positive": 0,
+          "mean_abs": 0.88181949914
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 92,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 66,
+          "positive": 26,
+          "mean_abs": 0.4923401284584378
+        },
+        "terminal_illegal": {
+          "count": 3,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 3,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 0.2
+        },
+        "single_active": {
+          "count": 4,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 4,
+          "positive": 0,
+          "mean_abs": 0.98360475
+        },
+        "single_active_illegal": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 1.0
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 210,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 81,
+          "positive": 129,
+          "mean_abs": 0.8221064735482891
+        },
+        "terminal_illegal": {
+          "count": 3,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 3,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 1,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 1,
+          "positive": 0,
+          "mean_abs": 0.198
+        },
+        "single_active": {
+          "count": 7,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 5,
+          "positive": 2,
+          "mean_abs": 0.12735458237974315
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 431,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 44,
+          "positive": 387,
+          "mean_abs": 1.9819518187179537
+        },
+        "terminal_illegal": {
+          "count": 2,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 2,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      },
+      {
+        "threshold": 1e-10,
+        "all": {
+          "count": 342,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 56,
+          "positive": 286,
+          "mean_abs": 1.7972309767926378
+        },
+        "terminal_illegal": {
+          "count": 3,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 3,
+          "positive": 0,
+          "mean_abs": 1.0
+        },
+        "terminal_topout": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        },
+        "single_active": {
+          "count": 12,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 12,
+          "mean_abs": 0.27113768066360305
+        },
+        "single_active_illegal": {
+          "count": 0,
+          "exact_zero": 0,
+          "effective_zero": 0,
+          "negative": 0,
+          "positive": 0,
+          "mean_abs": null
+        }
+      }
+    ]
+  },
+  "reference_unchanged": true,
+  "source_objects_verified": 39
+}

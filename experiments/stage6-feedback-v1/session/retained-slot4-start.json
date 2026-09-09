@@ -1,0 +1,16 @@
+{
+  "status": "training_started_verified",
+  "observed_at": "2026-09-04T22:21:19.702748+00:00",
+  "slot": 4,
+  "run_id": "rl-feedback-v1-active_group-seed6203",
+  "training_seed": 6203,
+  "advantage_method": "active_group",
+  "initial_adapter_sha256": "7d753d616d3b9174f489e103f37193fccda28c46b1c7ac91e2f4e87efde01171",
+  "reference_adapter_sha256": "7d753d616d3b9174f489e103f37193fccda28c46b1c7ac91e2f4e87efde01171",
+  "external_registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "base_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "manifest_s3_key": "runs/feedback-pilot-v1/worker-4/runs/rl-feedback-v1-active_group-seed6203/rl/manifest.json",
+  "manifest_sha256": "c858e0fc7e4348940c6863490c6f1edf9b556ef88e1cea6167f0a27a3dc5128f",
+  "s3_encryption": "AES256",
+  "final_test_access": false
+}

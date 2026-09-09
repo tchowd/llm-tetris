@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-09-04T16:53:38.778152+00:00",
+  "user_instruction": "continue. i want this completed end to end - stop asking me till its done",
+  "maximum_concurrent_workers": 1,
+  "total_registered_runs": 6,
+  "remaining_slots": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "retain_instance_between_runs": true,
+  "hard_limit_usd": 250,
+  "absolute_deadline_utc": "2026-09-05T16:53:38.778152+00:00",
+  "authority_sha256": "d6f15eb69a0dfbb89cdbdfee01601dc4dda0d5420bd0f94f3f0f0781373d244e",
+  "instance_type": "g6e.8xlarge",
+  "hourly_allowance_usd": 4.6
+}

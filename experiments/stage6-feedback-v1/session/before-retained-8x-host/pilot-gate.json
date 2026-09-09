@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "approval_sha256": "b1db5de7d84e67071a907a655a1e4ae4ec4766707b6ad7d32ff3b2283553abe2",
+  "proof_sha256": "533ade9a7f4360fc20b60b2828889aa3a7bcd902322ce3f381916ab40d468811",
+  "sft_complete_sha256": "361a3ca7a0f944dda6e4f12699f6cdd1de9abae5b25b1c6ef4fe725f9c98b570",
+  "per_run_training_seconds": 9494.029464402458,
+  "per_run_eval_seconds": 3348.4286279745006,
+  "projected_cost_usd": 78.14364609690566,
+  "generated_epoch": 1788516089.7846496,
+  "operational_amendment": {
+    "at_utc": "2026-09-04T16:53:38.778152+00:00",
+    "prior_gate_sha256": "874e058c940de47b3b1acccc964a5bb85884f6e7f8cde29a358b88253db3317c",
+    "reason": "Same verified GPU/science/baseline gates; only user-authorized deadline and sequential orchestration changed. This is not a new GPU proof.",
+    "projected_continuation_compute_hours": 24,
+    "total_cost_upper_allowance_usd": 98.97619803051154,
+    "host_alternative": "g6e.4xlarge: same one L40S; increased CPU/RAM only; source and training recipe unchanged"
+  }
+}

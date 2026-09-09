@@ -1,0 +1,10 @@
+{
+  "observed_at": "2026-09-04T08:47:10.947271+00:00",
+  "quota_request_status": "CASE_CLOSED",
+  "applied_quota_vcpus": 8,
+  "requested_vcpus": 48,
+  "closure_reason": "Unavailable: Support DescribeCases requires a Premium Support subscription. No subscription purchased. Do not infer denial or approval from CASE_CLOSED alone.",
+  "worker_state": "stopped",
+  "latest_restart_result": "InsufficientInstanceCapacity",
+  "current_one_worker_plan_changed": false
+}

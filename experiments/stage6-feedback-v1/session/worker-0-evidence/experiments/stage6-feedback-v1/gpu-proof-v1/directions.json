@@ -1,0 +1,256 @@
+{
+  "status": "not_passed",
+  "generated_at": "2026-09-04T05:37:29Z",
+  "registration_sha256": "5f148409d52f0845d5a8c1b1e2ecdb9dc1b7d4dbfe71b0bdfab3f9ef48a952de",
+  "probes": [
+    {
+      "probe_index": 0,
+      "method": "active_group",
+      "case": "lone_illegal",
+      "advantage": 0.0,
+      "gradient_norm_before_clip": 0.0,
+      "clipped": false,
+      "alignment_max_error": 0.018873214721679688,
+      "mean_logprob_before": [
+        -0.9054535627365112,
+        -1.8831247091293335
+      ],
+      "mean_logprob_after": [
+        -0.9054535627365112,
+        -1.8831247091293335
+      ],
+      "illegal_logprob_delta": 0.0,
+      "legal_alternative_logprob_delta": 0.0,
+      "passed": false
+    },
+    {
+      "probe_index": 0,
+      "method": "active_group",
+      "case": "equal_illegal",
+      "advantage": 0.0,
+      "gradient_norm_before_clip": 0.0,
+      "clipped": false,
+      "alignment_max_error": 0.018873214721679688,
+      "mean_logprob_before": [
+        -0.9054535627365112,
+        -1.8831247091293335
+      ],
+      "mean_logprob_after": [
+        -0.9054535627365112,
+        -1.8831247091293335
+      ],
+      "illegal_logprob_delta": 0.0,
+      "legal_alternative_logprob_delta": 0.0,
+      "passed": false
+    },
+    {
+      "probe_index": 0,
+      "method": "active_group",
+      "case": "delayed_positive",
+      "advantage": 0.999999999947949,
+      "gradient_norm_before_clip": 21.229808807373047,
+      "clipped": true,
+      "alignment_max_error": 0.1348590850830078,
+      "mean_logprob_before": [
+        -0.9054535627365112,
+        -1.8831247091293335
+      ],
+      "mean_logprob_after": [
+        -0.889175295829773,
+        -1.8573071956634521
+      ],
+      "illegal_logprob_delta": 0.01627826690673828,
+      "legal_alternative_logprob_delta": 0.025817513465881348,
+      "passed": false
+    },
+    {
+      "probe_index": 0,
+      "method": "fixed_zero",
+      "case": "lone_illegal",
+      "advantage": -1.0,
+      "gradient_norm_before_clip": 9.144834518432617,
+      "clipped": true,
+      "alignment_max_error": 0.018873214721679688,
+      "mean_logprob_before": [
+        -0.9054535627365112,
+        -1.8831247091293335
+      ],
+      "mean_logprob_after": [
+        -0.9199281334877014,
+        -1.8829971551895142
+      ],
+      "illegal_logprob_delta": -0.014474570751190186,
+      "legal_alternative_logprob_delta": 0.00012755393981933594,
+      "passed": false
+    },
+    {
+      "probe_index": 0,
+      "method": "fixed_zero",
+      "case": "equal_illegal",
+      "advantage": -1.0,
+      "gradient_norm_before_clip": 9.144834518432617,
+      "clipped": true,
+      "alignment_max_error": 0.018873214721679688,
+      "mean_logprob_before": [
+        -0.9054535627365112,
+        -1.8831247091293335
+      ],
+      "mean_logprob_after": [
+        -0.9199281334877014,
+        -1.8829971551895142
+      ],
+      "illegal_logprob_delta": -0.014474570751190186,
+      "legal_alternative_logprob_delta": 0.00012755393981933594,
+      "passed": false
+    },
+    {
+      "probe_index": 0,
+      "method": "fixed_zero",
+      "case": "delayed_positive",
+      "advantage": 0.9801,
+      "gradient_norm_before_clip": 20.82681655883789,
+      "clipped": true,
+      "alignment_max_error": 0.1348590850830078,
+      "mean_logprob_before": [
+        -0.9054535627365112,
+        -1.8831247091293335
+      ],
+      "mean_logprob_after": [
+        -0.9027294516563416,
+        -1.8822304010391235
+      ],
+      "illegal_logprob_delta": 0.0027241110801696777,
+      "legal_alternative_logprob_delta": 0.0008943080902099609,
+      "passed": false
+    },
+    {
+      "probe_index": 1,
+      "method": "active_group",
+      "case": "lone_illegal",
+      "advantage": 0.0,
+      "gradient_norm_before_clip": 0.0,
+      "clipped": false,
+      "alignment_max_error": 0.12497234344482422,
+      "mean_logprob_before": [
+        -1.3013591766357422,
+        -0.3985813856124878
+      ],
+      "mean_logprob_after": [
+        -1.3013591766357422,
+        -0.3985813856124878
+      ],
+      "illegal_logprob_delta": 0.0,
+      "legal_alternative_logprob_delta": 0.0,
+      "passed": false
+    },
+    {
+      "probe_index": 1,
+      "method": "active_group",
+      "case": "equal_illegal",
+      "advantage": 0.0,
+      "gradient_norm_before_clip": 0.0,
+      "clipped": false,
+      "alignment_max_error": 0.12497234344482422,
+      "mean_logprob_before": [
+        -1.3013591766357422,
+        -0.3985813856124878
+      ],
+      "mean_logprob_after": [
+        -1.3013591766357422,
+        -0.3985813856124878
+      ],
+      "illegal_logprob_delta": 0.0,
+      "legal_alternative_logprob_delta": 0.0,
+      "passed": false
+    },
+    {
+      "probe_index": 1,
+      "method": "active_group",
+      "case": "delayed_positive",
+      "advantage": 0.999999999947949,
+      "gradient_norm_before_clip": 14.745024681091309,
+      "clipped": true,
+      "alignment_max_error": 2.7418136596679688e-05,
+      "mean_logprob_before": [
+        -1.3013591766357422,
+        -0.3985813856124878
+      ],
+      "mean_logprob_after": [
+        -1.3167349100112915,
+        -0.3722904622554779
+      ],
+      "illegal_logprob_delta": -0.015375733375549316,
+      "legal_alternative_logprob_delta": 0.026290923357009888,
+      "passed": true
+    },
+    {
+      "probe_index": 1,
+      "method": "fixed_zero",
+      "case": "lone_illegal",
+      "advantage": -1.0,
+      "gradient_norm_before_clip": 13.606620788574219,
+      "clipped": true,
+      "alignment_max_error": 0.12497234344482422,
+      "mean_logprob_before": [
+        -1.3013591766357422,
+        -0.3985813856124878
+      ],
+      "mean_logprob_after": [
+        -1.339455008506775,
+        -0.39501041173934937
+      ],
+      "illegal_logprob_delta": -0.038095831871032715,
+      "legal_alternative_logprob_delta": 0.0035709738731384277,
+      "passed": false
+    },
+    {
+      "probe_index": 1,
+      "method": "fixed_zero",
+      "case": "equal_illegal",
+      "advantage": -1.0,
+      "gradient_norm_before_clip": 13.606620788574219,
+      "clipped": true,
+      "alignment_max_error": 0.12497234344482422,
+      "mean_logprob_before": [
+        -1.3013591766357422,
+        -0.3985813856124878
+      ],
+      "mean_logprob_after": [
+        -1.339455008506775,
+        -0.39501041173934937
+      ],
+      "illegal_logprob_delta": -0.038095831871032715,
+      "legal_alternative_logprob_delta": 0.0035709738731384277,
+      "passed": false
+    },
+    {
+      "probe_index": 1,
+      "method": "fixed_zero",
+      "case": "delayed_positive",
+      "advantage": 0.9801,
+      "gradient_norm_before_clip": 14.422304153442383,
+      "clipped": true,
+      "alignment_max_error": 2.7418136596679688e-05,
+      "mean_logprob_before": [
+        -1.3013591766357422,
+        -0.3985813856124878
+      ],
+      "mean_logprob_after": [
+        -1.302850365638733,
+        -0.37229472398757935
+      ],
+      "illegal_logprob_delta": -0.0014911890029907227,
+      "legal_alternative_logprob_delta": 0.026286661624908447,
+      "passed": true
+    }
+  ],
+  "policy_restored": true,
+  "reference_unchanged": true,
+  "gpu": {
+    "name": "NVIDIA L40S",
+    "total_bytes": 47667740672,
+    "peak_allocated_bytes": 7439840768,
+    "headroom_fraction": 0.8439229411103565
+  },
+  "note": "Controlled individual-completion updates, not evidence of aggregate illegal-action probability or gameplay improvement."
+}

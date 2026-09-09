@@ -1,0 +1,48 @@
+{
+  "status": "verified",
+  "at_epoch": 1788564552.287352,
+  "source_receipt_key": "runs/feedback-pilot-v1/worker-4/experiments/stage6-feedback-v1/session/sync-worker-4.json",
+  "source_receipt_at_epoch": 1788564502.7325773,
+  "source_readback_verified": false,
+  "objects": [
+    {
+      "path": "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6203/recovery-0000.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6203/recovery-0000.json",
+      "bytes": 696936,
+      "sha256": "ab43d82f98a247bf6915ed6028f6c7d61abebf801bbb0398ae7c62656be933ea",
+      "server_side_encryption": "AES256"
+    },
+    {
+      "path": "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6203/recovery-0032.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6203/recovery-0032.json",
+      "bytes": 600890,
+      "sha256": "f3b39c412a9fc187eaa7b5b78b035f894a28a78991d584595bd181ddf0d3e21f",
+      "server_side_encryption": "AES256"
+    },
+    {
+      "path": "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6203/recovery-0064.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6203/recovery-0064.json",
+      "bytes": 736989,
+      "sha256": "d783408377c2ea962da1423a2d9552a9ab324890aae1d6ca337dc763a2d6f9ec",
+      "server_side_encryption": "AES256"
+    },
+    {
+      "path": "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6203/recovery-0096.json",
+      "s3_key": "runs/feedback-pilot-v1/worker-4/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6203/recovery-0096.json",
+      "bytes": 557494,
+      "sha256": "7f448af034eb1add6d5aecbe46e074a727c090fed555efc2341739f633e469d7",
+      "server_side_encryption": "AES256"
+    }
+  ],
+  "summary": {
+    "games": 128,
+    "illegal_endings": 74,
+    "topouts": 0,
+    "survivors": 54,
+    "parse_failures": 0,
+    "mean_pieces": 102.6796875,
+    "mean_score": 6457.875,
+    "mean_lines": 40.34375
+  },
+  "final_test_access": false
+}

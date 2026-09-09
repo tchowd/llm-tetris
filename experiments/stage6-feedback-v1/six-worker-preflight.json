@@ -1,0 +1,45 @@
+{
+  "at": "2026-09-04T01:54:46.969810+00:00",
+  "status": "blocked_launch_permission_and_gpu_quota",
+  "workers": [
+    {
+      "worker_slot": 0,
+      "run_id": "rl-feedback-v1-active_group-seed6201",
+      "request_sha256": "6930116f4f95b64d2aa6daff9776120961290a7f13b2b834b17315e27be050f7",
+      "dry_run": "UnauthorizedOperation"
+    },
+    {
+      "worker_slot": 1,
+      "run_id": "rl-feedback-v1-fixed_zero-seed6201",
+      "request_sha256": "440b83e7bad1d555f3574f75101eeb4af5c5aef6e85e57a00c918f709e4a8272",
+      "dry_run": "UnauthorizedOperation"
+    },
+    {
+      "worker_slot": 2,
+      "run_id": "rl-feedback-v1-fixed_zero-seed6202",
+      "request_sha256": "f57d1f10e2530df729d79a25ec183baec6841ead9c04cb9ed145217ed83f443e",
+      "dry_run": "UnauthorizedOperation"
+    },
+    {
+      "worker_slot": 3,
+      "run_id": "rl-feedback-v1-active_group-seed6202",
+      "request_sha256": "74c75520e44809beaa0e74e5d8250f70ea0176576eba3cc4c773d51d8506efa0",
+      "dry_run": "UnauthorizedOperation"
+    },
+    {
+      "worker_slot": 4,
+      "run_id": "rl-feedback-v1-active_group-seed6203",
+      "request_sha256": "6dc22eebebc224f0a16c831cc4381f4eb41da40812fd7175dd43b94c77f41d1c",
+      "dry_run": "UnauthorizedOperation"
+    },
+    {
+      "worker_slot": 5,
+      "run_id": "rl-feedback-v1-fixed_zero-seed6203",
+      "request_sha256": "7991379b7a2966e42d78d82d6e0ed1d30bbbd41cfb6172e92d0c539ba033a881",
+      "dry_run": "UnauthorizedOperation"
+    }
+  ],
+  "required_vcpus": 48,
+  "current_vcpus": 8,
+  "paid_compute_started": false
+}

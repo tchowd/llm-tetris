@@ -1,0 +1,5 @@
+{
+  "at": "2026-09-04T01:51:49.212277+00:00",
+  "error_code": "UnauthorizedOperation",
+  "message": "You are not authorized to perform this operation. User: arn:aws:iam::566629888938:user/gpu is not authorized to perform: ec2:RunInstances on resource: arn:aws:ec2:us-east-1:566629888938:instance/* because no identity-based policy allows the ec2:RunInstances action. "
+}

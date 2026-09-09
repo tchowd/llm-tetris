@@ -1,0 +1,17 @@
+{
+  "start_epoch": 1788512585.762181,
+  "result": [
+    {
+      "InstanceId": "i-098c5726b527aca86",
+      "CurrentState": {
+        "Code": 0,
+        "Name": "pending"
+      },
+      "PreviousState": {
+        "Code": 80,
+        "Name": "stopped"
+      }
+    }
+  ],
+  "shared_deadline_epoch": 1788557311.0
+}

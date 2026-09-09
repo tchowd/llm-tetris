@@ -1,0 +1,40 @@
+{
+  "first_launch_epoch": 1788499711.0,
+  "deadline_epoch": 1788627218.778152,
+  "hourly_usd": 3.1,
+  "ancillary_reserve_usd": 15,
+  "hard_limit_usd": 250,
+  "workers": {
+    "0": {
+      "instance_id": "i-098c5726b527aca86",
+      "run_id": "rl-feedback-v1-active_group-seed6201",
+      "sessions": [
+        {
+          "start_epoch": 1788499711.0,
+          "end_epoch": 1788501464.080893,
+          "end_basis": "confirmed stopped observation; upper bound"
+        },
+        {
+          "start_epoch": 1788512585.762181,
+          "end_epoch": 1788521953.427388,
+          "purpose": "User requested token fix and one worker: diagnosis, repaired proof and gated first pilot under original $250 total/deadline",
+          "start_basis": "before StartInstances request; conservative",
+          "end_basis": "confirmed stopped observation; upper bound"
+        }
+      ],
+      "state": "terminated",
+      "request_sha256": "df3435dba8fb8eddc1a533e8a96b903da7938f8e4b606c2cde57848bd01c121c",
+      "root_volume_id": "vol-03a3d93ae98a76e40",
+      "public_ip": null
+    }
+  },
+  "operations_complete": false,
+  "cost": {
+    "worker_hours": 3.08909613887469,
+    "compute_allowance_usd": 7.104921119411786,
+    "including_ancillary_reserve_usd": 22.104921119411785
+  },
+  "last_observed_epoch": 1788540679.086072,
+  "continuation_authority_sha256": "b1db5de7d84e67071a907a655a1e4ae4ec4766707b6ad7d32ff3b2283553abe2",
+  "cost_accounting_note": "Conservative upper bound also revalues the previous 3.0891 hours at $3.10; historical exact $2.30 allowance retained in snapshots."
+}

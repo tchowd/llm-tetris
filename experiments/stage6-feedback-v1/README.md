@@ -1,4 +1,36 @@
-# Phase 1A complete locally; Phase 1B awaiting budget approval
+# Phase 1A complete; Phase 1B pilot running
+
+Current update, September 4 UTC: Phase 1A is implemented and validated. The
+registered Phase 1B comparison is running sequentially on one retained L40S
+worker in `us-east-2`, under the user's unchanged **$250 total hard limit**.
+The original and revised seed-6201 runs, common SFT evaluation and GPU proof
+are complete and fully audited. The first paired recovery result favors the
+original method by 2.3 percentage points; this is interim evidence and not the
+three-pair preregistered conclusion. The revised seed-6202 run is complete and
+passed its training, recovery and ordinary-play audits. Its paired original
+seed-6202 run completed training and difficult-state evaluation and is running
+its ordinary-game guard. Both completed recovery pairs favor original RL, so
+the registered 2-of-3 replication gate cannot pass. The retained runner will
+finish this run and the other two registered runs, perform the
+prospective analysis, back up the artifacts with AES256 and verified hashes,
+and shut down. See [the execution handoff](session/HANDOFF.md).
+
+The scientific registration remains frozen at SHA-256
+`ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2`.
+The final test remains sealed. Current local scientific and operations
+validation passes 104 tests with no failures or skips; see
+[`session/current-validation.json`](session/current-validation.json).
+
+Earlier quota, capacity, proof-only and multi-worker notes below are retained
+as historical execution evidence. They are superseded by the current retained
+one-worker execution and do not describe the live state.
+
+Update, September 3 at 23:25 UTC: the user approved the separate GPU correctness
+check only, capped at $25. The new launch permission passes dry-run, but actual
+L40S launches were rejected for capacity across all four eligible zones.
+No instance or paid compute started. The isolated proof runner and 91 local
+tests pass; GPU correctness remains untested. See [GPU-proof status and handoff](gpu-proof-v1/README.md).
+This does not approve the six-run Phase 1B pilot described below.
 
 The implementation, 128-case development recovery set, six paired-run
 registration, evaluation/analysis tools and cost proposal are ready for review.

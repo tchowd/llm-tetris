@@ -1,0 +1,8 @@
+{
+  "label": "rl-feedback-v1-active_group-seed6203",
+  "adapter_sha256": "c30177360b2978f25eac9e134d60f59b12c1ffed953728d50fa9108ad2e6210a",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "base_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "greedy": true,
+  "final_test_access": false
+}

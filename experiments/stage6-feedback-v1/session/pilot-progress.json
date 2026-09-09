@@ -1,0 +1,17 @@
+{
+  "at_epoch": 1788520638.923979,
+  "phase": "candidate-evaluation",
+  "run_id": "rl-feedback-v1-active_group-seed6201",
+  "completed_updates": 32,
+  "evaluation_shards_verified": [
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/identity.json",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0000.json",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0032.json",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0064.json",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0096.json"
+  ],
+  "ordinary_evaluation": "in progress",
+  "worker": "healthy",
+  "compute_allowance_usd": 6.246314517809285,
+  "next_slot": "Wait for complete candidate evaluation, verified final backup and confirmed stopped worker before launching slot1."
+}

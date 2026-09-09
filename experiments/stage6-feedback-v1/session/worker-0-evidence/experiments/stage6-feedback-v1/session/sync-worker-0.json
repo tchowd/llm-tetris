@@ -1,0 +1,76 @@
+{
+  "objects": {
+    "experiments/stage6-feedback-v1/session/approval.json": {
+      "sha256": "4130d3b8a03a6e96abca93c4b8b5595c12bff7d01e5ddf16fd6042922f9578b1",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/approval.json",
+      "bytes": 2216
+    },
+    "experiments/stage6-feedback-v1/session/setup-http-attempt.log": {
+      "sha256": "e25c0534b4f5f1506bf1dbe4de1ab3323523f61f3a4d4cf3b6452f6200e1b69d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/setup-http-attempt.log",
+      "bytes": 1640
+    },
+    "experiments/stage6-feedback-v1/session/setup-https-amendment.json": {
+      "sha256": "7d48ee6a18f624716cf05bd542f25de3615962768f432c72b93f1e59eba16a8d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/setup-https-amendment.json",
+      "bytes": 379
+    },
+    "experiments/stage6-feedback-v1/session/source-bundle-at-first-launch.json": {
+      "sha256": "6a4f63945e6e1ee7ac3fd1d4ee392faf1216530a77038221713d732faf7ad9c1",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/source-bundle-at-first-launch.json",
+      "bytes": 10869
+    },
+    "experiments/stage6-feedback-v1/session/source-bundle.json": {
+      "sha256": "da891534e235fff9ee22e7654d53fe4156b25c091ecb9d0a75ce2b7a0fafba7b",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/source-bundle.json",
+      "bytes": 10869
+    },
+    "experiments/stage6-feedback-v1/session/worker.json": {
+      "sha256": "c881ed97978c179a6f6bb59bc5b3fbfd08a61ad69fb3ceddb6deb3f77a85c8a8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/worker.json",
+      "bytes": 108
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v1/registration.json": {
+      "sha256": "5f148409d52f0845d5a8c1b1e2ecdb9dc1b7d4dbfe71b0bdfab3f9ef48a952de",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v1/registration.json",
+      "bytes": 15653
+    },
+    "experiments/stage6-feedback-v1/session/environment-freeze.log": {
+      "sha256": "f3ad0850ba175099e77197b0a74c06514372cffd1ed7cc7458366357bc56da68",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/environment-freeze.log",
+      "bytes": 1844
+    },
+    "experiments/stage6-feedback-v1/session/proof-0-directions-1788500234898872131.log": {
+      "sha256": "a8a6f2e352f2722f4d39032e40e9007deb95bcc2d4921b6b9a1a2255433f58d5",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/proof-0-directions-1788500234898872131.log",
+      "bytes": 6135
+    },
+    "experiments/stage6-feedback-v1/session/setup-complete.log": {
+      "sha256": "b602d78a923df0c0459f98f806fa361f9906e820066bf6f21e360edf2f98bfc4",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/setup-complete.log",
+      "bytes": 66605
+    },
+    "experiments/stage6-feedback-v1/session/worker-status.json": {
+      "sha256": "e16570c942d2ba4b58eafbc44d863b7dccb0f84e8d582d1cc80358f301ffd11b",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/worker-status.json",
+      "bytes": 260
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v1/compute-ledger.json": {
+      "sha256": "6c30ce02fa0ee2ebc2b28018bc79d38bf9d330fe2cc93c7f9a91cbcaecde4c8c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v1/compute-ledger.json",
+      "bytes": 430
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v1/directions.json": {
+      "sha256": "88b5d25812c0b1dba6d5d1392abe72c08a23c7572975f2b88c014a5cec70083d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json",
+      "bytes": 7386
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v1/workflow.json": {
+      "sha256": "998016274ce2b39fd77ca589a06b4c06d3e9af832ce4c307ccf72780c926e4d4",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v1/workflow.json",
+      "bytes": 254
+    }
+  },
+  "at_epoch": 1788500251.2582262,
+  "readback_verified": true
+}

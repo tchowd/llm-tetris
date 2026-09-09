@@ -1,0 +1,53 @@
+{
+  "status": "durable_checkpoint_verified",
+  "observed_at": "2026-09-04T19:23:52.935543+00:00",
+  "slot": 2,
+  "run_id": "rl-feedback-v1-fixed_zero-seed6202",
+  "update": 4,
+  "receipt_s3_key": "runs/feedback-pilot-v1/worker-2/experiments/stage6-feedback-v1/session/sync-worker-2.json",
+  "receipt_sha256": "04a275c7936cb4f813d9da2ef11f1f67d6f61ead55b2e6083a0cf1eefe7b4a96",
+  "receipt_at_epoch": 1788549794.3300273,
+  "objects": [
+    {
+      "path": "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/README.md",
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/README.md",
+      "bytes": 5184,
+      "s3_encryption": "AES256",
+      "s3_bytes": 5184
+    },
+    {
+      "path": "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/adapter_config.json",
+      "sha256": "0ef3143d809b66e3dae546ba47239a3b2b9690a4e4b05f12f8a2ddd68a430082",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/adapter_config.json",
+      "bytes": 1288,
+      "s3_encryption": "AES256",
+      "s3_bytes": 1288
+    },
+    {
+      "path": "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/adapter_model.safetensors",
+      "sha256": "daab872c7e2b0842b7933f2ec9a40a1d264ec2af939439a1d56ce247e035453c",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/adapter/adapter_model.safetensors",
+      "bytes": 69782384,
+      "s3_encryption": "AES256",
+      "s3_bytes": 69782384
+    },
+    {
+      "path": "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/complete.json",
+      "sha256": "bf262c34e4000f0f4d02f0b461b241a65a8c93d28bbb435318fc9f5e35de8b22",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/complete.json",
+      "bytes": 192,
+      "s3_encryption": "AES256",
+      "s3_bytes": 192
+    },
+    {
+      "path": "runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/state.pt",
+      "sha256": "33f5c03aa056d46af920d4b449d8dafc8ce5631e7e74f92a9d2d52f1372bb926",
+      "s3_key": "runs/feedback-pilot-v1/worker-2/runs/rl-feedback-v1-fixed_zero-seed6202/rl/checkpoint-4/state.pt",
+      "bytes": 139754813,
+      "s3_encryption": "AES256",
+      "s3_bytes": 139754813
+    }
+  ],
+  "note": "S3 encryption and object sizes independently checked; the retained runner performs full SHA readback before advancing."
+}

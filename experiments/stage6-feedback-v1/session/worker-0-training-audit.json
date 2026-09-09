@@ -1,0 +1,96 @@
+{
+  "at_epoch": 1788519656.36947,
+  "run_id": "rl-feedback-v1-active_group-seed6201",
+  "status": "passed",
+  "audited_updates": 32,
+  "audited_decisions": 10073,
+  "original_sft_initialization_verified": true,
+  "frozen_reference_unchanged": true,
+  "finite_gradients_losses_kl": true,
+  "paired_schedule_rewards_returns_advantages_replayed": true,
+  "adapter_hash_verified": true,
+  "adapter_movement": {
+    "l2": 0.01840809107992425,
+    "relative_l2": 0.0004354636745400184,
+    "changed_tensors": 392,
+    "total_tensors": 392
+  },
+  "sampled_training_counts": {
+    "empty": {
+      "all": {
+        "count": 8063,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 3572,
+        "positive": 4491
+      },
+      "terminal_illegal": {
+        "count": 3,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 3,
+        "positive": 0
+      },
+      "terminal_topout": {
+        "count": 0,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 0,
+        "positive": 0
+      },
+      "single_active": {
+        "count": 0,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 0,
+        "positive": 0
+      },
+      "single_active_illegal": {
+        "count": 0,
+        "exact_zero": 0,
+        "effective_zero": 0,
+        "negative": 0,
+        "positive": 0
+      }
+    },
+    "recovery": {
+      "all": {
+        "count": 2010,
+        "exact_zero": 274,
+        "effective_zero": 382,
+        "negative": 933,
+        "positive": 695
+      },
+      "terminal_illegal": {
+        "count": 57,
+        "exact_zero": 12,
+        "effective_zero": 12,
+        "negative": 45,
+        "positive": 0
+      },
+      "terminal_topout": {
+        "count": 4,
+        "exact_zero": 2,
+        "effective_zero": 2,
+        "negative": 1,
+        "positive": 1
+      },
+      "single_active": {
+        "count": 382,
+        "exact_zero": 274,
+        "effective_zero": 382,
+        "negative": 0,
+        "positive": 0
+      },
+      "single_active_illegal": {
+        "count": 12,
+        "exact_zero": 12,
+        "effective_zero": 12,
+        "negative": 0,
+        "positive": 0
+      }
+    }
+  },
+  "training_seconds": 2973.910425901413,
+  "gameplay_comparison": "pending greedy evaluation and remaining five runs"
+}

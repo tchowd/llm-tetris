@@ -1,0 +1,51 @@
+{
+  "status": "completed",
+  "completed_updates": 4,
+  "registration_sha256": "4fc2d57e8ea66d47a75a556576bd75d32e96254a8ba714d69a3f64276c5919b1",
+  "sample_count": 1524,
+  "update_metrics": [
+    {
+      "update": 1,
+      "turns": 512,
+      "loss": 0.17291777450736845,
+      "kl": 4.249461980303324e-05,
+      "gradient_norm_before_clip": 0.5812910795211792,
+      "seconds": 137.19629621505737
+    },
+    {
+      "update": 2,
+      "turns": 239,
+      "loss": 0.05037647727658623,
+      "kl": 0.0001229730524371364,
+      "gradient_norm_before_clip": 0.36469677090644836,
+      "seconds": 109.39419150352478
+    },
+    {
+      "update": 3,
+      "turns": 512,
+      "loss": 0.2067934512579086,
+      "kl": 0.00011402478542256803,
+      "gradient_norm_before_clip": 0.6276823282241821,
+      "seconds": 136.54136109352112
+    },
+    {
+      "update": 4,
+      "turns": 261,
+      "loss": 0.14370499971300887,
+      "kl": 0.00012836411965533312,
+      "gradient_norm_before_clip": 0.5693234801292419,
+      "seconds": 114.25090670585632
+    }
+  ],
+  "reference_unchanged": true,
+  "reference_hash": "339336e80f11f59b3037cabfb2f5b903ef2eac26832a3fbf7c5b7860b61390ed",
+  "adapter_parameter_hash": "7f2e9585deb0a86d20b19d0ee5030de211f125bd895a6a681012e048fb825242",
+  "resume_used": false,
+  "gpu": {
+    "name": "NVIDIA L40S",
+    "total_bytes": 47667740672,
+    "peak_allocated_bytes": 7495333888,
+    "headroom_fraction": 0.8427587760121646
+  },
+  "completed_at": "2026-09-04T09:14:06Z"
+}

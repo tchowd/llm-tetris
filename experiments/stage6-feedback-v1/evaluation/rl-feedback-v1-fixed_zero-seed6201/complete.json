@@ -1,0 +1,16 @@
+{
+  "label": "rl-feedback-v1-fixed_zero-seed6201",
+  "adapter_sha256": "c089297ce472ff1aca9f6bf322a08e131c9ce66049d167685c12b0be84c0a39b",
+  "registration_sha256": "ca95de9c9849cfe0c2038b39a167d1fb8b062c60f0e6df065ea343901fc194e2",
+  "base_model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "greedy": true,
+  "final_test_access": false,
+  "status": "completed",
+  "files_sha256": {
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/recovery-0000.json": "44370c120ea239384261e94e260aa8e48cb1dbfba790937d6fc4b0a52e22609c",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/recovery-0032.json": "fa7e49ac1880a7648af11d10412dd45b8a71b8a92831a1fc4987b2b9be4551f5",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/recovery-0064.json": "f54dec5ae188d5aff4ffb243aa0319114304c537ff2c9aafd8a04b85984f54ba",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/recovery-0096.json": "b9207c6710c22557719669b5a080624278415868e6535285abd2af25026fb313",
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-fixed_zero-seed6201/ordinary-0000.json": "ac2160798dc43d273a4ee6f8f19f39dfcc49398b4d115f82029b1c067b1a59eb"
+  }
+}

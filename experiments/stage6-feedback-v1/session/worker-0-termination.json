@@ -1,0 +1,19 @@
+{
+  "at_epoch": 1788521632.4066298,
+  "instance_id": "i-098c5726b527aca86",
+  "root_volume_id": "vol-03a3d93ae98a76e40",
+  "backup_receipt": "worker-0-final-sync-receipt.json",
+  "result": [
+    {
+      "InstanceId": "i-098c5726b527aca86",
+      "CurrentState": {
+        "Code": 32,
+        "Name": "shutting-down"
+      },
+      "PreviousState": {
+        "Code": 64,
+        "Name": "stopping"
+      }
+    }
+  ]
+}

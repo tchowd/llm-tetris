@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-09-04T16:53:38.778152+00:00",
+  "user_instruction": "continue. i want this completed end to end - stop asking me till its done",
+  "maximum_concurrent_workers": 1,
+  "total_registered_runs": 6,
+  "remaining_slots": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "retain_instance_between_runs": true,
+  "hard_limit_usd": 250,
+  "absolute_deadline_utc": "2026-09-05T16:53:38.778152+00:00",
+  "authority_sha256": "dfd1a14babf5fa599e67dab5978152ca9c320182ba8f609fe97b43fea11895cc",
+  "instance_type": "g6e.xlarge",
+  "hourly_allowance_usd": 4.6,
+  "host_note": "Single unchanged L40S, 4 vCPUs and 32 GiB RAM. Keep conservative $4.60 hourly allowance; actual quoted price lower. All scientific settings unchanged.",
+  "region": "us-east-2"
+}

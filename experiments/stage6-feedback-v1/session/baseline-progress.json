@@ -1,0 +1,13 @@
+{
+  "at_epoch": 1788515654.3800662,
+  "phase": "sft-evaluation",
+  "backed_up_evaluation_files": [
+    "experiments/stage6-feedback-v1/evaluation/sft/identity.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0000.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0032.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0064.json",
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0096.json"
+  ],
+  "compute_allowance_usd": 3.0662387656701933,
+  "pilot_runs_started": 0
+}

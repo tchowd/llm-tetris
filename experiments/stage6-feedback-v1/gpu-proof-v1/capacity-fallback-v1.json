@@ -1,0 +1,10 @@
+{
+  "kind": "operational_capacity_fallback",
+  "reason": "AWS explicitly rejected the same instance in us-east-1b, us-east-1c and us-east-1d; no instance created. Try original existing us-east-1a subnet, already permitted by existing compute policy.",
+  "subnet_id": "subnet-094caed03deaaae73",
+  "instance_type": "g6e.2xlarge",
+  "scientific_registration_unchanged": true,
+  "budget_and_deadlines_unchanged": true,
+  "iam_changes": false,
+  "execution": "Use the separately saved idempotent request via SDK; original operational helper's three-zone allowlist remains unchanged. Recheck account, no existing worker, dry-run, and inputs before submission."
+}

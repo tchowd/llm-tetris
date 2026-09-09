@@ -1,0 +1,13 @@
+{
+  "at_epoch": 1788521614.8125818,
+  "status": "completed",
+  "training_updates": 32,
+  "training_audit": "worker-0-training-audit.json",
+  "evaluation_cases": {
+    "recovery": 128,
+    "ordinary": 20
+  },
+  "final_backup_readback_verified": true,
+  "receipt_sha256": "a46492d470150c6c63bf0082fb09e9817ee2a6b19d52216b9d9020c336c34ef8",
+  "cleanup_ready": true
+}

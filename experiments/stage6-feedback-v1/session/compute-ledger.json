@@ -1,0 +1,78 @@
+{
+  "first_launch_epoch": 1788499711.0,
+  "deadline_epoch": 1788627218.778152,
+  "hourly_usd": 4.6,
+  "ancillary_reserve_usd": 15,
+  "hard_limit_usd": 250,
+  "workers": {
+    "0": {
+      "instance_id": "i-098c5726b527aca86",
+      "run_id": "rl-feedback-v1-active_group-seed6201",
+      "sessions": [
+        {
+          "start_epoch": 1788499711.0,
+          "end_epoch": 1788501464.080893,
+          "end_basis": "confirmed stopped observation; upper bound"
+        },
+        {
+          "start_epoch": 1788512585.762181,
+          "end_epoch": 1788521953.427388,
+          "purpose": "User requested token fix and one worker: diagnosis, repaired proof and gated first pilot under original $250 total/deadline",
+          "start_basis": "before StartInstances request; conservative",
+          "end_basis": "confirmed stopped observation; upper bound"
+        }
+      ],
+      "state": "terminated",
+      "request_sha256": "df3435dba8fb8eddc1a533e8a96b903da7938f8e4b606c2cde57848bd01c121c",
+      "root_volume_id": "vol-03a3d93ae98a76e40",
+      "public_ip": null,
+      "hourly_usd": 2.3
+    },
+    "1": {
+      "slot": 1,
+      "instance_id": "i-01de843dcdd42a824",
+      "region": "us-east-2",
+      "run_id": "rl-feedback-v1-fixed_zero-seed6201",
+      "retained_slots": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "sessions": [
+        {
+          "start_epoch": 1788543452.0,
+          "end_epoch": 1788572296.74797,
+          "end_basis": "confirmed stopped observation; upper bound"
+        }
+      ],
+      "state": "terminated",
+      "request_sha256": "e72931cbdb0e462c4e68413ac4ceafc20118ded68baf8952df5da8e727975aed",
+      "root_volume_id": "vol-00bcfe2edf874b271",
+      "public_ip": null,
+      "root_volume_deleted": true,
+      "terminated_at_epoch": 1788573791.0
+    }
+  },
+  "operations_complete": true,
+  "cost": {
+    "worker_hours": 11.101526130570305,
+    "compute_allowance_usd": 43.96209908121161,
+    "including_ancillary_reserve_usd": 58.96209908121161
+  },
+  "last_observed_epoch": 1788902603.157888,
+  "continuation_authority_sha256": "dfd1a14babf5fa599e67dab5978152ca9c320182ba8f609fe97b43fea11895cc",
+  "cost_accounting_note": "Per-worker hourly allowances preserve original worker cost; future retained worker defaults to conservative $4.60/hour.",
+  "cleanup": {
+    "instance_id": "i-01de843dcdd42a824",
+    "instance_state": "terminated",
+    "root_volume_id": "vol-00bcfe2edf874b271",
+    "root_volume_deleted": true,
+    "security_group": "sg-0c38f179c0800f413",
+    "security_group_deleted": true,
+    "key_name": "feedback-retained-v1",
+    "key_deleted": true,
+    "verified_at_epoch": 1788573792.0
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "at_epoch": 1788540430.348747,
+  "slot": 1,
+  "capacity_rejected_subnets": [
+    "subnet-07af2623089657057",
+    "subnet-011c567e0b89bdea6",
+    "subnet-01df3bd9aafb4de79",
+    "subnet-094caed03deaaae73"
+  ],
+  "workers": [],
+  "total_compute_allowance_usd": 7.104921119411786,
+  "deadline_epoch": 1788557311.0
+}

@@ -1,0 +1,6 @@
+{
+  "instance_id": "i-098c5726b527aca86",
+  "ip": "100.31.42.173",
+  "fingerprint": "SHA256:LGAnRsbN6Vz7s3XFJARheRTM6jYr4EI8fSY57k05c9U",
+  "verification": "Matched AWS EC2 GetConsoleOutput cloud-init host-key fingerprint"
+}

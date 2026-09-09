@@ -1,0 +1,18 @@
+{
+  "registered_at": "2026-09-04T05:39:30.665013+00:00",
+  "script_sha256": "a95b70414a1808fa471ea423d53d40a0bd2e5257aafb365b4d9e46a87f9565a3",
+  "hypothesis": "The original direction proof compares a singleton trainer forward with a two-row independent forward; bf16 batch-shape differences may explain its alignment failure. This is unconfirmed until the diagnostic runs.",
+  "comparisons": [
+    "singleton trainer vs singleton independent, identical inputs",
+    "two-row trainer vs two-row independent, identical inputs",
+    "independent singleton vs two-row output",
+    "original singleton trainer vs two-row independent output"
+  ],
+  "optimizer_steps": 0,
+  "model": "Exact original SFT and frozen reference, unchanged registered base revision",
+  "maximum_diagnostic_seconds": 600,
+  "incremental_compute_subcap_usd": 1,
+  "charged_to": "Existing $250 session total and original absolute deadline; no extra approval or allowance",
+  "failure_preserved": true,
+  "tolerance_unchanged": 0.0001
+}

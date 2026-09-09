@@ -1,0 +1,901 @@
+{
+  "objects": {
+    "experiments/stage6-feedback-v1/session/approval.json": {
+      "sha256": "4130d3b8a03a6e96abca93c4b8b5595c12bff7d01e5ddf16fd6042922f9578b1",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/approval.json",
+      "bytes": 2216
+    },
+    "experiments/stage6-feedback-v1/session/setup-http-attempt.log": {
+      "sha256": "e25c0534b4f5f1506bf1dbe4de1ab3323523f61f3a4d4cf3b6452f6200e1b69d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/setup-http-attempt.log",
+      "bytes": 1640
+    },
+    "experiments/stage6-feedback-v1/session/setup-https-amendment.json": {
+      "sha256": "7d48ee6a18f624716cf05bd542f25de3615962768f432c72b93f1e59eba16a8d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/setup-https-amendment.json",
+      "bytes": 379
+    },
+    "experiments/stage6-feedback-v1/session/source-bundle-at-first-launch.json": {
+      "sha256": "6a4f63945e6e1ee7ac3fd1d4ee392faf1216530a77038221713d732faf7ad9c1",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/source-bundle-at-first-launch.json",
+      "bytes": 10869
+    },
+    "experiments/stage6-feedback-v1/session/source-bundle.json": {
+      "sha256": "07e7383b9f3881ce7c7622b45417b7dc0d7afc9be37a00e5f1fcbb1c753f0c7e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/source-bundle.json",
+      "bytes": 11683
+    },
+    "experiments/stage6-feedback-v1/session/worker.json": {
+      "sha256": "c881ed97978c179a6f6bb59bc5b3fbfd08a61ad69fb3ceddb6deb3f77a85c8a8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/worker.json",
+      "bytes": 108
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v1/registration.json": {
+      "sha256": "5f148409d52f0845d5a8c1b1e2ecdb9dc1b7d4dbfe71b0bdfab3f9ef48a952de",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v1/registration.json",
+      "bytes": 15653
+    },
+    "experiments/stage6-feedback-v1/session/environment-freeze.log": {
+      "sha256": "f3ad0850ba175099e77197b0a74c06514372cffd1ed7cc7458366357bc56da68",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/environment-freeze.log",
+      "bytes": 1844
+    },
+    "experiments/stage6-feedback-v1/session/proof-0-directions-1788500234898872131.log": {
+      "sha256": "a8a6f2e352f2722f4d39032e40e9007deb95bcc2d4921b6b9a1a2255433f58d5",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/proof-0-directions-1788500234898872131.log",
+      "bytes": 6135
+    },
+    "experiments/stage6-feedback-v1/session/setup-complete.log": {
+      "sha256": "b602d78a923df0c0459f98f806fa361f9906e820066bf6f21e360edf2f98bfc4",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/setup-complete.log",
+      "bytes": 66605
+    },
+    "experiments/stage6-feedback-v1/session/worker-status.json": {
+      "sha256": "cc457d8a27e95181272bde6e97cb8e843394daad3367ece1cd64bdf4fd67417b",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/worker-status.json",
+      "bytes": 114
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v1/compute-ledger.json": {
+      "sha256": "6c30ce02fa0ee2ebc2b28018bc79d38bf9d330fe2cc93c7f9a91cbcaecde4c8c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v1/compute-ledger.json",
+      "bytes": 430
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v1/directions.json": {
+      "sha256": "88b5d25812c0b1dba6d5d1392abe72c08a23c7572975f2b88c014a5cec70083d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json",
+      "bytes": 7386
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v1/workflow.json": {
+      "sha256": "998016274ce2b39fd77ca589a06b4c06d3e9af832ce4c307ccf72780c926e4d4",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v1/workflow.json",
+      "bytes": 254
+    },
+    "experiments/stage6-feedback-v1/session/alignment-diagnosis-1788512672013692505.log": {
+      "sha256": "866834b7e2841151ea395b616e16785d3b9643efc55cb33dbeb71eefbaa72b42",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/alignment-diagnosis-1788512672013692505.log",
+      "bytes": 2052
+    },
+    "experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/registration.json": {
+      "sha256": "dbb7225f06e0ed2b10e9ce6fed2303b3fd0075b6fd43a256b3f30cfc92b0a37c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/registration.json",
+      "bytes": 1005
+    },
+    "experiments/stage6-feedback-v1/session/execution-policy.json": {
+      "sha256": "44da9e55cfb8b6a51da8f43d26e6640cf75081ba12c8c3cd944fb0f546027515",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/execution-policy.json",
+      "bytes": 385
+    },
+    "experiments/stage6-feedback-v1/session/worker-0-evidence/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json": {
+      "sha256": "88b5d25812c0b1dba6d5d1392abe72c08a23c7572975f2b88c014a5cec70083d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/worker-0-evidence/experiments/stage6-feedback-v1/gpu-proof-v1/directions.json",
+      "bytes": 7386
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/registration.json": {
+      "sha256": "4fc2d57e8ea66d47a75a556576bd75d32e96254a8ba714d69a3f64276c5919b1",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/registration.json",
+      "bytes": 16684
+    },
+    "experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/result.json": {
+      "sha256": "36713c5e02d694a362b7fed123189e805c9b891323e97b86626595e8f1685862",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/alignment-diagnosis-v1/result.json",
+      "bytes": 1594
+    },
+    "experiments/stage6-feedback-v1/session/proof-0-directions-1788512721625242807.log": {
+      "sha256": "23d3cc618321b05f3a043acfba4c871988b1178c4093f1191fe2431f81e14e13",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/proof-0-directions-1788512721625242807.log",
+      "bytes": 5372
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/compute-ledger.json": {
+      "sha256": "63ca4de2ea976ffeb98a67bdb5d2ecdc35c5420d7b4652d6082b4637111d10de",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/compute-ledger.json",
+      "bytes": 431
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/workflow.json": {
+      "sha256": "9cbbaeb6c959a2fad9d3f198bf9734bc005a5f4710be30bcf2b7a2a67544ec77",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/workflow.json",
+      "bytes": 255
+    },
+    "experiments/stage6-feedback-v1/session/proof-1-train-1788512738666367107.log": {
+      "sha256": "894680b8b5fa72b1ffaedb655366d18da4ea532cfbcff746d4d0d9acf680eae7",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/proof-1-train-1788512738666367107.log",
+      "bytes": 1260
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/directions.json": {
+      "sha256": "62df6874034870618d6d752ca2ac9b91cb73457f1f685319ad47d5db10340cb5",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/directions.json",
+      "bytes": 7178
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/adapter/README.md",
+      "bytes": 5184
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/adapter/adapter_config.json": {
+      "sha256": "a1c19bc93203b12d3728ec794aadcb64e98b734404bb8977d6fb03efd51ef7aa",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/adapter/adapter_model.safetensors": {
+      "sha256": "3752c70616b2327d9345d0d89c5d274d5fc977552f3ed53f1b14cd36f9abd4bc",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/complete.json": {
+      "sha256": "8e6cc04c28de5919f4eb35a057ebfcf576c26adb6e9edd9602d84836341d08bf",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/complete.json",
+      "bytes": 192
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/state.pt": {
+      "sha256": "b73b3e10253a051ad6262fc37bd2ffe2330e274b1ba0595987aab19b4ae408bf",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-1/state.pt",
+      "bytes": 139752957
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/trajectory_batches/update-000001.json": {
+      "sha256": "3c50dacee3f593fa7e45e5982c0c2315580ad3bc6ac2afa9c2ab11666f6cc646",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/trajectory_batches/update-000001.json",
+      "bytes": 2527575
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/adapter/README.md",
+      "bytes": 5184
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/adapter/adapter_config.json": {
+      "sha256": "a1c19bc93203b12d3728ec794aadcb64e98b734404bb8977d6fb03efd51ef7aa",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/adapter/adapter_model.safetensors": {
+      "sha256": "83ee4ec087602564fe5bc16c8601d83ea3e5dca0d9d139299da615fcbf7a04bb",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/complete.json": {
+      "sha256": "7c0976684ca66e5e75c2b10e69cc819eba076c02a4c5ec7ff18d50ec65a3b838",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/complete.json",
+      "bytes": 192
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/state.pt": {
+      "sha256": "41fba0829a7ab3a40f8d3157ffecbd41342c32173492b46da5a3b6052a0eed34",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-2/state.pt",
+      "bytes": 139753021
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/trajectory_batches/update-000002.json": {
+      "sha256": "705d099587d8cdd0e062bdcc0250433da2ca23aaae3672925da3fcafe1bb26b0",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/trajectory_batches/update-000002.json",
+      "bytes": 1248473
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/adapter/README.md",
+      "bytes": 5184
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/adapter/adapter_config.json": {
+      "sha256": "a1c19bc93203b12d3728ec794aadcb64e98b734404bb8977d6fb03efd51ef7aa",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/adapter/adapter_model.safetensors": {
+      "sha256": "0df6a04f5d409ecd48913170384d14923ebacd79faefecd132395d49d3de330f",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/complete.json": {
+      "sha256": "fefb07136fef569d1731378b7b95c7d0ad92e9c2699c2d7e72fef007ed6be450",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/complete.json",
+      "bytes": 192
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/state.pt": {
+      "sha256": "e80f506e2aec8ffee25d534240d3d1ae4a0d54bdd697242a9c562388122d0f8c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-3/state.pt",
+      "bytes": 139753085
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/trajectory_batches/update-000003.json": {
+      "sha256": "5b59e9c2c1006f51a2852e13b8849e10b1679a236ea0ea6c38d9febf51c20150",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/trajectory_batches/update-000003.json",
+      "bytes": 2506225
+    },
+    "experiments/stage6-feedback-v1/session/proof-2-train-1788513246958425132.log": {
+      "sha256": "cd41fb0b085a62667fe8deb9f77d80d1d549aeb7bdbc1336bd17855eb7aed29e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/proof-2-train-1788513246958425132.log",
+      "bytes": 890
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/adapter/README.md",
+      "bytes": 5184
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/adapter/adapter_config.json": {
+      "sha256": "a1c19bc93203b12d3728ec794aadcb64e98b734404bb8977d6fb03efd51ef7aa",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/adapter/adapter_model.safetensors": {
+      "sha256": "f2926c80593e1952de0e5177ced291cbe2bdf38e00e291160a4fc10aaa280695",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/complete.json": {
+      "sha256": "9242f9693ecf28f3ad3b2ac2ba5856129643682195f2e4f106261194b7c2bfb2",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/complete.json",
+      "bytes": 192
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/state.pt": {
+      "sha256": "83fbfc6818b3dee7ad1f26ebc8937b09a81d610ce0df6dba76a9cef88b90ba29",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/checkpoint-4/state.pt",
+      "bytes": 139753149
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/complete.json": {
+      "sha256": "bad8c1c40b17f4cd418e68c2a0f5dae83c9ba581c5dcd8963d1955c700763b53",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/complete.json",
+      "bytes": 1491
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/control/trajectory_batches/update-000004.json": {
+      "sha256": "8c387326d81995cec4b18f4df4c588051a2ff21fdf4bd401ef5691122bc062ff",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/control/trajectory_batches/update-000004.json",
+      "bytes": 1357988
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/trajectory_batches/update-000001.json": {
+      "sha256": "3c50dacee3f593fa7e45e5982c0c2315580ad3bc6ac2afa9c2ab11666f6cc646",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/trajectory_batches/update-000001.json",
+      "bytes": 2527575
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/adapter/README.md",
+      "bytes": 5184
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/adapter/adapter_config.json": {
+      "sha256": "4a6546c7b010a1f79886ec8e7bc7ffc03f330b2a54281616bdf1d699213776b3",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/adapter/adapter_model.safetensors": {
+      "sha256": "3752c70616b2327d9345d0d89c5d274d5fc977552f3ed53f1b14cd36f9abd4bc",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/complete.json": {
+      "sha256": "c25da53a7fb6a6c7f03608b6df8da530b423bf79fe7a315ade35eeffe53e3f6e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/complete.json",
+      "bytes": 192
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/state.pt": {
+      "sha256": "9efc359a3f3f2d8ec6e36b589c37816b1035380813aabd8dc6b6cc90b7aa3511",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-1/state.pt",
+      "bytes": 139752957
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/trajectory_batches/update-000002.json": {
+      "sha256": "705d099587d8cdd0e062bdcc0250433da2ca23aaae3672925da3fcafe1bb26b0",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/trajectory_batches/update-000002.json",
+      "bytes": 1248473
+    },
+    "experiments/stage6-feedback-v1/session/proof-3-train-1788513502781705235.log": {
+      "sha256": "59e94c17a94b52dd8483c93f04d9d6c911c66bfc718b6d7df60aa8fff44a4320",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/proof-3-train-1788513502781705235.log",
+      "bytes": 891
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/adapter/README.md",
+      "bytes": 5184
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/adapter/adapter_config.json": {
+      "sha256": "4a6546c7b010a1f79886ec8e7bc7ffc03f330b2a54281616bdf1d699213776b3",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/adapter/adapter_model.safetensors": {
+      "sha256": "83ee4ec087602564fe5bc16c8601d83ea3e5dca0d9d139299da615fcbf7a04bb",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/complete.json": {
+      "sha256": "cf0b68356d1f1ef5f79367a348ca05dba064f877afa49f0550593b89c04ff0a3",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/complete.json",
+      "bytes": 192
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/state.pt": {
+      "sha256": "30b5d9c55b2a1b0e271d19fa77bfb753691bf85b89167f7541bb984e28d753f9",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-2/state.pt",
+      "bytes": 139753021
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/paused.json": {
+      "sha256": "08c9b96f3b332741762758837c1a7bb1dbf9a052e39478eef026135a86fd661f",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/paused.json",
+      "bytes": 1059
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/trajectory_batches/update-000003.json": {
+      "sha256": "5b59e9c2c1006f51a2852e13b8849e10b1679a236ea0ea6c38d9febf51c20150",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/trajectory_batches/update-000003.json",
+      "bytes": 2506225
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/adapter/README.md",
+      "bytes": 5184
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/adapter/adapter_config.json": {
+      "sha256": "02bf42ca5510193879e0dce135358c4e7ca48192c0ad0816aaf9399e10f02bb3",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/adapter/adapter_model.safetensors": {
+      "sha256": "0df6a04f5d409ecd48913170384d14923ebacd79faefecd132395d49d3de330f",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/complete.json": {
+      "sha256": "23362afbb6d342c6dd2bac4eed78d0277e97df1fd0075b585a65776440548dd8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/complete.json",
+      "bytes": 192
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/state.pt": {
+      "sha256": "0b7c8b0c066e36b702e8df5070f0b8c7f4287fa1185fda4bac21be3507899df2",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-3/state.pt",
+      "bytes": 139753213
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/trajectory_batches/update-000004.json": {
+      "sha256": "8c387326d81995cec4b18f4df4c588051a2ff21fdf4bd401ef5691122bc062ff",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/trajectory_batches/update-000004.json",
+      "bytes": 1357988
+    },
+    "experiments/stage6-feedback-v1/session/proof-4-verify-1788513763048708729.log": {
+      "sha256": "f706cb5c6ddab7dc5884708c9c42600cd3492d37f2335198b16687da9f7bc112",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/proof-4-verify-1788513763048708729.log",
+      "bytes": 780
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/adapter/README.md",
+      "bytes": 5184
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/adapter/adapter_config.json": {
+      "sha256": "02bf42ca5510193879e0dce135358c4e7ca48192c0ad0816aaf9399e10f02bb3",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/adapter/adapter_model.safetensors": {
+      "sha256": "f2926c80593e1952de0e5177ced291cbe2bdf38e00e291160a4fc10aaa280695",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/complete.json": {
+      "sha256": "c0e1c355ca62cbdf2b117e7044959089b177913d33662476d418ac19163dad37",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/complete.json",
+      "bytes": 192
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/state.pt": {
+      "sha256": "2994498b6dda38dcca2e4683493bcab2a65eb2498249a6eb5611124145d7bfa5",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/checkpoint-4/state.pt",
+      "bytes": 139753277
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/resumed/complete.json": {
+      "sha256": "baba93f975a28b7efe5e52b410a63ef65664ada83912d797194dbe1983b0bbfd",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/resumed/complete.json",
+      "bytes": 1489
+    },
+    "experiments/stage6-feedback-v1/session/sft-evaluation-1788513847604391718.log": {
+      "sha256": "1932d842f383e2e4344c22272785af6b7e6c6887a7c75102c6766872be3d6b8e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/sft-evaluation-1788513847604391718.log",
+      "bytes": 147
+    },
+    "experiments/stage6-feedback-v1/gpu-proof-v2/gpu-proof.json": {
+      "sha256": "533ade9a7f4360fc20b60b2828889aa3a7bcd902322ce3f381916ab40d468811",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/gpu-proof-v2/gpu-proof.json",
+      "bytes": 11963
+    },
+    "experiments/stage6-feedback-v1/evaluation/sft/identity.json": {
+      "sha256": "4e98380f054baea366a2eff5f63077830d9d74501e447567bb38a47c1cd6c1c7",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/sft/identity.json",
+      "bytes": 319
+    },
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0000.json": {
+      "sha256": "205a6297abd66bb8b0415530ba3bbc6956a9ccb13539163f37f6d5d608ccabf5",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/sft/recovery-0000.json",
+      "bytes": 705979
+    },
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0032.json": {
+      "sha256": "73bb13908423ded68ac33efacc5ecebe38bb73aa2fddeff47d518d9bbe970679",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/sft/recovery-0032.json",
+      "bytes": 649022
+    },
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0064.json": {
+      "sha256": "764a216a0dcb35d3688139197b30757a7092ae80bf2a4d877b6125e26a4025cf",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/sft/recovery-0064.json",
+      "bytes": 723220
+    },
+    "experiments/stage6-feedback-v1/evaluation/sft/recovery-0096.json": {
+      "sha256": "abc352627d1c65e9612f03df6bd960a24fa8faa4a56d10903f27de967d2f7cb9",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/sft/recovery-0096.json",
+      "bytes": 642358
+    },
+    "experiments/stage6-feedback-v1/session/pilot-gate.json": {
+      "sha256": "874e058c940de47b3b1acccc964a5bb85884f6e7f8cde29a358b88253db3317c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/pilot-gate.json",
+      "bytes": 565
+    },
+    "experiments/stage6-feedback-v1/evaluation/sft/complete.json": {
+      "sha256": "361a3ca7a0f944dda6e4f12699f6cdd1de9abae5b25b1c6ef4fe725f9c98b570",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/sft/complete.json",
+      "bytes": 1068
+    },
+    "experiments/stage6-feedback-v1/evaluation/sft/ordinary-0000.json": {
+      "sha256": "b2ba4f5784ecb49e0efc43d3ebd9b345e87ead157b6b46456ca130448773c432",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/sft/ordinary-0000.json",
+      "bytes": 3370137
+    },
+    "experiments/stage6-feedback-v1/session/training-1788516130088456371.log": {
+      "sha256": "754881a3b37bb60c188e2cedb594a5debb498359c3bcb81b14bc97e02dd94370",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/training-1788516130088456371.log",
+      "bytes": 677
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/events.jsonl": {
+      "sha256": "51c03ef38c3035592793f53345aa1b2d2b4ae671e0fa62ca5635ef877cd7f64d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/events.jsonl",
+      "bytes": 46190
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/manifest.json": {
+      "sha256": "fdf5870c20bfb648a06b3402cc80d45934af6b41136041c09dc2dc64bda8c546",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/manifest.json",
+      "bytes": 57744
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000001.json": {
+      "sha256": "ff82eb210fb86f422e4c80c9c75d4a8cf7e317b522973fc7736e24a620d07dee",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000001.json",
+      "bytes": 2503320
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000002.json": {
+      "sha256": "3d61a4cb60dc69214d53bf7ea0a1a6462f650179e252f65567f3976f7b81f950",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000002.json",
+      "bytes": 410384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000003.json": {
+      "sha256": "3b8a0ec26e7c62e45d66f8aceeb60212c5236fc6638b8e5acbc9c1f2e9a6cea7",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000003.json",
+      "bytes": 2441637
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000004.json": {
+      "sha256": "2be163f42fc2978b5d88245386ab6555a65012dbe960cd57aa3985177865b6d7",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000004.json",
+      "bytes": 818482
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/adapter/adapter_model.safetensors": {
+      "sha256": "7886215aae7e916d86b24ce66020bfc1607d32bb2abe9062478e6959400a99c7",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/complete.json": {
+      "sha256": "17a15fc8b287f17d300291ebf7ff9869365309d16ea51bb4b4fa70cbeb21736e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/complete.json",
+      "bytes": 192
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/state.pt": {
+      "sha256": "0d0e90ed4a9240ebbca29c67d7b61ce077b1f8a9c0a69cf4805304c9f2dd6ca9",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-4/state.pt",
+      "bytes": 139754749
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/latest_checkpoint.json": {
+      "sha256": "149784b8b66cfcf6900eff00b8498669aacba49e80fcfe4c1f8c5abd164b595e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/latest_checkpoint.json",
+      "bytes": 111
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000005.json": {
+      "sha256": "ab10c7fccf48df1aa285236900bf162ab6f4a426a844884a7cd3ed9e1df29daf",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000005.json",
+      "bytes": 2500210
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000006.json": {
+      "sha256": "d634e7a2a38239d8ca1ea293ba800959520751b99f66e77d7343010f800de126",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000006.json",
+      "bytes": 357942
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000007.json": {
+      "sha256": "f8e3175b7a11283629d49ca74e0ee2f3bc1d97c0b1a1ac7106d888a896562e8c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000007.json",
+      "bytes": 2510766
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/adapter/adapter_model.safetensors": {
+      "sha256": "3d76119939f036af5546b6a74e134cd074eb9d2edfc691f9e0147e19fb6ee3a0",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/complete.json": {
+      "sha256": "45e50f8ae14930869bef585d1ec35c71bbadcb9aa949980894eccb6903e06867",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/complete.json",
+      "bytes": 192
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/state.pt": {
+      "sha256": "ce8ac65535e81046060111c61ae81812a79b1adb98c1c3e133109c20a862a657",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-8/state.pt",
+      "bytes": 139756093
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000008.json": {
+      "sha256": "07f62ed39d7b3e9ca307c354349a616bc962424b9ac33f6806df7e5030f124ee",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000008.json",
+      "bytes": 318695
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000009.json": {
+      "sha256": "9344895e7d84bd9222da2b74bee79d7303d58bcbc2c95bb7c9b5f4c55867d4ec",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000009.json",
+      "bytes": 2164962
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000010.json": {
+      "sha256": "cb67fc5a38716b689559f566d8107f6fa935b6b23aee0ef43c1f07092e79d98a",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000010.json",
+      "bytes": 793004
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000011.json": {
+      "sha256": "11522aae0df524b7d7f90cd4a698ea5a8618686fb7921974038555af9c3ec098",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000011.json",
+      "bytes": 2529404
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/adapter/adapter_model.safetensors": {
+      "sha256": "f7b927d591f60d9609837dcaff0cb7fcbeada29f23a49a0d0bf72d73222abef3",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/complete.json": {
+      "sha256": "e38f86cf0f9bdfe5e77d2c5868578481dfc67b699c924c38b1c4f92f6fa866cc",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/state.pt": {
+      "sha256": "3394e9cd0ee4d83be7e0f48a82f6f819cc889274d3e7fe2377fbac83b1a69056",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-12/state.pt",
+      "bytes": 139757437
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000012.json": {
+      "sha256": "bda3ba1f7a1c9c4423ab4a4dacd5d4686742bb4c38ee5725807aec9e03aba2a7",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000012.json",
+      "bytes": 332126
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000013.json": {
+      "sha256": "164d45acd93e832330401d91040c2f3e35a2fd6bc3e7d098fb03c25c7a5752bb",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000013.json",
+      "bytes": 2505684
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000014.json": {
+      "sha256": "0cfd52c5703fe10b7ed46c8c75f5f7deb77fe0ed4ee25494e5458a3d84655818",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000014.json",
+      "bytes": 422530
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/adapter/adapter_model.safetensors": {
+      "sha256": "191293cbf82c1c6876b8bddd21037693268ece01ec2e2235ea3ecce582c33c5c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/complete.json": {
+      "sha256": "6f8585a939f04738eb98bfad17aab6c0aec56a612f83e745626bc5f9add86b8d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/state.pt": {
+      "sha256": "e4e533638207a3113020bf86e85ab19766b04375c3ce76be5ee8f7016e3cf01b",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-16/state.pt",
+      "bytes": 139758781
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000015.json": {
+      "sha256": "da1574eed6ef55d7ed8ff7733c0ed2a3309700e7d7d8e022bfa0ce166e83ba33",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000015.json",
+      "bytes": 2492087
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000016.json": {
+      "sha256": "73010ccf76ff85c8824eff2543a39c05a46f9c2874d2569fb25c85e5b2ee1a48",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000016.json",
+      "bytes": 494818
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000017.json": {
+      "sha256": "f5956c618b21b2d7da08dd64f60b3e41d0746ffb3b1dadd6375b47bbcd322356",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000017.json",
+      "bytes": 2532123
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000018.json": {
+      "sha256": "d23c04d5ef6dbe0161fd455eded4b2c3a737348a6fd28b85a6544866bee48bf7",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000018.json",
+      "bytes": 1762069
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000019.json": {
+      "sha256": "21fb15b5318e3d46d7bd82de53e2928f9cba9b8298bb400cca060b828302b01d",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000019.json",
+      "bytes": 2521252
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/adapter/adapter_model.safetensors": {
+      "sha256": "96a05004ca7b1ea900d654e561271dda2fbf0ccf0d0bd1ba5d4df0d8d2ec46b4",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/complete.json": {
+      "sha256": "f7b4f55468f637e469f70ac13571afa5d66111c8f3db24788be6713c6d18090b",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/state.pt": {
+      "sha256": "b12a910b2a208e30a59a2f4d6f022462bbf4284e22079fa6e940b72a2198da62",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-20/state.pt",
+      "bytes": 139760125
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000020.json": {
+      "sha256": "beb409256768b180cf28e970b86baa2fb787a49c42b3549d6589e727702947f7",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000020.json",
+      "bytes": 569652
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000021.json": {
+      "sha256": "81b385b00dc735ec9460d4d93e73c18ada26b9378d819b8b93190d504df5ce76",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000021.json",
+      "bytes": 2512210
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000022.json": {
+      "sha256": "4d6f21e7fa8c49029fecacee38475d51ed7c81618ea41a37656f71a71c2bda23",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000022.json",
+      "bytes": 546357
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000023.json": {
+      "sha256": "3a9e822c823566de884bad979bc1a954dcde653453558415478ccf3069b55c02",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000023.json",
+      "bytes": 2330718
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/adapter/adapter_model.safetensors": {
+      "sha256": "7f34a2965f6d9f1aff4cd7fa84f78d737726f2fc1e82bcfc6dc5cb3f1daaf8b5",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/complete.json": {
+      "sha256": "d2139ecd9953b53a5b522e5ce4e42d8a6059ab11c7c1a492b27f26986d974e68",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/state.pt": {
+      "sha256": "46d5c37434336314e1cc2cb6a0735c2ed720757b95ff2f5babd0ce7e99fdf26b",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-24/state.pt",
+      "bytes": 139761469
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000024.json": {
+      "sha256": "e57ef6a65fd10bdf38ec6f401c6e47c08cd29eaced911ff5e81d72f2726c8c33",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000024.json",
+      "bytes": 527871
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000025.json": {
+      "sha256": "c98bd8e0beb6d768df96d47792e8daee97a31ea901761b4d1d45c67cd7dcc4b8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000025.json",
+      "bytes": 2503360
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000026.json": {
+      "sha256": "80696c0cbe0f4e8086fa079e54500fff83e0a05b5c25902264b7b065323aa6df",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000026.json",
+      "bytes": 425473
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000027.json": {
+      "sha256": "349a8ed042b38835852aa77bf831b46af68c09387eb56f727be408ae08fa4674",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000027.json",
+      "bytes": 2506230
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/adapter/adapter_model.safetensors": {
+      "sha256": "3dcc6dd4cf2729ff32e8d08c24a9633e23cf8bfeb36eafb447ddc9a519a0cb4c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/complete.json": {
+      "sha256": "9e39d2a92ef9cd0de9c8f4c406153467ab0c97a9ab002d0f42a4d66c74a5354f",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/state.pt": {
+      "sha256": "a1a7bcf57a5f90ea75796e4033a36ddc989cc163612cb0e2a9e38013d508b577",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-28/state.pt",
+      "bytes": 139762749
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000028.json": {
+      "sha256": "c8e2b15f4715db2ef6bad9247c6c76c80115c046ba8c15f7070733c8e53a2dde",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000028.json",
+      "bytes": 1146741
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000029.json": {
+      "sha256": "f688b9edc80df40ee0ac10080713e82e756e0427f3eba3bba975387d160047ec",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000029.json",
+      "bytes": 2549784
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000030.json": {
+      "sha256": "ffb69bebcd51a3c9ce8d1cf035384e0e608a9bd01d1c8b9748ffbf54b0de58a8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000030.json",
+      "bytes": 946520
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000031.json": {
+      "sha256": "472382b1fccb535b9fa73c8d99eaa8c89a9d5b339647892659dd8b2f492a1861",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000031.json",
+      "bytes": 2481745
+    },
+    "experiments/stage6-feedback-v1/session/candidate-evaluation-1788519108051923201.log": {
+      "sha256": "c69603c4856a177880835dc6df9fc7a22294f7fb17fbd58b6787c370f0ded185",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/session/candidate-evaluation-1788519108051923201.log",
+      "bytes": 147
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/identity.json": {
+      "sha256": "8ec7886b640c371e990502727687ed8ce97bcca57bac62eead66e4f903fa1f2a",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/identity.json",
+      "bytes": 352
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/adapter/adapter_model.safetensors": {
+      "sha256": "f9598690814d3f35deb2097b61ef71d6a5f6766706aca96afd7493730b5389e4",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/adapter/chat_template.jinja": {
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/adapter/chat_template.jinja",
+      "bytes": 4168
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/adapter/tokenizer.json": {
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/adapter/tokenizer.json",
+      "bytes": 11422650
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/adapter/tokenizer_config.json": {
+      "sha256": "c4f4c62b741ab2940841480f9942f378d7d3878d47c2babb862af7381c59b952",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/adapter/tokenizer_config.json",
+      "bytes": 693
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/adapter/README.md": {
+      "sha256": "9c16b7d5cbcd4e4f5060780db5dd68a18c3a3668fabcd564cf3fe34286d3310e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/adapter/README.md",
+      "bytes": 5184
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/adapter/adapter_config.json": {
+      "sha256": "77f9f63d5b4c03660afbe47d42dc1224d2821dea71c7f411d2390d679ecd62e8",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/adapter/adapter_config.json",
+      "bytes": 1288
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/adapter/adapter_model.safetensors": {
+      "sha256": "f9598690814d3f35deb2097b61ef71d6a5f6766706aca96afd7493730b5389e4",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/adapter/adapter_model.safetensors",
+      "bytes": 69782384
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/complete.json": {
+      "sha256": "2e507361a632089e529316ebd53ba72d61d8be38e5ea876dacaa3ff5323b006c",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/complete.json",
+      "bytes": 193
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/state.pt": {
+      "sha256": "f9be21991e03e7ac1153d74ca4618617d8c1bd1a9e272c7df9093b05ffe1af2e",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/checkpoint-32/state.pt",
+      "bytes": 139782909
+    },
+    "runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000032.json": {
+      "sha256": "72a5de1cefd96b1aa0472150b209c46d1604c761520fb56ce90e5e8bfc84db94",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/runs/rl-feedback-v1-active_group-seed6201/rl/trajectory_batches/update-000032.json",
+      "bytes": 1111369
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0000.json": {
+      "sha256": "c0697f1caa1fb40c78590be3a98827cda7923b3e6ded9ad206ec3390a2b968aa",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0000.json",
+      "bytes": 689595
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0032.json": {
+      "sha256": "6c8c97b99d1fb9287bcef0691ba2b05c80a8a33727e21651852e15173b2ae7ea",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0032.json",
+      "bytes": 586850
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0064.json": {
+      "sha256": "f25625bd1c000e6e9b64092901718a9eac0f72d2be4e04761c28d052cca0cf08",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0064.json",
+      "bytes": 790308
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0096.json": {
+      "sha256": "1119ae3b25365c88aeabf18901dd9b885013222d6c28248bbb05271957536789",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/recovery-0096.json",
+      "bytes": 633177
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/complete.json": {
+      "sha256": "71563fe40b2810fdbd54e0748626f637ae7a7d999fed5ba3fc8383b56e8ce91f",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/complete.json",
+      "bytes": 1266
+    },
+    "experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/ordinary-0000.json": {
+      "sha256": "542befe6a44f6a25874c512080798412b68bc3b2746a71e6bd4bc0a5097f2e03",
+      "s3_key": "runs/feedback-pilot-v1/worker-0/experiments/stage6-feedback-v1/evaluation/rl-feedback-v1-active_group-seed6201/ordinary-0000.json",
+      "bytes": 3370159
+    }
+  },
+  "at_epoch": 1788521421.5915542,
+  "readback_verified": true
+}
