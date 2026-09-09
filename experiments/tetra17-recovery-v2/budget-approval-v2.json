@@ -1,0 +1,17 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "status": "user_approved",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "user_approval_text": "lets update so that the woker doesn't shut down until its comlpete - is that alright?",
+  "approved_at_utc": "2026-09-09T21:08:01Z",
+  "absolute_deadline_utc": "2026-09-10 15:30:00+00:00",
+  "hard_limit_usd": 75.0,
+  "instance_hourly_usd": 2.24208,
+  "maximum_total_instance_hours": 30.0,
+  "prior_instance_hours_conservative": 11.25,
+  "maximum_new_instance_hours": 18.0,
+  "maximum_cumulative_instance_hours": 29.25,
+  "maximum_concurrent_workers": 1,
+  "ancillary_reserve_usd": 7.5,
+  "authorization_scope": "Resume the registered recovery-v2 workflow from preserved artifacts, keep the worker available across recoverable failures, and terminate on verified completion or the unchanged cumulative spending cap."
+}

@@ -158,6 +158,7 @@ def main() -> None:
     parser.add_argument("--data-dirs", nargs="+", type=Path, required=True)
     parser.add_argument("--adapter-dir", type=Path, required=True)
     parser.add_argument("--base-model", default="Qwen/Qwen3-1.7B")
+    parser.add_argument("--base-model-revision", default=None)
     parser.add_argument("--max-rows", type=int, default=2000)
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--seed", type=int, default=0)
@@ -185,8 +186,8 @@ def main() -> None:
     print(f"evaluating on {len(rows)} held-out rows from {args.data_dirs}")
     weights = resolve_weights(args.data_dirs)
 
-    tokenizer = AutoTokenizer.from_pretrained(args.base_model)
-    base = AutoModelForCausalLM.from_pretrained(args.base_model, dtype=torch.bfloat16).to(device)
+    tokenizer = AutoTokenizer.from_pretrained(args.base_model, revision=args.base_model_revision)
+    base = AutoModelForCausalLM.from_pretrained(args.base_model, dtype=torch.bfloat16, revision=args.base_model_revision).to(device)
     model = PeftModel.from_pretrained(base, str(args.adapter_dir)).to(device)
     model.eval()
 
@@ -203,6 +204,9 @@ def main() -> None:
         "host": socket.gethostname(),
         "parent_run_ids": [run_id],
         "data_manifest_hashes": manifest_hashes([path / "manifest.json" for path in args.data_dirs]),
+        "base_model": args.base_model,
+        "base_model_revision": getattr(base.config, "_commit_hash", None),
+        "requested_base_model_revision": args.base_model_revision,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     })
     events.emit("eval_metrics", phase="open_loop_eval", current=len(results), total=len(rows), metrics={key: report.get(key) for key in ("parse_rate", "legality_rate", "exact_match", "value_match")})

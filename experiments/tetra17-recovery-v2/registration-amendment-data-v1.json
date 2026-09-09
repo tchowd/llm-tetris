@@ -1,0 +1,29 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "approval_sha256": "283db917a92238dea129a8a96a5fe9eb5a859f494edeab370ed80e0bb1941fc1",
+  "status": "registered_before_candidate_training_or_evaluation",
+  "confirmed_issue": {
+    "duplicate_state_occurrences": 6137,
+    "train_train_duplicates": 6123,
+    "train_eval_overlaps": 14,
+    "conflicting_teacher_labels": 0,
+    "source": "ordinary-retention sampler"
+  },
+  "correction_rule": "Rebuild the 96000-row ordinary-retention component with the same sources, seed, split filter, exploration filter, and 64-row per-game cap. Sample only unique state hashes and exclude all state hashes in the fixed generated, curriculum-eval, and frozen-model on-policy components.",
+  "selection_independence": "The correction uses state identity and the registered generator seed only. No candidate model exists, and no candidate performance result was inspected.",
+  "preserved_components": {
+    "generated_and_eval_rows": 76096,
+    "on_policy_rows": 72000,
+    "on_policy_games": 1536,
+    "staging_rows_sha256": "4b816c73119dd4e2789d9ff69a6a8e3ddf73ff0997d3edb37f2edc18e44d06ee",
+    "on_policy_rows_sha256": "56d00e1bbc5b7ea8655b39f7aa3dd9cdfb51a030dc7ed57619d0e0901ef23bfc"
+  },
+  "research_scope": "Dataset row counts, source families, difficulty composition, seeds, model, optimizer, eligible endpoint, evaluation cohorts, gates, and final-test seal are unchanged.",
+  "source_sha256": {
+    "scripts/build_tetra17_curriculum.py": "1de3df49a24499b1fd676d1c1fe43055465c963a66a12217b97ea89c438c8f69",
+    "infra/tetra17_recovery_bootstrap.sh": "a403bbc3f994c4a1287f95bd404ac149780e9886325edc4f861a861247f8dd35",
+    "infra/tetra17_recovery_ops.py": "1a8b58950df215433aac4d43e1eeef644e6b5e2250a96ab2a379d5090abccfa5"
+  },
+  "recorded_at_utc": "2026-09-09T21:08:01Z"
+}

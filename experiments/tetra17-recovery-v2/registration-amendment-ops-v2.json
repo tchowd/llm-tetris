@@ -1,0 +1,21 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "approval_sha256": "283db917a92238dea129a8a96a5fe9eb5a859f494edeab370ed80e0bb1941fc1",
+  "supersedes_operations_amendment": "registration-amendment-ops-v1.json",
+  "reason": "The second worker completed the SFT dependency install, then the RL dependency install stopped because requirements-rl.txt includes requirements-train.txt and the source bundle omitted that transitive requirements file.",
+  "scope": "Operations-only bundle completeness fix. Dataset composition, source seeds, model, optimizer, eligible endpoint, evaluation cohorts, gates, compute envelope, and deadline instant are unchanged.",
+  "failed_instance": "i-0ff4280faa9d6e466",
+  "failed_instance_outcome": "terminated during dependency setup before tests, dataset generation, model training, or evaluation",
+  "source_changes": {
+    "infra/tetra17_recovery_bootstrap.sh": {
+      "registered_sha256": "dab366ee3cb6704715ed9c38448cb19dabfd29254a6c347609295b7b83690cff",
+      "amended_sha256": "8b2b96256fe19ed6649e995052e38b5a35fd21ef9e69e0325f1b6cbe51070a1b"
+    },
+    "infra/tetra17_recovery_ops.py": {
+      "registered_sha256": "c304a293445134d7bb0182380ddd251dfe97a78cef6318d6bea20505c2be7201",
+      "amended_sha256": "c29d1f81a66c3b66411f407ef036f7b631551b04c415a00cac071c32ed3b6ae1"
+    }
+  },
+  "recorded_at_utc": "2026-09-08T22:38:30Z"
+}

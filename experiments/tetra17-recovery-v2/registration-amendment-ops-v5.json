@@ -1,0 +1,18 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "budget_approval_sha256": "0a29dc7fb9ac6545bed8d00145629f334716a5553aa2bbafbc00ab149c52ea44",
+  "reason": "Resume the validated post-dataset pipeline on the retained worker without repeating environment installation, smoke training, teacher generation, on-policy collection, or an audit that intentionally refuses overwrite.",
+  "resume_behavior": {
+    "sft": "Skip only when the final train manifest exists; otherwise resume the newest complete Trainer checkpoint inside the registered output directory, or start the registered fresh run when no checkpoint exists.",
+    "evaluation": "Reuse identity-checked matched-evaluation shards and rerun only missing registered outputs.",
+    "rl": "Skip completed runs and resume only from each run's committed latest checkpoint."
+  },
+  "research_scope": "Execution resilience only. The dataset hash, initialization, one-epoch endpoint, optimizer settings, evaluation cohorts, SFT gate, conditional RL settings, and final-test seal are unchanged.",
+  "source_sha256": {
+    "scripts/train_sft.py": "8440c1b22f78503be81bcaf8facda3bc4f6a7775613ad75660a3d2411db000d5",
+    "infra/tetra17_recovery_resume.sh": "3d761efaeb63ce5314b833be316461b815e25dcfdec35e263f58cb343c4f6f5e",
+    "infra/tetra17_recovery_ops.py": "fbdf9cae0ba91d9e6af5fdbd6be8489214c76c4ee2871ab8deff57abbdc5d003"
+  },
+  "recorded_at_utc": "2026-09-09T21:48:00Z"
+}

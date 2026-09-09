@@ -78,6 +78,15 @@ BASE_MODEL = "Qwen/Qwen3-1.7B"
 LORA_TARGET_MODULES = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
 
 
+def resolve_unsloth_model_source(base_model: str, revision: str | None) -> str:
+    """Resolve a pinned Hub revision before handing the model to Unsloth."""
+    if not revision:
+        return base_model
+    from huggingface_hub import snapshot_download
+
+    return snapshot_download(repo_id=base_model, revision=revision)
+
+
 def _git_sha() -> str | None:
     try:
         return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=Path(__file__).resolve().parent.parent, text=True, stderr=subprocess.DEVNULL).strip()
@@ -245,11 +254,13 @@ def main() -> None:
     parser.add_argument("--backend", choices=["hf", "unsloth"], default="hf", help="unsloth needs a CUDA GPU -- see this script's docstring")
     parser.add_argument("--max-seq-length", type=int, default=256, help="--backend unsloth only")
     parser.add_argument("--load-in-4bit", action="store_true", help="QLoRA instead of full-precision LoRA -- --backend unsloth only")
+    parser.add_argument("--resume-from-checkpoint", type=Path, help="resume Trainer state from a checkpoint inside --out-dir")
     args = parser.parse_args()
-    if args.backend == "unsloth" and args.base_model_revision:
-        raise SystemExit("--base-model-revision currently requires --backend hf")
-
     args.out_dir.mkdir(parents=True, exist_ok=True)
+    if args.resume_from_checkpoint:
+        checkpoint = args.resume_from_checkpoint.resolve()
+        if checkpoint.parent != args.out_dir.resolve() or not (checkpoint / "trainer_state.json").is_file():
+            raise SystemExit("resume checkpoint must be a complete checkpoint directly inside --out-dir")
     run_id = args.out_dir.parent.name if args.out_dir.name == "rl" else args.out_dir.name
     events = EventWriter(args.out_dir / "events.jsonl", run_id=run_id, stage=4, lineage={"data_dirs": [str(path) for path in args.data_dirs]})
     events.emit("job_started", phase="initializing", current=0, total=None, metrics={"backend": args.backend, "base_model": args.base_model})
@@ -280,9 +291,10 @@ def main() -> None:
         # print_trainable_parameters all work as usual).
         from unsloth import FastLanguageModel
 
-        print(f"loading tokenizer + base model {args.base_model} via unsloth (4bit={args.load_in_4bit})...")
+        model_source = resolve_unsloth_model_source(args.base_model, args.base_model_revision)
+        print(f"loading tokenizer + base model {args.base_model} via unsloth (4bit={args.load_in_4bit}, revision={args.base_model_revision})...")
         model, tokenizer = FastLanguageModel.from_pretrained(
-            model_name=args.base_model,
+            model_name=model_source,
             max_seq_length=args.max_seq_length,
             dtype=None,
             load_in_4bit=args.load_in_4bit,
@@ -368,7 +380,7 @@ def main() -> None:
     )
 
     t0 = time.time()
-    trainer.train()
+    trainer.train(resume_from_checkpoint=str(args.resume_from_checkpoint) if args.resume_from_checkpoint else None)
     elapsed = time.time() - t0
     print(f"training done in {elapsed:.1f}s")
 
@@ -404,6 +416,7 @@ def main() -> None:
         "device": device,
         "backend": args.backend,
         "load_in_4bit": args.load_in_4bit if args.backend == "unsloth" else None,
+        "resume_from_checkpoint": str(args.resume_from_checkpoint) if args.resume_from_checkpoint else None,
         "wall_clock_seconds": elapsed,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }

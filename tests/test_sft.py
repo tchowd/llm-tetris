@@ -27,6 +27,14 @@ from tetris.chat import build_generation_prompt, build_training_example
 from tetris.dataset import generate_game
 from tetris.serialize import parse_action
 
+
+def test_unsloth_revision_resolves_to_snapshot(monkeypatch):
+    from scripts.train_sft import resolve_unsloth_model_source
+
+    monkeypatch.setattr("huggingface_hub.snapshot_download", lambda **kw: f"/cache/{kw['revision']}")
+    assert resolve_unsloth_model_source("Qwen/Qwen3-1.7B", "abc123") == "/cache/abc123"
+    assert resolve_unsloth_model_source("Qwen/Qwen3-1.7B", None) == "Qwen/Qwen3-1.7B"
+
 BASE_MODEL = "Qwen/Qwen3-1.7B"
 LORA_TARGET_MODULES = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
 

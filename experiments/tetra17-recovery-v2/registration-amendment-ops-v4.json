@@ -1,0 +1,15 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "budget_approval_v1_sha256": "283db917a92238dea129a8a96a5fe9eb5a859f494edeab370ed80e0bb1941fc1",
+  "budget_approval_v2_sha256": "92095563c46dbdcbc7f5e3136b9b5fc9f9fd9b008ef4b9086b8410ebcfff8651",
+  "reason": "The user requested that the worker remain available until completion. Preserve completed component and final-dataset artifacts across replacement workers, and leave a failed worker reachable for recovery instead of terminating immediately.",
+  "failure_behavior": "On a recoverable pipeline error, sync artifacts and worker-state.json, exit the failed pipeline, and leave the instance running for SSM recovery. Successful completion still terminates the instance. An independent systemd timer still shuts it down at the approved cumulative-budget deadline.",
+  "resume_behavior": "Reuse registered staging, frozen-model on-policy, and independently audited final-dataset artifacts from the experiment S3 prefix when their manifests exist.",
+  "scope": "Operations-only resilience. Research design, dataset identity, model, eligible endpoint, evaluation cohorts, gates, and final-test seal are unchanged.",
+  "source_sha256": {
+    "infra/tetra17_recovery_bootstrap.sh": "a403bbc3f994c4a1287f95bd404ac149780e9886325edc4f861a861247f8dd35",
+    "infra/tetra17_recovery_ops.py": "1a8b58950df215433aac4d43e1eeef644e6b5e2250a96ab2a379d5090abccfa5"
+  },
+  "recorded_at_utc": "2026-09-09T21:35:30Z"
+}

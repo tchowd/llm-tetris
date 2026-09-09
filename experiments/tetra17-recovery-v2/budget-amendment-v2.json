@@ -1,0 +1,15 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "user_approval_text": "lets update so that the woker doesn't shut down until its comlpete - is that alright?",
+  "interpretation": "Keep a replacement worker reachable after recoverable failures while preserving the original $75 hard cap, one-worker concurrency, and 30 cumulative instance-hour ceiling.",
+  "prior_instance_hours_conservative": 11.25,
+  "maximum_new_instance_hours": 18.0,
+  "maximum_cumulative_instance_hours": 29.25,
+  "conservative_compute_usd": 65.58084,
+  "ancillary_reserve_usd": 7.5,
+  "maximum_envelope_usd": 73.08084,
+  "hard_limit_usd": 75.0,
+  "replacement_deadline_utc": "2026-09-10 15:30:00+00:00",
+  "recorded_at_utc": "2026-09-09T21:08:01Z"
+}

@@ -1,0 +1,20 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "approval_sha256": "283db917a92238dea129a8a96a5fe9eb5a859f494edeab370ed80e0bb1941fc1",
+  "reason": "The first created worker exited user-data before downloading inputs because systemd rejected an ISO timestamp ending in Z. Convert the same approved deadline instant to systemd calendar syntax before scheduling shutdown.",
+  "scope": "Operations-only deadline parsing. Dataset composition, source seeds, model, optimizer, eligible endpoint, evaluation cohorts, gates, compute envelope, and deadline instant are unchanged.",
+  "first_instance": "i-06cb279a22e507f26",
+  "first_instance_outcome": "terminated before input download or experiment execution",
+  "source_changes": {
+    "infra/tetra17_recovery_bootstrap.sh": {
+      "registered_sha256": "dab366ee3cb6704715ed9c38448cb19dabfd29254a6c347609295b7b83690cff",
+      "amended_sha256": "8b2b96256fe19ed6649e995052e38b5a35fd21ef9e69e0325f1b6cbe51070a1b"
+    },
+    "infra/tetra17_recovery_ops.py": {
+      "registered_sha256": "c304a293445134d7bb0182380ddd251dfe97a78cef6318d6bea20505c2be7201",
+      "amended_sha256": "f7464d3e547cd64248a537a28ecdc6f8fe826a5872cf5b0ed7f2123b506ea03d"
+    }
+  },
+  "recorded_at_utc": "2026-09-08T22:29:00Z"
+}

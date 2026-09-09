@@ -1,0 +1,30 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "budget_approval_sha256": "0a29dc7fb9ac6545bed8d00145629f334716a5553aa2bbafbc00ab149c52ea44",
+  "reason": "Replace the exited in-service artifact monitor with an independent failure-tolerant sync loop, without restarting or signaling the active training service.",
+  "observation": {
+    "training_service": "tetra17-recovery-resume-v3.service",
+    "service_main_pid": 9126,
+    "service_started_at_utc": "2026-09-09T21:56:56Z",
+    "observed_checkpoint": 1500,
+    "gpu_process_pid": 9162,
+    "gpu_memory_mib": 9950
+  },
+  "monitor": {
+    "script": "infra/tetra17_sync_monitor.sh",
+    "script_sha256": "f09cd8085e334f96bd402391161ad1cb7a95b501c475daf40408ae838642303e",
+    "interval_seconds": 600,
+    "failure_tolerance": "Individual cost or S3 operations may fail without terminating later monitor cycles.",
+    "training_isolation": "The monitor runs as a separate process and never starts, stops, restarts, or signals the training service."
+  },
+  "temporary_access": {
+    "method": "EC2 Instance Connect",
+    "security_group_id": "sg-05d11dbcb678ef9bb",
+    "security_group_rule_id": "sgr-03718830817da7253",
+    "purpose": "SSH monitoring from one IPv4 address",
+    "cleanup_required": true
+  },
+  "research_scope": "Operational monitoring only. Training data, initialization, model, optimizer, endpoint, evaluation, gates, and final-test seal are unchanged.",
+  "recorded_at_utc": "2026-09-09T22:30:00Z"
+}

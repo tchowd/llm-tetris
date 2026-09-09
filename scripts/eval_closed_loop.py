@@ -85,7 +85,7 @@ def build_policy(name: str, args, weights: dict):
         if args.adapter_dir is None:
             raise SystemExit("--policies includes 'model' but --adapter-dir was not given")
         device = args.device or _default_device()
-        return build_model_policy(args.adapter_dir, args.base_model, device)
+        return build_model_policy(args.adapter_dir, args.base_model, device, revision=args.base_model_revision)
     raise SystemExit(f"unknown policy: {name}")
 
 
@@ -143,6 +143,7 @@ def main() -> None:
     parser.add_argument("--adapter-dir", type=Path, default=None)
     parser.add_argument("--model-label", default="model", help="artifact label for the model policy; decoding is unchanged")
     parser.add_argument("--base-model", default="Qwen/Qwen3-1.7B")
+    parser.add_argument("--base-model-revision", default=None)
     parser.add_argument("--data-dirs", nargs="*", type=Path, default=[], help="Stage 3 dirs, for teacher weights + seed-disjointness check")
     parser.add_argument("--num-seeds", type=int, default=100)
     parser.add_argument("--seed-offset", type=int, default=None, help="default: tetris.rollout.EVAL_SEED_OFFSET")
@@ -256,6 +257,7 @@ def main() -> None:
         "policy_metadata": policy_metadata,
         "greedy": True,
         "base_model": args.base_model,
+        "base_model_revision": args.base_model_revision,
         "data_dirs": [str(d) for d in args.data_dirs],
         "wall_clock_seconds": time.time() - t0,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

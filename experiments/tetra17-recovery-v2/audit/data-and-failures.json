@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "original": {
+    "counts": {
+      "rows": 1005785,
+      "rows_with_full_state": 1005785,
+      "prompt_geometry_aliases": 169397
+    },
+    "missing_required_fields": {},
+    "invalid": {},
+    "coverage": {
+      "split": {
+        "eval": 47226,
+        "train": 958559
+      },
+      "piece": {
+        "I": 143666,
+        "J": 143747,
+        "L": 143706,
+        "O": 143677,
+        "S": 143682,
+        "T": 143653,
+        "Z": 143654
+      },
+      "next": {
+        "I": 143622,
+        "J": 143743,
+        "L": 143723,
+        "O": 143659,
+        "S": 143654,
+        "T": 143645,
+        "Z": 143739
+      },
+      "piece_next": {
+        "II": 2822,
+        "IJ": 23551,
+        "IL": 23435,
+        "IO": 23438,
+        "IS": 23359,
+        "IT": 23584,
+        "IZ": 23477,
+        "JI": 23554,
+        "JJ": 2896,
+        "JL": 23381,
+        "JO": 23378,
+        "JS": 23688,
+        "JT": 23334,
+        "JZ": 23516,
+        "LI": 23529,
+        "LJ": 23602,
+        "LL": 2921,
+        "LO": 23374,
+        "LS": 23434,
+        "LT": 23430,
+        "LZ": 23416,
+        "OI": 23443,
+        "OJ": 23604,
+        "OL": 23298,
+        "OO": 2971,
+        "OS": 23338,
+        "OT": 23672,
+        "OZ": 23351,
+        "SI": 23417,
+        "SJ": 23067,
+        "SL": 23641,
+        "SO": 23435,
+        "SS": 2949,
+        "ST": 23515,
+        "SZ": 23658,
+        "TI": 23339,
+        "TJ": 23413,
+        "TL": 23555,
+        "TO": 23404,
+        "TS": 23643,
+        "TT": 2898,
+        "TZ": 23401,
+        "ZI": 23518,
+        "ZJ": 23610,
+        "ZL": 23492,
+        "ZO": 23659,
+        "ZS": 23243,
+        "ZT": 23212,
+        "ZZ": 2920
+      },
+      "rotation": {
+        "0": 481673,
+        "1": 315902,
+        "2": 120218,
+        "3": 87992
+      },
+      "x": {
+        "0": 179969,
+        "1": 99831,
+        "2": 104688,
+        "3": 102429,
+        "4": 99598,
+        "5": 100119,
+        "6": 97057,
+        "7": 103255,
+        "8": 87910,
+        "9": 30929
+      },
+      "difficulty": {
+        "critical": 36193,
+        "hard": 9208,
+        "low": 870680,
+        "moderate": 89704
+      },
+      "kind": {
+        "original": 1005785
+      }
+    },
+    "unique_games": {
+      "train": 2517,
+      "eval": 123
+    },
+    "unique_seeds": {
+      "train": 2517,
+      "eval": 123
+    },
+    "split_overlap": {
+      "eval:train": {
+        "game_ids": 0,
+        "seeds": 0
+      }
+    },
+    "teacher_validation": {
+      "sample_size": 2000,
+      "teacher_optimal_labels": 2000,
+      "selected_edge_placements": 742,
+      "mean_top_margin": 505.32925
+    },
+    "identity": {
+      "unique_full_states": 980157,
+      "unique_prompts": 817056,
+      "unique_aliased_prompts": 104245,
+      "unique_conflicting_prompts": 0,
+      "unique_conflicting_states": 0
+    }
+  },
+  "prior_recovery": {
+    "counts": {
+      "rows": 8704,
+      "rows_with_full_state": 4608
+    },
+    "missing_required_fields": {},
+    "invalid": {},
+    "coverage": {
+      "split": {
+        "eval": 512,
+        "train": 8192
+      },
+      "piece": {
+        "I": 662,
+        "J": 648,
+        "L": 667,
+        "O": 662,
+        "S": 654,
+        "T": 656,
+        "Z": 659
+      },
+      "next": {
+        "I": 657,
+        "J": 659,
+        "L": 671,
+        "O": 658,
+        "S": 661,
+        "T": 659,
+        "Z": 643
+      },
+      "piece_next": {
+        "II": 8,
+        "IJ": 121,
+        "IL": 100,
+        "IO": 117,
+        "IS": 112,
+        "IT": 101,
+        "IZ": 103,
+        "JI": 94,
+        "JJ": 19,
+        "JL": 102,
+        "JO": 108,
+        "JS": 108,
+        "JT": 111,
+        "JZ": 106,
+        "LI": 111,
+        "LJ": 126,
+        "LL": 14,
+        "LO": 94,
+        "LS": 105,
+        "LT": 100,
+        "LZ": 117,
+        "OI": 109,
+        "OJ": 117,
+        "OL": 119,
+        "OO": 17,
+        "OS": 97,
+        "OT": 94,
+        "OZ": 109,
+        "SI": 119,
+        "SJ": 99,
+        "SL": 107,
+        "SO": 99,
+        "SS": 22,
+        "ST": 120,
+        "SZ": 88,
+        "TI": 115,
+        "TJ": 90,
+        "TL": 118,
+        "TO": 117,
+        "TS": 94,
+        "TT": 12,
+        "TZ": 110,
+        "ZI": 101,
+        "ZJ": 87,
+        "ZL": 111,
+        "ZO": 106,
+        "ZS": 123,
+        "ZT": 121,
+        "ZZ": 10
+      },
+      "rotation": {
+        "0": 3520,
+        "1": 3303,
+        "2": 938,
+        "3": 943
+      },
+      "x": {
+        "0": 1643,
+        "1": 767,
+        "2": 888,
+        "3": 831,
+        "4": 810,
+        "5": 846,
+        "6": 831,
+        "7": 876,
+        "8": 932,
+        "9": 280
+      },
+      "difficulty": {
+        "critical": 4591,
+        "hard": 6,
+        "low": 2,
+        "moderate": 9
+      },
+      "kind": {
+        "ordinary": 4096,
+        "recovery": 4608
+      }
+    },
+    "unique_games": {
+      "train": 2122,
+      "eval": 17
+    },
+    "unique_seeds": {
+      "train": 2122,
+      "eval": 17
+    },
+    "split_overlap": {
+      "eval:train": {
+        "game_ids": 0,
+        "seeds": 0
+      }
+    },
+    "teacher_validation": {
+      "sample_size": 512,
+      "teacher_optimal_labels": 512,
+      "selected_edge_placements": 212,
+      "mean_top_margin": 8.9794921875
+    },
+    "identity": {
+      "unique_full_states": 4608,
+      "unique_prompts": 4608,
+      "unique_aliased_prompts": 0,
+      "unique_conflicting_prompts": 0,
+      "unique_conflicting_states": 0
+    }
+  },
+  "development_failure_profile": {
+    "n_games": 128,
+    "outcomes": {
+      "cap_reached": 57,
+      "illegal_action": 71
+    },
+    "start_difficulty": {
+      "critical": 128
+    },
+    "start_piece": {
+      "I": 17,
+      "J": 19,
+      "L": 18,
+      "O": 15,
+      "S": 19,
+      "T": 17,
+      "Z": 23
+    },
+    "terminal_failures": {
+      "pieces_total": 13914,
+      "parsed_illegal": 71
+    },
+    "mean_continuation_pieces": 108.703125,
+    "source_files": [
+      "experiments/stage6-feedback-v1/evaluation/sft/recovery-0000.json",
+      "experiments/stage6-feedback-v1/evaluation/sft/recovery-0032.json",
+      "experiments/stage6-feedback-v1/evaluation/sft/recovery-0064.json",
+      "experiments/stage6-feedback-v1/evaluation/sft/recovery-0096.json"
+    ],
+    "held_out_state_material_emitted": false
+  },
+  "final_test_access": false,
+  "elapsed_seconds": 76.4861141670001,
+  "generated_at": "2026-09-08T21:42:58Z"
+}

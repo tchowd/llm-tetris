@@ -90,7 +90,7 @@ def build_policy(name: str, args):
     if name == "model":
         if args.adapter_dir is None:
             raise SystemExit("--policies includes model but --adapter-dir was not supplied")
-        return build_model_policy(args.adapter_dir, args.base_model, args.device)
+        return build_model_policy(args.adapter_dir, args.base_model, args.device, revision=args.base_model_revision)
     raise SystemExit(f"unknown policy: {name}")
 
 
@@ -239,6 +239,7 @@ def main() -> None:
     parser.add_argument("--adapter-dir", type=Path)
     parser.add_argument("--policy-label", default=None, help="output label for the model policy, e.g. sft or rl-seed-1")
     parser.add_argument("--base-model", default="Qwen/Qwen3-1.7B")
+    parser.add_argument("--base-model-revision", default=None)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--data-dirs", nargs="*", type=Path, default=[])
     parser.add_argument("--gen-batch-size", type=int, default=64)
@@ -354,6 +355,7 @@ def main() -> None:
         "adapter_dir": str(args.adapter_dir) if args.adapter_dir else None,
         "adapter_sha256": directory_sha256(args.adapter_dir) if args.adapter_dir else None,
         "base_model": args.base_model,
+        "base_model_revision": args.base_model_revision,
         "git_sha": git_sha(),
         "host": socket.gethostname(),
         "wall_clock_seconds": time.time() - t0,

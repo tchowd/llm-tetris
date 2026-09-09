@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "original": {
+    "counts": {
+      "rows": 244096,
+      "rows_with_full_state": 244096,
+      "prompt_geometry_aliases": 3748
+    },
+    "missing_required_fields": {},
+    "invalid": {},
+    "coverage": {
+      "split": {
+        "eval": 4096,
+        "train": 240000
+      },
+      "piece": {
+        "I": 35097,
+        "J": 35459,
+        "L": 35468,
+        "O": 34403,
+        "S": 34309,
+        "T": 35126,
+        "Z": 34234
+      },
+      "next": {
+        "I": 35056,
+        "J": 35096,
+        "L": 35111,
+        "O": 34649,
+        "S": 34713,
+        "T": 35016,
+        "Z": 34455
+      },
+      "piece_next": {
+        "II": 681,
+        "IJ": 5754,
+        "IL": 5897,
+        "IO": 5694,
+        "IS": 5709,
+        "IT": 5757,
+        "IZ": 5605,
+        "JI": 5898,
+        "JJ": 748,
+        "JL": 5870,
+        "JO": 5705,
+        "JS": 5726,
+        "JT": 5771,
+        "JZ": 5741,
+        "LI": 5650,
+        "LJ": 5809,
+        "LL": 730,
+        "LO": 5774,
+        "LS": 5828,
+        "LT": 5930,
+        "LZ": 5747,
+        "OI": 5732,
+        "OJ": 5705,
+        "OL": 5605,
+        "OO": 716,
+        "OS": 5544,
+        "OT": 5710,
+        "OZ": 5391,
+        "SI": 5641,
+        "SJ": 5616,
+        "SL": 5665,
+        "SO": 5510,
+        "SS": 732,
+        "ST": 5645,
+        "SZ": 5500,
+        "TI": 5815,
+        "TJ": 5783,
+        "TL": 5767,
+        "TO": 5671,
+        "TS": 5637,
+        "TT": 669,
+        "TZ": 5784,
+        "ZI": 5639,
+        "ZJ": 5681,
+        "ZL": 5577,
+        "ZO": 5579,
+        "ZS": 5537,
+        "ZT": 5534,
+        "ZZ": 687
+      },
+      "rotation": {
+        "0": 96447,
+        "1": 94592,
+        "2": 24895,
+        "3": 28162
+      },
+      "x": {
+        "0": 50619,
+        "1": 19297,
+        "2": 22919,
+        "3": 22456,
+        "4": 22229,
+        "5": 22219,
+        "6": 21608,
+        "7": 23555,
+        "8": 29778,
+        "9": 9416
+      },
+      "difficulty": {
+        "critical": 59428,
+        "hard": 33351,
+        "low": 106215,
+        "moderate": 45102
+      },
+      "kind": {
+        "on_policy_correction": 72000,
+        "ordinary_retention": 96000,
+        "progressive_eval": 4096,
+        "progressive_recovery": 48000,
+        "rare_safety": 24000
+      }
+    },
+    "unique_games": {
+      "train": 240000,
+      "eval": 4096
+    },
+    "unique_seeds": {
+      "train": 7576,
+      "eval": 337
+    },
+    "split_overlap": {
+      "eval:train": {
+        "game_ids": 0,
+        "seeds": 0
+      }
+    },
+    "teacher_validation": {
+      "sample_size": 4000,
+      "teacher_optimal_labels": 4000,
+      "selected_edge_placements": 1690,
+      "mean_top_margin": 1506.315
+    },
+    "identity": {
+      "unique_full_states": 244096,
+      "unique_prompts": 240348,
+      "unique_aliased_prompts": 3446,
+      "unique_conflicting_prompts": 0,
+      "unique_conflicting_states": 0
+    }
+  },
+  "prior_recovery": null,
+  "development_failure_profile": null,
+  "final_test_access": false,
+  "elapsed_seconds": 84.7026696249959,
+  "generated_at": "2026-09-09T21:35:07Z"
+}

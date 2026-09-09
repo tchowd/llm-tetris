@@ -1,0 +1,22 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "approval_sha256": "283db917a92238dea129a8a96a5fe9eb5a859f494edeab370ed80e0bb1941fc1",
+  "supersedes_operations_amendment": "registration-amendment-ops-v2.json",
+  "reason": "The third worker installed both registered runtime environments and passed the budget check, then stopped before tests because pytest is a development dependency and was absent from the production requirements bundle.",
+  "scope": "Operations-only validation dependency fix. Dataset composition, source seeds, model, optimizer, eligible endpoint, evaluation cohorts, gates, compute envelope, and deadline instant are unchanged.",
+  "failed_instance": "i-0a96f9c3f8f2eb662",
+  "failed_instance_outcome": "terminated before tests, dataset generation, model training, or evaluation",
+  "validation_dependency": "pytest==9.1.1",
+  "source_changes": {
+    "infra/tetra17_recovery_bootstrap.sh": {
+      "registered_sha256": "dab366ee3cb6704715ed9c38448cb19dabfd29254a6c347609295b7b83690cff",
+      "amended_sha256": "db89fa8330dda7f9b7f1f55ba1b205b18300e10903c30e50f1f27c716dddbdae"
+    },
+    "infra/tetra17_recovery_ops.py": {
+      "registered_sha256": "c304a293445134d7bb0182380ddd251dfe97a78cef6318d6bea20505c2be7201",
+      "amended_sha256": "bcfcce78de4a38d49224c5426fe3e025bbe882c6340be1e7672477b50b16e917"
+    }
+  },
+  "recorded_at_utc": "2026-09-08T22:47:30Z"
+}

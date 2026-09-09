@@ -1,0 +1,15 @@
+{
+  "experiment": "tetra17-recovery-v2",
+  "registration_sha256": "33ce08c3e5b31aa0cc8c2ad3445cc113cb99d65e92645ccc8bdc214a6fbe435f",
+  "user_approval_text": "proceed with this end to end. do not stop until its completed. total allocated budget for this is $300.",
+  "hard_limit_usd": 300.0,
+  "prior_instance_hours_conservative": 11.5,
+  "maximum_new_instance_hours": 108.5,
+  "maximum_cumulative_instance_hours": 120.0,
+  "conservative_compute_usd": 269.0496,
+  "ancillary_reserve_usd": 30.0,
+  "maximum_envelope_usd": 299.0496,
+  "maximum_concurrent_workers": 1,
+  "deadline_utc": "2026-09-14 10:15:00+00:00",
+  "recorded_at_utc": "2026-09-09T21:45:17Z"
+}
