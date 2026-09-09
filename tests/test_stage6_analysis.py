@@ -293,7 +293,7 @@ def test_stage5_metadata_keeps_model_identity_and_refuses_overwrites(tmp_path, m
     expected_hash = directory_sha256(adapter)
     policy = random_legal_policy()
 
-    def load(*args):
+    def load(*args, **kwargs):
         def choose(snapshots, teacher_infos):
             if mutate_adapter:
                 weight.write_bytes(b"changed-test-placeholder")
