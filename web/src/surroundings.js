@@ -66,7 +66,7 @@ export function setupSurroundings(container, blocks, getLayout, reducedMotion) {
     }
   }
 
-  const allowed = () => started && !document.hidden && !reducedMotion.matches
+  const allowed = () => started && !container.inert && !document.hidden && !reducedMotion.matches
 
   function scheduleIdle(token) {
     if (token !== generation || !allowed() || !candidates.length) return
@@ -98,6 +98,7 @@ export function setupSurroundings(container, blocks, getLayout, reducedMotion) {
   }
 
   document.addEventListener('visibilitychange', resume)
+  container.addEventListener('tetra:visibility', resume)
   reducedMotion.addEventListener('change', resume)
   window.addEventListener('resize', () => {
     cancel()

@@ -2,6 +2,7 @@ import './style.css'
 import referenceBlocks from './blocks/catalog.json'
 import { blockSvg, compositionSvg, normalizeBlocks } from './blocks/render.js'
 import { setupAssembly } from './assemble.js'
+import { setupPages } from './pages.js'
 
 const blocks = normalizeBlocks(referenceBlocks)
 
@@ -33,6 +34,7 @@ if (block) {
   app.className = 'composition-view'
   app.innerHTML = `<main class="composition" aria-label="Tetra geometric composition">${compositionSvg(blocks)}</main>`
   setupAssembly(app.querySelector('.composition'), blocks)
+  setupPages(app, app.querySelector('.composition'))
 }
 
 app.insertAdjacentHTML('beforeend', `

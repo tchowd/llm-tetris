@@ -47,6 +47,7 @@ function wordPixels(width, height) {
 function sourcePixels(blocks, svg, bounds) {
   const byId = new Map(blocks.map(block => [block.id, block]))
   const matrix = svg.getScreenCTM()
+  const origin = svg.getBoundingClientRect()
   const result = []
   for (const [id, tileX, tileY] of composition) {
     const block = byId.get(id)
@@ -64,6 +65,8 @@ function sourcePixels(blocks, svg, bounds) {
         }
         if (color === block.background) continue
         const point = new DOMPoint(tileX + x, tileY + y).matrixTransform(matrix)
+        point.x -= origin.left
+        point.y -= origin.top
         const pw = w * matrix.a, ph = h * matrix.d
         const left = Math.max(point.x, bounds.x), top = Math.max(point.y, bounds.y)
         const right = Math.min(point.x + pw, bounds.x + bounds.width)
@@ -78,15 +81,24 @@ function sourcePixels(blocks, svg, bounds) {
 
 export function setupAssembly(container, blocks) {
   const artwork = container.querySelector('svg')
-  const button = document.createElement('button')
-  button.className = 'start-button'
-  button.type = 'button'
-  button.innerHTML = '<span>Start</span><span aria-hidden="true">↗</span>'
-  container.append(button)
   const status = document.createElement('span')
   status.className = 'sr-only'
   status.setAttribute('role', 'status')
   container.append(status)
+  const actions = document.createElement('div')
+  actions.className = 'landing-actions'
+  actions.hidden = true
+  actions.setAttribute('role', 'group')
+  actions.setAttribute('aria-label', 'Explore Tetra')
+  actions.innerHTML = ['Play', 'Read', 'Data'].map(label =>
+    `<button class="landing-button" type="button" data-action="${label.toLowerCase()}"><span>${label}</span><span aria-hidden="true">↗</span></button>`).join('')
+  actions.addEventListener('click', event => {
+    const button = event.target.closest('button[data-action]')
+    if (button) container.dispatchEvent(new CustomEvent('tetra:action', {
+      bubbles: true, detail: { action: button.dataset.action },
+    }))
+  })
+  container.append(actions)
   let state = 'idle', overlay, particles = [], frame, startTime
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
 
@@ -98,9 +110,12 @@ export function setupAssembly(container, blocks) {
       width: 31 * unit, height: 9 * unit,
     }
     const matrix = artwork.getScreenCTM()
+    const origin = artwork.getBoundingClientRect()
     const byId = new Map(blocks.map(block => [block.id, block]))
     const tiles = composition.map(([id, x, y, width, height]) => {
       const point = new DOMPoint(x, y).matrixTransform(matrix)
+      point.x -= origin.left
+      point.y -= origin.top
       const block = byId.get(id)
       // Keep the tile's own field; choose a contrasting foreground from the palette.
       const color = block.background === 'black' ? 'white'
@@ -146,10 +161,11 @@ export function setupAssembly(container, blocks) {
     overlay.setAttribute('role', 'img')
     overlay.setAttribute('aria-label', 'TETRA')
     overlay.removeAttribute('aria-hidden')
-    button.disabled = false
-    button.innerHTML = '<span>Replay</span><span aria-hidden="true">↺</span>'
     status.textContent = 'TETRA assembled.'
     particles = []
+    // A resize can finish the shapes early; wait for the actual gray fade too.
+    Promise.all(artwork.getAnimations().map(animation => animation.finished.catch(() => {})))
+      .then(() => { if (state === 'complete') actions.hidden = false })
   }
 
   function tick(now) {
@@ -226,27 +242,15 @@ export function setupAssembly(container, blocks) {
     }
     state = 'animating'
     container.dataset.state = state
-    button.disabled = true
-    button.innerHTML = '<span>Assembling</span><span aria-hidden="true">·</span>'
     status.textContent = 'Sliding shapes into TETRA.'
     if (reducedMotion.matches) return finish()
     startTime = performance.now()
     frame = requestAnimationFrame(tick)
   }
 
-  button.addEventListener('click', () => {
-    if (state === 'animating') return
-    if (state === 'complete') {
-      surroundings.reset()
-      overlay.remove()
-      state = 'idle'
-      container.dataset.state = state
-      button.innerHTML = '<span>Start</span><span aria-hidden="true">↗</span>'
-      status.textContent = ''
-      // Show the original arrangement briefly before replaying the transformation.
-      button.disabled = true
-      setTimeout(start, reducedMotion.matches ? 0 : 350)
-    } else start()
+  // Give the original mosaic a paint before beginning the automatic entrance.
+  frame = requestAnimationFrame(() => {
+    frame = requestAnimationFrame(start)
   })
   window.addEventListener('resize', () => {
     if (state === 'animating') finish()
