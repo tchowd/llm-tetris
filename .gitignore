@@ -13,6 +13,7 @@ web/dist/
 infra/dashboard.toml
 plan/
 data/
+/assets/
 
 # Secrets
 .env
